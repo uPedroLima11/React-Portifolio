@@ -20,6 +20,16 @@
   }
 }
 
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
 .loading-border-blue {
   border-color: #3178C6;
   animation: border-move 4.5s linear infinite;
@@ -32,6 +42,10 @@
 
 .loading-border-yellow {
   border-color: #F7DF1E;
+  animation: border-move 4.5s linear infinite;
+}
+.loading-border-red {
+  border-color: #f04c1a;
   animation: border-move 4.5s linear infinite;
 }
 
@@ -48,4 +62,8 @@
 body {
   @apply bg-[#24242c] text-white antialiased;
 
+}
+
+.animate-fade {
+  animation: fade 1.5s ease-in-out infinite;
 }

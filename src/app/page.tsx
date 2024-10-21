@@ -1,8 +1,18 @@
+"use client";
 import Link from "next/link";
 import Header from "./components/header";
 import Image from "next/image";
-const Home = () => {
+import { useState } from "react";
+import { Projeto, projetos} from "./components/projeto"
+import Footer from "./components/footer";
 
+
+export function Home () {
+
+  const [selectedProject, setSelectedProject] = useState<Projeto | null>(null);
+
+  const handleOpenModal = (projeto: Projeto) => setSelectedProject(projeto);
+  const handleCloseModal = () => setSelectedProject(null);
 
 
   return (
@@ -24,8 +34,8 @@ const Home = () => {
       </section>
       <div className="flex justify-end -mt-80 mr-52 gap-10">
         <div className="mt-14 -mr-4"><Link href='https://www.linkedin.com/in/upedrolima/'><Image src="/Logos/linkedin.png" alt="linkedin" width={50} height={50} className='py-14' /></Link></div>
-        <div className="mt-14 -mr-3"><Link href='https://www.instagram.com/upedro_lima/'><Image src="/Logos/instagram.png" alt='linkedin' width={50} height={50} className='py-14' /></Link></div>
-        <div className="mt-14 ">      <Link href='https://github.com/uPedroLima11'><Image src="/Logos/github.png" alt='linkedin' width={50} height={50} className='py-14' /></Link></div>
+        <div className="mt-14 -mr-3"><Link href='https://www.instagram.com/upedro_lima/'><Image src="/Logos/instagram.png" alt='linkedin' width={48} height={50} className='py-14' /></Link></div>
+        <div className="mt-14 "><Link href='https://github.com/uPedroLima11'><Image src="/Logos/github.png" alt='linkedin' width={50} height={50} className='py-14' /></Link></div>
       </div>
 
       <section className="p-12">
@@ -75,31 +85,103 @@ const Home = () => {
       <div className="mt-32 flex lg:flex-wrap items-center justify-center gap-20 px-4 lg:px-16 md:grid-cols-2 xl:grid-cols-4 ">
       <div className="relative pb-24 bg-[#1a1a1f] mb-10 flex flex-col items-center justify-center rounded-lg py-2 px-4 hover:scale-105 transition delay-150 duration-150 ease-in-out shadow-lg flex-grow overflow-hidden">
         <div className="absolute inset-0 border-2 border-transparent rounded-lg loading-border-blue"></div>
-        <Image src="/Logos/typescript.png" alt="typescript" width={60} height={40} className="mt-20" />
-        <p className="text-white font-bold mt-10">TypeScript</p>
+        <Image src="/Logos/Mysql.png" alt="MySQL" width={60} height={40} className="mt-20" />
+        <p className="text-white font-bold mt-10">MySQL</p>
       </div>
 
       <div className="relative pb-24 bg-[#1a1a1f] mb-10 flex flex-col items-center justify-center rounded-lg py-2 px-4 hover:scale-105 transition delay-150 duration-150 ease-in-out shadow-lg flex-grow overflow-hidden">
         <div className="absolute inset-0 border-2 border-transparent rounded-lg loading-border-cyan"></div>
-        <Image src="/Logos/react.png" alt="react" width={60} height={40} className="mt-20" />
-        <p className="text-white font-bold mt-10">React</p>
+        <Image src="/Logos/python.png" alt="react" width={60} height={40} className="mt-20" />
+        <p className="text-white font-bold mt-10">Python</p>
       </div>
 
       <div className="relative pb-24 bg-[#1a1a1f] mb-10 flex flex-col items-center justify-center rounded-lg py-2 px-4 hover:scale-105 transition delay-150 duration-150 ease-in-out shadow-lg flex-grow overflow-hidden">
-        <div className="absolute inset-0 border-2 border-transparent rounded-lg loading-border-yellow"></div>
-        <Image src="/Logos/javascript.png" alt="javascript" width={60} height={40} className="mt-20" />
-        <p className="text-white font-bold mt-10">JavaScript</p>
+        <div className="absolute inset-0 border-2 border-transparent rounded-lg loading-border-blue"></div>
+        <Image src="/Logos/css.png" alt="javascript" width={60} height={40} className="mt-20" />
+        <p className="text-white font-bold mt-10">CSS</p>
       </div>
 
       <div className="relative pb-24 bg-[#1a1a1f] mb-10 flex flex-col items-center justify-center rounded-lg py-2 px-4 hover:scale-105 transition delay-150 duration-150 ease-in-out shadow-lg flex-grow overflow-hidden">
-        <div className="absolute inset-0 border-2 border-transparent rounded-lg loading-border-green"></div>
-        <Image src="/Logos/tailwind.png" alt="tailwind" width={60} height={40} className="mt-20" />
-        <p className="text-white font-bold mt-10">Tailwind CSS</p>
+        <div className="absolute inset-0 border-2 border-transparent rounded-lg loading-border-red"></div>
+        <Image src="/Logos/git.png" alt="tailwind" width={60} height={40} className="mt-20" />
+        <p className="text-white font-bold mt-10">Git</p>
       </div>
           </div>
       </section>
-      <div className="mt-96"></div>
+
+
+      <section className="mt-16">
+      <h1 className="text-center text-3xl font-bold">Alguns Projetos Desenvolvidos</h1>
+
+      <div className="mt-32 grid grid-cols-2 gap-20 px-4 lg:px-16">
+        {projetos.map((projeto, index) => (
+          <div
+            key={index}
+            className="relative pb-24 bg-[#1a1a1f] mb-10 flex flex-col items-center justify-center rounded-lg py-2 px-4 hover:scale-105 transition delay-150 duration-150 ease-in-out shadow-2xl overflow-hidden"
+          >
+            <Image
+              src={projeto.imagem}
+              alt={projeto.nome}
+              width={300}
+              height={40}
+              className="mt-20"
+            />
+            <p className="text-white font-bold mt-10">{projeto.nome}</p>
+
+            <div className="flex gap-4 mt-6">
+              <Link href={projeto.githubLink} target="_blank">
+                <button className="py-2 px-4 bg-gray-300 font-semibold text-black rounded-lg hover:bg-gray-400">
+                  Github
+                </button>
+              </Link>
+              <Link href={projeto.liveDemoLink} target="_blank">
+                <button className="py-2 px-4 bg-green-500 text-black font-semibold rounded-lg hover:bg-green-600">
+                  Live Demo
+                </button>
+              </Link>
+            </div>
+
+            <div className="absolute bottom-4 right-4">
+              <button
+                onClick={() => handleOpenModal(projeto)}
+                className="py-2 px-4  text-white rounded-lg font-bold bg-slate-800 hover:text-[#B38000] "
+              >
+                Mais Informações
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {selectedProject && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 z-50">
+          <div className="bg-white p-8 rounded-lg w-96 relative">
+            <button
+              onClick={handleCloseModal}
+              className="absolute top-2 right-2 text-gray-500 hover:text-gray-700"
+            >
+              ✕
+            </button>
+            <h2 className="text-2xl font-bold mb-4">
+              {selectedProject.nome}
+            </h2>
+            <Image
+              src={selectedProject.imagem}
+              alt={selectedProject.nome}
+              width={300}
+              height={200}
+            />
+            <p className="mt-4 text-gray-600">
+              {selectedProject.descricao}
+            </p>
+          </div>
+        </div>
+      )}
+    </section>
+    <div className="mt-10"></div>
+    <Footer/>
     </div>
+    
   );
 }
 export default Home
