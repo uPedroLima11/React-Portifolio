@@ -21,7 +21,7 @@ const Home = () => {
       <section className="flex items-center justify-between py-48 px-6 md:px-32 space-y-10 w-full">
         <div className="-mt-40 px-6 text-7xl font-light ">
           <h1 className="text-7xl mt-40 font-light"> Olá,</h1> <br />
-          <h2 className="-mt-16">Sou <span className="font-semibold">Pedro</span> <span className=" text-5xl animate-fade">|</span> </h2>
+          <h2 className="-mt-16">Sou <span className="font-semibold">Pedro</span> <span className=" text-5xl mb-10 animate-fade">|</span> </h2>
           <h1 className="text-lg mt-4">✨ Desenvolvedor Front-End ✨
             Focado em criar interfaces intuitivas <br />e responsivas, costumo utilizar React, TypeScript e Tailwind CSS para transformar
             <br />minhas ideias  em experiências digitais fluidas. </h1>
@@ -95,7 +95,7 @@ const Home = () => {
 
       <div className="relative pb-24 bg-[#1a1a1f] mb-10 flex flex-col items-center justify-center rounded-lg py-2 px-4 hover:scale-105 transition delay-150 duration-150 ease-in-out shadow-lg flex-grow overflow-hidden">
         <div className="absolute inset-0 border-2 border-transparent rounded-lg loading-border-blue"></div>
-        <Image src="/Logos/nextjs.png" alt="NextJS" width={60} height={40} className="mt-20" />
+        <Image src="/Logos/nextjs1.png" alt="nextjs" width={60} height={40} className="mt-20" />
         <p className="text-white font-bold mt-10">NextJS</p>
       </div>
 
