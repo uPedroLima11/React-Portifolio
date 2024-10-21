@@ -7,7 +7,7 @@ import { Projeto, projetos} from "./components/projeto"
 import Footer from "./components/footer";
 
 
-export function Home () {
+export const Home = () => {
 
   const [selectedProject, setSelectedProject] = useState<Projeto | null>(null);
 
