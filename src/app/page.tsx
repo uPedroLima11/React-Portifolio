@@ -11,7 +11,7 @@ const Home = () => {
 
   const handleOpenModal = (projeto: Projeto) => setSelectedProject(projeto);
   const handleCloseModal = () => setSelectedProject(null);
-
+<br />
   
   return (
     <div>
