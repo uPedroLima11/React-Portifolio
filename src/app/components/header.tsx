@@ -11,7 +11,7 @@ import Link from "next/link";
     href="/"
     className="flex justify-center items-center flex-col space-x-3 rtl:space-x-reverse"
   > 
-  <img src="/Logos/Navbar.png" className="h-20" />
+  <img src="/Logos/codigo.png" className="h-20 invert" />
     
   </a> 
   <Link href='#' className="mr-96 -ml-28 md:hover:text-[#B38000] text-xl font-serif"><h1>Pedro Mendes Lima</h1></Link>
@@ -30,7 +30,7 @@ import Link from "next/link";
         <ul className="flex justify-around p-4 px-6 mt-0 gap-10 font-medium">
           <li>
             <Link
-              href="/#sobremim"
+              href=""
               className="block py-2 px-3 text-white text-xs font-bold md:hover:text-[#B38000]  md:p-0 lg:text-sm xl:text-base 2xl:text-lg"
               aria-current="page"
             >
