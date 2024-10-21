@@ -55,9 +55,7 @@ import Link from "next/link";
             </Link>
           </li>
           
-            <img src="/Logos/linguagens.png"
-              className="h-10 filter invert opacity-90 ">
-            </img>
+           
         </ul>
       </div>
     </>
@@ -66,3 +64,5 @@ import Link from "next/link";
 </nav>
 );
  }
+
+ 
