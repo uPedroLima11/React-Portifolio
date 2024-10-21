@@ -10,9 +10,9 @@
   
   export const projetos: Projeto[] = [
     {
-      nome: "Projeto1",
+      nome: "Verbalize",
       imagem: "/Logos/Navbar.png",
-      descricao: "Este é o projeto Verbalize. ele é um projeto feito em grupo com o intuito de ser uma plataforma de chat bidirecional onde você ensina sua linguagem enquanto aprende a do outro. as linguagens usadas foram: React | Next, utilizando MySQL, Typescript e Tailwind CSS.",
+      descricao: "Este é o projeto Verbalize. ele é um projeto feito em grupo com o intuito de ser uma plataforma de chat bidirecional onde você ensina sua linguagem enquanto aprende a do outro. as linguagens que eu usei para fazer o Front-End dele foram: React | Next, utilizando MySQL, Typescript e Tailwind CSS.",
       githubLink: "https://github.com/uPedroLima11/Next_Verbalise_Frontend",
       liveDemoLink: "https://verbalize-senac.vercel.app",
     },

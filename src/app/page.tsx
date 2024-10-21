@@ -103,10 +103,11 @@ const Home = () => {
         <img src="/Logos/wireframe.png" alt="test" width={60} height={40} className="mt-20" />
         <p className="text-white font-bold mt-10">Git</p>
       </div>
-          </div>
+      <div id="projetos"></div>   </div>
+          
       </section>
 
-
+      
       <section className="mt-16">
       <h1 className="text-center text-3xl font-bold">Alguns Projetos Desenvolvidos</h1>
 
@@ -123,7 +124,7 @@ const Home = () => {
               height={400}
               className="mt-8 w-[600px]"
             />
-            <p className="text-white font-bold mt-10">{projeto.nome}</p>
+            <p className="text-white text-xl font-bold mt-10">{projeto.nome}</p>
 
             <div className="flex gap-4 mt-6">
               <Link href={projeto.githubLink} target="_blank">
@@ -168,7 +169,7 @@ const Home = () => {
               width={300}
               height={200}
             />
-            <p className="mt-4 text-gray-600">
+            <p className="mt-4 text-white font-light">
               {selectedProject.descricao}
             </p>
           </div>

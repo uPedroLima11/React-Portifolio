@@ -33,30 +33,36 @@
 .loading-border-blue {
   border-color: #3178C6;
   animation: border-move 4.5s linear infinite;
+  border-width: 6px;
 }
 
 .loading-border-cyan {
   border-color: #61DAFB;
   animation: border-move 4.5s linear infinite;
+  border-width: 6px;
 }
 
 .loading-border-yellow {
   border-color: #F7DF1E;
   animation: border-move 4.5s linear infinite;
+  border-width: 6px;
 }
 .loading-border-red {
   border-color: #f04c1a;
   animation: border-move 4.5s linear infinite;
+  border-width: 6px;
 }
 
 .loading-border-green {
   border-color: #0EA5E9;
   animation: border-move 4.5s linear infinite;
+  border-width: 6px;
 }
 
 .loading-border-black {
   border-color: #020f14;
   animation: border-move 4.5s linear infinite;
+  border-width: 6px;
 }
 
   html, body {

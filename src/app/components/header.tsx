@@ -30,7 +30,7 @@ import Link from "next/link";
         <ul className="flex justify-around p-4 px-6 mt-0 gap-10 font-medium">
           <li>
             <Link
-              href=""
+              href="#sobremim"
               className="block py-2 px-3 text-white text-xs font-bold md:hover:text-[#B38000]  md:p-0 lg:text-sm xl:text-base 2xl:text-lg"
               aria-current="page"
             >
@@ -39,7 +39,7 @@ import Link from "next/link";
           </li>
           <li>
             <Link
-              href="#"
+              href="#projetos"
               className="block py-2 px-3 text-white text-xs font-bold md:hover:text-[#B38000]  md:p-0 lg:text-sm xl:text-base 2xl:text-lg"
               aria-current="page"
             >
