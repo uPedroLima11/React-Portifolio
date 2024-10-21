@@ -18,7 +18,7 @@
     },
     {
       nome: "Projeto2",
-      imagem: "/Logos/prototipo.png",
+      imagem: "/Logos/programadorr.png",
       descricao: "Projeto 2 foca em interfaces com React.",
       githubLink: "https://github.com/projeto2",
       liveDemoLink: "https://projeto2-demo.com",
