@@ -5,13 +5,14 @@ import Image from "next/image";
 import { useState } from "react";
 import { Projeto, projetos} from "./components/projeto"
 import Footer from "./components/footer";
-
+const Home = () => {
+  
   const [selectedProject, setSelectedProject] = useState<Projeto | null>(null);
 
   const handleOpenModal = (projeto: Projeto) => setSelectedProject(projeto);
   const handleCloseModal = () => setSelectedProject(null);
 
-  const Home = () => {
+  
   return (
     <div>
       <header>

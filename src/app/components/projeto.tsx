@@ -1,6 +1,6 @@
 "use client";
 
-export interface Projeto {
+  export interface Projeto {
     nome: string;
     imagem: string;
     descricao: string;
