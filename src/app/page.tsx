@@ -38,7 +38,7 @@ const Home = () => {
 
       <section className="p-12">
         <div className="flex justify-center"> <h1 className="text-3xl font-bold">Sobre Mim</h1></div>
-        <div className="mt-16 ml-12"> <Image src="/logos/sobre.png" alt="sobre" width="450" height="10" className="rounded-xl border-4 border-[#101013]" />
+        <div className="mt-16 ml-12"> <Image src="/logos/sobre/sobre.png" alt="sobre" width="450" height="10" className="rounded-xl border-4 border-[#101013]" />
         </div>
         <div className="flex justify-end -mt-[312px] mr-32">
           <h1 className="rounded-lg font-light bg-[#1a1a1f] -mr-24 p-14 shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] ">
