@@ -38,7 +38,7 @@ const Home = () => {
 
       <section className="p-12">
         <div className="flex justify-center"> <h1 className="text-3xl font-bold">Sobre Mim</h1></div>
-        <div className="mt-16 ml-12"> <Image src="/logos/SobreMim.png" alt="SobreMim" width="450" height="10" className="rounded-xl border-4 border-[#101013]" />
+        <div className="mt-16 ml-12"> <Image src="/logos/sobremim1.png" alt="SobreMim1" width="450" height="10" className="rounded-xl border-4 border-[#101013]" />
         </div>
         <div className="flex justify-end -mt-[312px] mr-32">
           <h1 className="rounded-lg font-light bg-[#1a1a1f] -mr-24 p-14 shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] ">
@@ -83,7 +83,7 @@ const Home = () => {
       <div className="mt-32 flex lg:flex-wrap items-center justify-center gap-20 px-4 lg:px-16 md:grid-cols-2 xl:grid-cols-4 ">
       <div className="relative pb-24 bg-[#1a1a1f] mb-10 flex flex-col items-center justify-center rounded-lg py-2 px-4 hover:scale-105 transition delay-150 duration-150 ease-in-out shadow-lg flex-grow overflow-hidden">
         <div className="absolute inset-0 border-2 border-transparent rounded-lg loading-border-blue"></div>
-        <Image src="/Logos/Mysql.png" alt="MySQL" width={60} height={40} className="mt-20" />
+        <Image src="/Logos/mysql1.png" alt="mysql1" width={60} height={40} className="mt-20" />
         <p className="text-white font-bold mt-10">MySQL</p>
       </div>
 
