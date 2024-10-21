@@ -94,14 +94,14 @@ const Home = () => {
       </div>
 
       <div className="relative pb-24 bg-[#1a1a1f] mb-10 flex flex-col items-center justify-center rounded-lg py-2 px-4 hover:scale-105 transition delay-150 duration-150 ease-in-out shadow-lg flex-grow overflow-hidden">
-        <div className="absolute inset-0 border-2 border-transparent rounded-lg loading-border-blue"></div>
+        <div className="absolute inset-0 border-2 border-transparent rounded-lg loading-border-black"></div>
         <Image src="/Logos/git.png" alt="nodejs" width={60} height={40} className="mt-20" />
-        <p className="text-white font-bold mt-10">NodeJS</p>
+        <p className="text-white font-bold mt-10">NextJS</p>
       </div>
 
       <div className="relative pb-24 bg-[#1a1a1f] mb-10 flex flex-col items-center justify-center rounded-lg py-2 px-4 hover:scale-105 transition delay-150 duration-150 ease-in-out shadow-lg flex-grow overflow-hidden">
         <div className="absolute inset-0 border-2 border-transparent rounded-lg loading-border-red"></div>
-        <Image src="/Logos/hub.png" alt="tailwind" width={60} height={40} className="mt-20" />
+        <Image src="/Logos/tecnologias/hubb.png" alt="" width={60} height={40} className="mt-20" />
         <p className="text-white font-bold mt-10">Git</p>
       </div>
           </div>

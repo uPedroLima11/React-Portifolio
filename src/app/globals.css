@@ -54,6 +54,11 @@
   animation: border-move 4.5s linear infinite;
 }
 
+.loading-border-black {
+  border-color: #020f14;
+  animation: border-move 4.5s linear infinite;
+}
+
   html, body {
   color: white;
   background-color:#24242c
