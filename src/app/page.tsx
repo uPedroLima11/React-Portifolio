@@ -1,101 +1,105 @@
+import Link from "next/link";
+import Header from "./components/header";
 import Image from "next/image";
+const Home = () => {
 
-export default function Home() {
+
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div>
+      <header>
+        <Header />
+      </header>
+      <section className="flex items-center justify-between py-48 px-6 md:px-32 space-y-10 w-full">
+        <div className="-mt-40 px-6 text-7xl font-light ">
+          <h1 className="text-7xl mt-40 font-light"> Olá,</h1> <br />
+          <h2 className="-mt-16">Sou <span className="font-semibold">Pedro</span> <span className=" text-5xl animate-fade">|</span> </h2>
+          <h1 className="text-lg mt-4">✨ Desenvolvedor Front-End ✨
+            Focado em criar interfaces intuitivas <br />e responsivas, costumo utilizar React, TypeScript e Tailwind CSS para transformar
+            <br />minhas ideias  em experiências digitais fluidas. </h1>
+          <button type="button" className="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-14 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Converse Comigo</button>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+        <Image src="/Logos/MinhaFoto.png" alt='eu' width={250} height={10} className=' mr-14 -rotate-6' />
+      </section>
+      <div className="flex justify-end -mt-80 mr-52 gap-10">
+        <div className="mt-14 -mr-4"><Link href='https://www.linkedin.com/in/upedrolima/'><Image src="/Logos/linkedin.png" alt="linkedin" width={50} height={50} className='py-14' /></Link></div>
+        <div className="mt-14 -mr-3"><Link href='https://www.instagram.com/upedro_lima/'><Image src="/Logos/instagram.png" alt='linkedin' width={50} height={50} className='py-14' /></Link></div>
+        <div className="mt-14 ">      <Link href='https://github.com/uPedroLima11'><Image src="/Logos/github.png" alt='linkedin' width={50} height={50} className='py-14' /></Link></div>
+      </div>
+
+      <section className="p-12">
+        <div className="flex justify-center"> <h1 className="text-3xl font-bold">Sobre Mim</h1></div>
+        <div className="mt-16 ml-12"> <Image src="/logos/SobreMim.png" alt="SobreMim" width="450" height="10" className="rounded-xl border-4 border-[#101013]" />
+        </div>
+        <div className="flex justify-end -mt-[312px] mr-32">
+          <h1 className="rounded-lg font-light bg-[#1a1a1f] -mr-24 p-14 shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] ">
+            <span className="ml-4">Olá!</span> Sou estudante do Senac-RS e estou cursando Análise e Desenvolvimento de Sistemas <br />e, se tem uma coisa que eu amo desde pequeno,
+            é tecnologia! Atualmente, estou focado <br /> no mundo do desenvolvimento front-end, onde gosto usar minhas habilidades em <span className="font-bold">
+              React | <br /> TypeScript | JavaScript | Tailwind </span>para criar interfaces atrativas e interessante para o mundo <br /> <br /> <span className="ml-4">Meu</span> maior objetivo é
+            transformar ideias em experiências digitais que as pessoas possam <br /> adorar. Cada projeto que eu faço é uma nova oportunidade de aprender e crescer,
+            e eu <br /> estou sempre em busca das últimas novidades no mundo da tecnologia. Estou animado <br /> para contribuir com soluções que melhorem
+            a vida das pessoas no ambiente digital!
+          </h1>
+        </div>
+      </section>
+      <section className="mt-16">
+      <h1 className="text-center text-3xl font-bold">Tech Stack</h1>
+
+      <div className="mt-32 flex lg:flex-wrap items-center justify-center gap-20 px-4 lg:px-16 md:grid-cols-2 xl:grid-cols-4 ">
+      <div className="relative pb-24 bg-[#1a1a1f] mb-10 flex flex-col items-center justify-center rounded-lg py-2 px-4 hover:scale-105 transition delay-150 duration-150 ease-in-out shadow-lg flex-grow overflow-hidden">
+        <div className="absolute inset-0 border-2 border-transparent rounded-lg loading-border-blue"></div>
+        <Image src="/Logos/typescript.png" alt="typescript" width={60} height={40} className="mt-20" />
+        <p className="text-white font-bold mt-10">TypeScript</p>
+      </div>
+
+      <div className="relative pb-24 bg-[#1a1a1f] mb-10 flex flex-col items-center justify-center rounded-lg py-2 px-4 hover:scale-105 transition delay-150 duration-150 ease-in-out shadow-lg flex-grow overflow-hidden">
+        <div className="absolute inset-0 border-2 border-transparent rounded-lg loading-border-cyan"></div>
+        <Image src="/Logos/react.png" alt="react" width={60} height={40} className="mt-20" />
+        <p className="text-white font-bold mt-10">React</p>
+      </div>
+
+      <div className="relative pb-24 bg-[#1a1a1f] mb-10 flex flex-col items-center justify-center rounded-lg py-2 px-4 hover:scale-105 transition delay-150 duration-150 ease-in-out shadow-lg flex-grow overflow-hidden">
+        <div className="absolute inset-0 border-2 border-transparent rounded-lg loading-border-yellow"></div>
+        <Image src="/Logos/javascript.png" alt="javascript" width={60} height={40} className="mt-20" />
+        <p className="text-white font-bold mt-10">JavaScript</p>
+      </div>
+
+      <div className="relative pb-24 bg-[#1a1a1f] mb-10 flex flex-col items-center justify-center rounded-lg py-2 px-4 hover:scale-105 transition delay-150 duration-150 ease-in-out shadow-lg flex-grow overflow-hidden">
+        <div className="absolute inset-0 border-2 border-transparent rounded-lg loading-border-green"></div>
+        <Image src="/Logos/tailwind.png" alt="tailwind" width={60} height={40} className="mt-20" />
+        <p className="text-white font-bold mt-10">Tailwind CSS</p>
+      </div>
+      </div>
+
+      <div className="mt-32 flex lg:flex-wrap items-center justify-center gap-20 px-4 lg:px-16 md:grid-cols-2 xl:grid-cols-4 ">
+      <div className="relative pb-24 bg-[#1a1a1f] mb-10 flex flex-col items-center justify-center rounded-lg py-2 px-4 hover:scale-105 transition delay-150 duration-150 ease-in-out shadow-lg flex-grow overflow-hidden">
+        <div className="absolute inset-0 border-2 border-transparent rounded-lg loading-border-blue"></div>
+        <Image src="/Logos/typescript.png" alt="typescript" width={60} height={40} className="mt-20" />
+        <p className="text-white font-bold mt-10">TypeScript</p>
+      </div>
+
+      <div className="relative pb-24 bg-[#1a1a1f] mb-10 flex flex-col items-center justify-center rounded-lg py-2 px-4 hover:scale-105 transition delay-150 duration-150 ease-in-out shadow-lg flex-grow overflow-hidden">
+        <div className="absolute inset-0 border-2 border-transparent rounded-lg loading-border-cyan"></div>
+        <Image src="/Logos/react.png" alt="react" width={60} height={40} className="mt-20" />
+        <p className="text-white font-bold mt-10">React</p>
+      </div>
+
+      <div className="relative pb-24 bg-[#1a1a1f] mb-10 flex flex-col items-center justify-center rounded-lg py-2 px-4 hover:scale-105 transition delay-150 duration-150 ease-in-out shadow-lg flex-grow overflow-hidden">
+        <div className="absolute inset-0 border-2 border-transparent rounded-lg loading-border-yellow"></div>
+        <Image src="/Logos/javascript.png" alt="javascript" width={60} height={40} className="mt-20" />
+        <p className="text-white font-bold mt-10">JavaScript</p>
+      </div>
+
+      <div className="relative pb-24 bg-[#1a1a1f] mb-10 flex flex-col items-center justify-center rounded-lg py-2 px-4 hover:scale-105 transition delay-150 duration-150 ease-in-out shadow-lg flex-grow overflow-hidden">
+        <div className="absolute inset-0 border-2 border-transparent rounded-lg loading-border-green"></div>
+        <Image src="/Logos/tailwind.png" alt="tailwind" width={60} height={40} className="mt-20" />
+        <p className="text-white font-bold mt-10">Tailwind CSS</p>
+      </div>
+          </div>
+      </section>
+      <div className="mt-96"></div>
     </div>
   );
 }
+export default Home
