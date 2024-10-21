@@ -11,7 +11,7 @@ import Link from "next/link";
     href="/"
     className="flex justify-center items-center flex-col space-x-3 rtl:space-x-reverse"
   > 
-  <img src="/Logos/codigo.png" className="h-20 invert" />
+  <img src="/Logos/javascript(2).png" className="h-20 invert" />
     
   </a> 
   <Link href='#' className="mr-96 -ml-28 md:hover:text-[#B38000] text-xl font-serif"><h1>Pedro Mendes Lima</h1></Link>
