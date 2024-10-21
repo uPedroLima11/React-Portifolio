@@ -32,13 +32,13 @@ const Home = () => {
       </section>
       <div className="flex justify-end -mt-80 mr-52 gap-10">
         <div className="mt-14 -mr-4"><Link href='https://www.linkedin.com/in/upedrolima/'><Image src="/Logos/linkedin.png" alt="linkedin" width={50} height={50} className='py-14' /></Link></div>
-        <div className="mt-14 -mr-3"><Link href='https://www.instagram.com/upedro_lima/'><Image src="/Logos/instagram.png" alt='instagram' width={50} height={50} className='py-14' /></Link></div>
+        <div className="mt-14 -mr-3"><Link href='https://www.instagram.com/upedro_lima/'><Image src="/Logos/instagram.png" alt='linkedin' width={50} height={50} className='py-14' /></Link></div>
         <div className="mt-14 "><Link href='https://github.com/uPedroLima11'><Image src="/Logos/github.png" alt='linkedin' width={50} height={50} className='py-14' /></Link></div>
       </div>
 
       <section className="p-12">
         <div className="flex justify-center"> <h1 className="text-3xl font-bold">Sobre Mim</h1></div>
-        <div className="mt-16 ml-12"> <Image src="/logos/sobre.png" alt="sobre" width="400" height="400" className="rounded-xl border-4 border-[#101013]" />
+        <div className="mt-16 ml-12"> <Image src="/logos/sobre.png" alt="linkedin" width="400" height="400" className="rounded-xl border-4 border-[#101013]" />
         </div>
         <div className="flex justify-end -mt-[312px] mr-32">
           <h1 className="rounded-lg font-light bg-[#1a1a1f] -mr-24 p-14 shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] ">
