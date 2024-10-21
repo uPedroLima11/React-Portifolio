@@ -110,18 +110,18 @@ const Home = () => {
       <section className="mt-16">
       <h1 className="text-center text-3xl font-bold">Alguns Projetos Desenvolvidos</h1>
 
-      <div className="mt-32 grid grid-cols-2 gap-20 px-4 lg:px-16">
+      <div className="mt-28 grid grid-cols-2 gap-20 lg:px-16">
         {projetos.map((projeto, index) => (
           <div
             key={index}
-            className="relative pb-24 bg-[#1a1a1f] mb-10 flex flex-col items-center justify-center rounded-lg py-2 px-4 hover:scale-105 transition delay-150 duration-150 ease-in-out shadow-2xl overflow-hidden"
+            className="relative pb-11 bg-[#1a1a1f] mb-10 flex flex-col items-center justify-center rounded-lg py-2 hover:scale-105 transition delay-150 duration-150 ease-in-out shadow-2xl overflow-hidden"
           >
             <Image
               src={projeto.imagem}
               alt={projeto.nome}
-              width={300}
-              height={40}
-              className="mt-20"
+              width={400}
+              height={400}
+              className="mt-8 w-[600px]"
             />
             <p className="text-white font-bold mt-10">{projeto.nome}</p>
 
@@ -136,26 +136,26 @@ const Home = () => {
                   Live Demo
                 </button>
               </Link>
-            </div>
-
-            <div className="absolute bottom-4 right-4">
+              
               <button
                 onClick={() => handleOpenModal(projeto)}
-                className="py-2 px-4  text-white rounded-lg font-bold bg-slate-800 hover:text-[#B38000] "
+                className="py-2 px-4 text-white rounded-lg font-bold bg-slate-800 hover:text-[#B38000] "
               >
                 Mais Informações
               </button>
-            </div>
+              </div>
+
+            
           </div>
         ))}
       </div>
 
       {selectedProject && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 z-50">
-          <div className="bg-white p-8 rounded-lg w-96 relative">
+          <div className="bg-[#1a1a1f] p-8 rounded-lg w-96 relative">
             <button
               onClick={handleCloseModal}
-              className="absolute top-2 right-2 text-gray-500 hover:text-gray-700"
+              className="absolute top-2 right-2 text-white font-light hover:text-white"
             >
               ✕
             </button>
@@ -168,7 +168,7 @@ const Home = () => {
               width={300}
               height={200}
             />
-            <p className="mt-4 text-gray-600">
+            <p className="mt-4 text-white font-light">
               {selectedProject.descricao}
             </p>
           </div>
