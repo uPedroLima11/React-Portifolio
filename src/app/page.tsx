@@ -23,7 +23,7 @@ const Home = () => {
           <h1 className="text-7xl mt-40 font-light"> Olá,</h1> <br />
           <h2 className="-mt-16 flex items-center">Sou <span className="font-semibold ml-4">Pedro</span> <span className=" text-5xl mb-10 animate-fade relative translate-y-5 ml-3">|</span> </h2>
           <h1 className="text-lg mt-4">✨ Desenvolvedor Front-End ✨
-            Focado em criar interfaces intuitivas <br />e responsivas, costumo utilizar React, TypeScript e Tailwind CSS para transformar
+            Focado em criar interfaces intuitivas <br />e responsivas, costumo utilizar React, TypeScript Tailwind CSS para transformar
             <br />minhas ideias  em experiências digitais fluidas. </h1>
           <button type="button" className="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-14 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Converse Comigo</button>
         </div>
@@ -44,7 +44,7 @@ const Home = () => {
           <h1 className="rounded-lg font-light bg-[#1a1a1f] -mr-24 p-14 shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] ">
             <span className="ml-4">Olá!</span> Sou estudante do Senac-RS e estou cursando Análise e Desenvolvimento de Sistemas <br />e, se tem uma coisa que eu amo desde pequeno,
             é tecnologia! Atualmente, estou focado <br /> no mundo do desenvolvimento front-end, onde gosto usar minhas habilidades em <span className="font-bold">
-              React | <br /> TypeScript | JavaScript | Tailwind </span>para criar interfaces atrativas e interessante para o mundo <br /> <br /> <span className="ml-4">Meu</span> maior objetivo é
+              React | <br /> TypeScript | JavaScript | Tailwind | Figma </span>para criar interfaces atrativas e interessante para o mundo <br /> <br /> <span className="ml-4">Meu</span> maior objetivo é
             transformar ideias em experiências digitais que as pessoas possam <br /> adorar. Cada projeto que eu faço é uma nova oportunidade de aprender e crescer,
             e eu <br /> estou sempre em busca das últimas novidades no mundo da tecnologia. Estou animado <br /> para contribuir com soluções que melhorem
             a vida das pessoas no ambiente digital!
