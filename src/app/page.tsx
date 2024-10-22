@@ -57,25 +57,25 @@ const Home = () => {
         <div className="mt-32 flex lg:flex-wrap items-center justify-center gap-20 px-4 lg:px-16 md:grid-cols-2 xl:grid-cols-4 ">
           <div className="relative pb-24 bg-[#1a1a1f] mb-10 flex flex-col items-center justify-center rounded-lg py-2 px-4 hover:scale-105 transition delay-150 duration-150 ease-in-out shadow-lg flex-grow overflow-hidden">
             <div className="absolute inset-0 border-2 border-transparent rounded-lg loading-border-blue"></div>
-            <Image src="/Logos/typescript.png" alt="typescript" width={60} height={40} className="mt-20" />
+            <Image src="/images/typescript.png" alt="typescript" width={60} height={40} className="mt-20" />
             <p className="text-white font-bold mt-10">TypeScript</p>
           </div>
 
           <div className="relative pb-24 bg-[#1a1a1f] mb-10 flex flex-col items-center justify-center rounded-lg py-2 px-4 hover:scale-105 transition delay-150 duration-150 ease-in-out shadow-lg flex-grow overflow-hidden">
             <div className="absolute inset-0 border-2 border-transparent rounded-lg loading-border-cyan"></div>
-            <Image src="/Logos/react.png" alt="react" width={60} height={40} className="mt-20" />
+            <Image src="/images/react.png" alt="react" width={60} height={40} className="mt-20" />
             <p className="text-white font-bold mt-10">React</p>
           </div>
 
           <div className="relative pb-24 bg-[#1a1a1f] mb-10 flex flex-col items-center justify-center rounded-lg py-2 px-4 hover:scale-105 transition delay-150 duration-150 ease-in-out shadow-lg flex-grow overflow-hidden">
             <div className="absolute inset-0 border-2 border-transparent rounded-lg loading-border-yellow"></div>
-            <Image src="/Logos/javascript.png" alt="javascript" width={60} height={40} className="mt-20" />
+            <Image src="/images/javascript.png" alt="javascript" width={60} height={40} className="mt-20" />
             <p className="text-white font-bold mt-10">JavaScript</p>
           </div>
 
           <div className="relative pb-24 bg-[#1a1a1f] mb-10 flex flex-col items-center justify-center rounded-lg py-2 px-4 hover:scale-105 transition delay-150 duration-150 ease-in-out shadow-lg flex-grow overflow-hidden">
             <div className="absolute inset-0 border-2 border-transparent rounded-lg loading-border-green"></div>
-            <Image src="/Logos/tailwind.png" alt="tailwind" width={60} height={40} className="mt-20" />
+            <Image src="/images/tailwind.png" alt="tailwind" width={60} height={40} className="mt-20" />
             <p className="text-white font-bold mt-10">Tailwind CSS</p>
 
           </div></div>
@@ -83,24 +83,24 @@ const Home = () => {
         <div className="mt-32 flex lg:flex-wrap items-center justify-center gap-20 px-4 lg:px-16 md:grid-cols-2 xl:grid-cols-4 ">
           <div className="relative pb-24 bg-[#1a1a1f] mb-10 flex flex-col items-center justify-center rounded-lg py-2 px-4 hover:scale-105 transition delay-150 duration-150 ease-in-out shadow-lg flex-grow overflow-hidden">
             <div className="absolute inset-0 border-2 border-transparent rounded-lg loading-border-blue"></div>
-            <Image src="/Logos/mysql1.png" alt="mysql1" width={60} height={40} className="mt-20" />
+            <Image src="/images/mysql1.png" alt="mysql1" width={60} height={40} className="mt-20" />
             <p className="text-white font-bold mt-10">MySQL</p>
           </div>
 
           <div className="relative pb-24 bg-[#1a1a1f] mb-10 flex flex-col items-center justify-center rounded-lg py-2 px-4 hover:scale-105 transition delay-150 duration-150 ease-in-out shadow-lg flex-grow overflow-hidden">
             <div className="absolute inset-0 border-2 border-transparent rounded-lg loading-border-cyan"></div>
-            <Image src="/Logos/python.png" alt="react" width={60} height={40} className="mt-20" />
+            <Image src="/images/python.png" alt="react" width={60} height={40} className="mt-20" />
             <p className="text-white font-bold mt-10">Python</p>
           </div>
 
           <div className="relative pb-24 bg-[#1a1a1f] mb-10 flex flex-col items-center justify-center rounded-lg py-2 px-4 hover:scale-105 transition delay-150 duration-150 ease-in-out shadow-lg flex-grow overflow-hidden">
             <div className="absolute inset-0 border-2 border-transparent rounded-lg loading-border-black"></div>
-            <Image src="/Logos/git.png" alt="nodejs" width={60} height={40} className="mt-20" />
+            <Image src="/images/git.png" alt="nodejs" width={60} height={40} className="mt-20" />
             <p className="text-white font-bold mt-10">NextJS</p>
           </div>
           <div className="relative pb-24 bg-[#1a1a1f] mb-10 flex flex-col items-center justify-center rounded-lg py-2 px-4 hover:scale-105 transition delay-150 duration-150 ease-in-out shadow-lg flex-grow overflow-hidden">
             <div className="absolute inset-0 border-2 border-transparent rounded-lg loading-border-red"></div>
-            <img src="/Logos/wireframe.png" alt="test" width={60} height={40} className="mt-20" />
+            <img src="/images/wireframe.png" alt="test" width={60} height={40} className="mt-20" />
             <p className="text-white font-bold mt-10">Git</p>
           </div></div>
           <div className="-mt-24" id="projetos"></div>
