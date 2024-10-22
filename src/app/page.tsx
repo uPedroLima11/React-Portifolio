@@ -18,99 +18,140 @@ const Home = () => {
       <header>
         <Header />
       </header>
-      <section className="flex items-center justify-between py-48 px-6 md:px-32 space-y-10 w-full">
-        <div className="-mt-40 px-6 text-7xl font-light ">
-          <h1 className="text-7xl mt-40 font-light"> Olá,</h1> <br />
-          <h2 className="-mt-16 flex items-center">Sou <span className="font-semibold ml-4">Pedro</span> <span className=" text-5xl mb-10 animate-fade relative translate-y-5 ml-3">|</span> </h2>
-          <h1 className="text-lg mt-4">✨ Desenvolvedor Front-End ✨
-            Focado em criar interfaces intuitivas <br />e responsivas, costumo utilizar React, TypeScript Tailwind CSS para transformar
-            <br />minhas ideias  em experiências digitais fluidas. </h1>
-          <button type="button" className="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-14 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Converse Comigo</button>
+
+      <section className="flex flex-col-reverse md:flex-row items-center justify-between py-24 px-6 md:px-32 space-y-10 md:space-y-0 w-full">
+        <div className="px-6 text-center md:text-left text-4xl md:text-7xl font-light flex-col">
+          <h1 className="mt-16 md:mt-40">Olá,</h1>
+          <h2 className="flex items-center justify-center md:justify-start mt-4">
+            Sou <span className="font-semibold ml-4">Pedro</span>
+            <span className="text-3xl md:text-5xl animate-fade relative translate-y-0 ml-3">|</span>
+          </h2>
+          <h1 className="text-base md:text-lg mt-4">
+            ✨ Desenvolvedor Front-End ✨ Focado em criar interfaces intuitivas <br />
+            e responsivas. Utilizo React, TypeScript e Tailwind CSS <br />
+            para transformar ideias em experiências digitais fluidas.
+          </h1>
+          <button
+            type="button"
+            className="mt-6 text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-14 py-2.5 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
+          >
+            Converse Comigo
+          </button>
         </div>
 
-        <Image src="/MinhaFoto.png" alt='eu' width={250} height={10} className=' mr-14 -rotate-6' />
+        <div className="mt-10 md:mt-0 flex flex-col items-center">
+          <Image
+            src="/MinhaFoto.png"
+            alt="eu"
+            width={250}
+            height={250}
+            className="mr-0 md:mr-14 -rotate-6"
+          />
+
+          <div className="flex gap-6 mt-2  md:mt-10 mr-0 lg:mr-12">
+            <Link href="https://www.linkedin.com/in/upedrolima/">
+              <Image src="/linkedin.png" alt="linkedin" width={50} height={50} />
+            </Link>
+            <Link href="https://www.instagram.com/upedro_lima/">
+              <Image src="/instagram1.png" alt="instagram" width={50} height={50} />
+            </Link>
+            <Link href="https://github.com/uPedroLima11">
+              <Image src="/github.png" alt="github" width={50} height={50} />
+            </Link>
+          </div><div id="sobremim"></div>
+        </div>
       </section>
-      <div className="flex justify-end -mt-80 mr-[11rem] gap-10">
-        <div className="mt-14 -mr-4"><Link href='https://www.linkedin.com/in/upedrolima/'><Image src="/linkedin.png" alt="linkedin" width={50} height={50} className='py-14' /></Link></div>
-        <div className="mt-14 -mr-3"><Link href='https://www.instagram.com/upedro_lima/'><Image src="/instagram1.png" alt='linkedin' width={50} height={50} className='py-14' /></Link></div>
-        <div className="mt-14 "><Link href='https://github.com/uPedroLima11'><Image src="/github.png" alt='linkedin' width={50} height={50} className='py-14' /></Link>
-        </div><div id="sobremim"></div>
-      </div>
       <section className="p-12">
-        <div className="flex justify-center"> <h1 className="text-3xl font-bold">Sobre Mim</h1></div>
-        <div className="mt-32 ml-12"> <Image src="/linguagens.png" alt="sobremim" width="450" height="400" className="rounded-xl border-4 border-[#101013]" />
+        <div className="flex justify-center">
+          <h1 className="text-3xl font-bold">Sobre Mim</h1>
         </div>
-        <div className="flex justify-end -mt-[312px] mr-32">
-          <h1 className="rounded-lg font-light bg-[#1a1a1f] -mr-24 p-14 shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] ">
-            <span className="ml-4">Olá!</span> Sou estudante do Senac-RS e estou cursando Análise e Desenvolvimento de Sistemas <br />e, se tem uma coisa que eu amo desde pequeno,
-            é tecnologia! Atualmente, estou focado <br /> no mundo do desenvolvimento front-end, onde gosto usar minhas habilidades em <span className="font-bold">
-              React | <br /> TypeScript | JavaScript | Tailwind | Figma </span>para criar interfaces atrativas e interessante para<br />o mundo. <br /> <span className="ml-4">Meu</span> maior objetivo é
-            transformar ideias em experiências digitais que as pessoas possam <br /> adorar. Cada projeto que eu faço é uma nova oportunidade de aprender e crescer,
-            e eu <br /> estou sempre em busca das últimas novidades no mundo da tecnologia. Estou animado <br /> para contribuir com soluções que melhorem
-            a vida das pessoas no ambiente digital!
-          </h1>
+
+
+        <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-12">
+
+          <div>
+            <Image
+              src="/linguagens.png"
+              alt="Sobre mim"
+              width={450}
+              height={400}
+              className="rounded-xl mr-16  border-4 border-[#101013]"
+            />
+          </div>
+
+
+          <div className="max-w-xl bg-[#1a1a1f] p-8 rounded-lg shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]">
+            <h1 className="font-light">
+              <span className="ml-4">Olá!</span> Sou estudante do Senac-RS e estou cursando Análise e Desenvolvimento de Sistemas.
+              <br /> Desde pequeno, sou apaixonado por tecnologia! Atualmente, estou focado no desenvolvimento front-end,
+              onde uso <span className="font-bold">React | TypeScript | JavaScript | Tailwind | Figma</span> para criar interfaces atrativas.
+              <br /> <span className="ml-4">Meu</span> objetivo é transformar ideias em experiências digitais e aprender com cada projeto.
+            </h1>
+          </div>
         </div>
       </section>
+
+
       <section className="mt-16">
         <h1 className="text-center text-3xl font-bold">Tech Stack</h1>
 
-        <div className="mt-32 flex lg:flex-wrap items-center justify-center gap-20 px-4 lg:px-16 md:grid-cols-2 xl:grid-cols-4 ">
-          <div className="relative pb-24 bg-[#1a1a1f] mb-10 flex flex-col items-center justify-center rounded-lg py-2 px-4 hover:scale-105 transition delay-150 duration-150 ease-in-out shadow-lg flex-grow overflow-hidden">
+        <div className="mt-32 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 px-4 lg:px-16">
+          <div className="relative bg-[#1a1a1f] flex flex-col items-center justify-center rounded-lg py-8 px-6 hover:scale-105 transition duration-150 shadow-lg overflow-hidden">
             <div className="absolute inset-0 border-2 border-transparent rounded-lg loading-border-blue"></div>
-            <Image src="/typescript.png" alt="typescript" width={60} height={40} className="mt-20" />
-            <p className="text-white font-bold mt-10">TypeScript</p>
+            <Image src="/typescript.png" alt="typescript" width={60} height={40} className="mt-10" />
+            <p className="text-white font-bold mt-6">TypeScript</p>
           </div>
 
-          <div className="relative pb-24 bg-[#1a1a1f] mb-10 flex flex-col items-center justify-center rounded-lg py-2 px-4 hover:scale-105 transition delay-150 duration-150 ease-in-out shadow-lg flex-grow overflow-hidden">
+          <div className="relative bg-[#1a1a1f] flex flex-col items-center justify-center rounded-lg py-8 px-6 hover:scale-105 transition duration-150 shadow-lg overflow-hidden">
             <div className="absolute inset-0 border-2 border-transparent rounded-lg loading-border-cyan"></div>
-            <Image src="/react.png" alt="react" width={60} height={40} className="mt-20" />
-            <p className="text-white font-bold mt-10">React</p>
+            <Image src="/react.png" alt="react" width={60} height={40} className="mt-10" />
+            <p className="text-white font-bold mt-6">React</p>
           </div>
 
-          <div className="relative pb-24 bg-[#1a1a1f] mb-10 flex flex-col items-center justify-center rounded-lg py-2 px-4 hover:scale-105 transition delay-150 duration-150 ease-in-out shadow-lg flex-grow overflow-hidden">
+          <div className="relative bg-[#1a1a1f] flex flex-col items-center justify-center rounded-lg py-8 px-6 hover:scale-105 transition duration-150 shadow-lg overflow-hidden">
             <div className="absolute inset-0 border-2 border-transparent rounded-lg loading-border-yellow"></div>
-            <Image src="/javascript.png" alt="javascript" width={60} height={40} className="mt-20" />
-            <p className="text-white font-bold mt-10">JavaScript</p>
+            <Image src="/javascript.png" alt="javascript" width={60} height={40} className="mt-10" />
+            <p className="text-white font-bold mt-6">JavaScript</p>
           </div>
 
-          <div className="relative pb-24 bg-[#1a1a1f] mb-10 flex flex-col items-center justify-center rounded-lg py-2 px-4 hover:scale-105 transition delay-150 duration-150 ease-in-out shadow-lg flex-grow overflow-hidden">
+          <div className="relative bg-[#1a1a1f] flex flex-col items-center justify-center rounded-lg py-8 px-6 hover:scale-105 transition duration-150 shadow-lg overflow-hidden">
             <div className="absolute inset-0 border-2 border-transparent rounded-lg loading-border-green"></div>
-            <Image src="/tailwind.png" alt="tailwind" width={60} height={40} className="mt-20" />
-            <p className="text-white font-bold mt-10">Tailwind CSS</p>
+            <Image src="/tailwind.png" alt="tailwind" width={60} height={40} className="mt-10" />
+            <p className="text-white font-bold mt-6">Tailwind CSS</p>
+          </div>
 
-          </div></div>
-
-        <div className="mt-32 flex lg:flex-wrap items-center justify-center gap-20 px-4 lg:px-16 md:grid-cols-2 xl:grid-cols-4 ">
-          <div className="relative pb-24 bg-[#1a1a1f] mb-10 flex flex-col items-center justify-center rounded-lg py-2 px-4 hover:scale-105 transition delay-150 duration-150 ease-in-out shadow-lg flex-grow overflow-hidden">
+          <div className="relative bg-[#1a1a1f] flex flex-col items-center justify-center rounded-lg py-8 px-6 hover:scale-105 transition duration-150 shadow-lg overflow-hidden">
             <div className="absolute inset-0 border-2 border-transparent rounded-lg loading-border-blue"></div>
-            <Image src="/mysql1.png" alt="mysql1" width={60} height={40} className="mt-20" />
-            <p className="text-white font-bold mt-10">MySQL</p>
+            <Image src="/mysql1.png" alt="mysql" width={60} height={40} className="mt-10" />
+            <p className="text-white font-bold mt-6">MySQL</p>
           </div>
 
-          <div className="relative pb-24 bg-[#1a1a1f] mb-10 flex flex-col items-center justify-center rounded-lg py-2 px-4 hover:scale-105 transition delay-150 duration-150 ease-in-out shadow-lg flex-grow overflow-hidden">
+          <div className="relative bg-[#1a1a1f] flex flex-col items-center justify-center rounded-lg py-8 px-6 hover:scale-105 transition duration-150 shadow-lg overflow-hidden">
             <div className="absolute inset-0 border-2 border-transparent rounded-lg loading-border-cyan"></div>
-            <Image src="/python.png" alt="react" width={60} height={40} className="mt-20" />
-            <p className="text-white font-bold mt-10">Python</p>
+            <Image src="/python.png" alt="python" width={60} height={40} className="mt-10" />
+            <p className="text-white font-bold mt-6">Python</p>
           </div>
 
-          <div className="relative pb-24 bg-[#1a1a1f] mb-10 flex flex-col items-center justify-center rounded-lg py-2 px-4 hover:scale-105 transition delay-150 duration-150 ease-in-out shadow-lg flex-grow overflow-hidden">
+          <div className="relative bg-[#1a1a1f] flex flex-col items-center justify-center rounded-lg py-8 px-6 hover:scale-105 transition duration-150 shadow-lg overflow-hidden">
             <div className="absolute inset-0 border-2 border-transparent rounded-lg loading-border-black"></div>
-            <Image src="/next.png" alt="nodejs" width={60} height={40} className="mt-20" />
-            <p className="text-white font-bold mt-10">NextJS</p>
+            <Image src="/next.png" alt="nextjs" width={60} height={40} className="mt-10" />
+            <p className="text-white font-bold mt-6">NextJS</p>
           </div>
-          <div className="relative pb-24 bg-[#1a1a1f] mb-10 flex flex-col items-center justify-center rounded-lg py-2 px-4 hover:scale-105 transition delay-150 duration-150 ease-in-out shadow-lg flex-grow overflow-hidden">
+
+          <div className="relative bg-[#1a1a1f] flex flex-col items-center justify-center rounded-lg py-8 px-6 hover:scale-105 transition duration-150 shadow-lg overflow-hidden">
             <div className="absolute inset-0 border-2 border-transparent rounded-lg loading-border-red"></div>
-            <img src="/git.png" alt="test" width={60} height={40} className="mt-20" />
-            <p className="text-white font-bold mt-10">Git</p>
-          </div></div>
+            <img src="/git.png" alt="git" width={60} height={40} className="mt-10" />
+            <p className="text-white font-bold mt-6">Git</p>
+          </div>
+        </div>
+
         <div className="-mt-24" id="projetos"></div>
       </section>
-
 
       <section className="mt-40">
         <h1 className="text-center text-3xl font-bold">Alguns Projetos Desenvolvidos</h1>
 
-        <div className="mt-28 grid grid-cols-2 gap-20 lg:px-16">
+        <div className="mt-28 grid grid-cols-1 md:grid-cols-2 gap-10 lg:px-16">
           {projetos.map((projeto, index) => (
             <div
               key={index}
@@ -119,13 +160,21 @@ const Home = () => {
               <Image
                 src={projeto.imagem}
                 alt={projeto.nome}
-                width={400}
-                height={400}
-                className="mt-8 w-[600px]"
+                width={480}
+                height={420}
+                className="mt-8 hidden md:block"
               />
+              <Image
+                src={projeto.imagem}
+                alt={projeto.nome}
+                width={300}
+                height={200}
+                className="mt-8 block md:hidden w-full max-w-xs border border-gray-500 rounded-lg "
+              />
+
               <p className="text-white text-xl font-bold mt-10">{projeto.nome}</p>
 
-              <div className="flex gap-4 mt-6">
+              <div className="flex flex-col md:flex-row gap-4 mt-6">
                 <Link href={projeto.githubLink} target="_blank">
                   <button className="py-2 px-4 bg-gray-300 font-semibold text-black rounded-lg hover:bg-gray-400">
                     Github
@@ -139,13 +188,11 @@ const Home = () => {
 
                 <button
                   onClick={() => handleOpenModal(projeto)}
-                  className="py-2 px-4 text-white rounded-lg font-bold bg-slate-800 hover:text-[#B38000] "
+                  className="py-2 px-4 text-white rounded-lg font-bold bg-slate-800 hover:text-[#B38000]"
                 >
                   Mais Informações
                 </button>
               </div>
-
-
             </div>
           ))}
         </div>
@@ -159,22 +206,20 @@ const Home = () => {
               >
                 ✕
               </button>
-              <h2 className="text-2xl font-bold mb-4">
-                {selectedProject.nome}
-              </h2>
+              <h2 className="text-2xl font-bold mb-4">{selectedProject.nome}</h2>
               <Image
                 src={selectedProject.imagem}
                 alt={selectedProject.nome}
-                width={300}
-                height={200}
+                width={400}
+                height={300}
+                className="border border-gray-500 rounded-lg"
               />
-              <p className="mt-4 text-white font-light">
-                {selectedProject.descricao}
-              </p>
+              <p className="mt-4 text-white font-light">{selectedProject.descricao}</p>
             </div>
           </div>
         )}
       </section>
+
       <div className="mt-10"></div>
       <Footer />
     </div>
