@@ -8,9 +8,9 @@ export default function Footer() {
                 <div className="md:flex md:justify-end">
                     <div className="mb-6 md:mb-0 "></div>
                     <div className="flex justify-center items-center gap-8 sm:gap-6 ">
-                        <div><Link className='' href='https://www.linkedin.com/in/upedrolima/'><Image src="/images/linkedin.png" alt='linkeding' width={30} height={30} className='border-2 rounded-3xl' /></Link></div>
-                        <div><Link className='' href='https://www.instagram.com/upedro_lima/'><Image src="/images/instagram1.png" alt='instagram' width={30} height={30} className='border-2 rounded-2xl' /></Link></div>
-                        <div><Link className='' href='https://github.com/uPedroLima11'><Image src="/images/github.png" alt='github' width={30} height={30} className='border-2 rounded-3xl' /></Link></div>
+                        <div><Link className='' href='https://www.linkedin.com/in/upedrolima/'><Image src="/public/Logos/linkedin.png" alt='linkeding' width={30} height={30} className='border-2 rounded-3xl' /></Link></div>
+                        <div><Link className='' href='https://www.instagram.com/upedro_lima/'><Image src="/public/Logos/instagram1.png" alt='instagram' width={30} height={30} className='border-2 rounded-2xl' /></Link></div>
+                        <div><Link className='' href='https://github.com/uPedroLima11'><Image src="/public/Logos/github.png" alt='github' width={30} height={30} className='border-2 rounded-3xl' /></Link></div>
                         <div></div>
                     </div>
                 </div>

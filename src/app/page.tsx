@@ -28,17 +28,17 @@ const Home = () => {
           <button type="button" className="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-14 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Converse Comigo</button>
         </div>
 
-        <Image src="/Logos/MinhaFoto.png" alt='eu' width={250} height={10} className=' mr-14 -rotate-6' />
+        <Image src="/public/Logos/MinhaFoto.png" alt='eu' width={250} height={10} className=' mr-14 -rotate-6' />
       </section>
       <div className="flex justify-end -mt-80 mr-[11rem] gap-10">
-        <div className="mt-14 -mr-4"><Link href='https://www.linkedin.com/in/upedrolima/'><Image src="/Logos/linkedin.png" alt="linkedin" width={50} height={50} className='py-14' /></Link></div>
-        <div className="mt-14 -mr-3"><Link href='https://www.instagram.com/upedro_lima/'><Image src="/Logos/instagram1.png" alt='linkedin' width={50} height={50} className='py-14' /></Link></div>
-        <div className="mt-14 "><Link href='https://github.com/uPedroLima11'><Image src="/Logos/github.png" alt='linkedin' width={50} height={50} className='py-14' /></Link>
+        <div className="mt-14 -mr-4"><Link href='https://www.linkedin.com/in/upedrolima/'><Image src="/public/Logos/linkedin.png" alt="linkedin" width={50} height={50} className='py-14' /></Link></div>
+        <div className="mt-14 -mr-3"><Link href='https://www.instagram.com/upedro_lima/'><Image src="/public/Logos/instagram1.png" alt='linkedin' width={50} height={50} className='py-14' /></Link></div>
+        <div className="mt-14 "><Link href='https://github.com/uPedroLima11'><Image src="/public/Logos/github.png" alt='linkedin' width={50} height={50} className='py-14' /></Link>
         </div><div id="sobremim"></div>
       </div>
       <section className="p-12">
         <div className="flex justify-center"> <h1 className="text-3xl font-bold">Sobre Mim</h1></div>
-        <div className="mt-32 ml-12"> <Image src="/Logos/linguagens.png" alt="sobremim" width="450" height="400" className="rounded-xl border-4 border-[#101013]" />
+        <div className="mt-32 ml-12"> <Image src="/public/Logos/linguagens.png" alt="sobremim" width="450" height="400" className="rounded-xl border-4 border-[#101013]" />
         </div>
         <div className="flex justify-end -mt-[312px] mr-32">
           <h1 className="rounded-lg font-light bg-[#1a1a1f] -mr-24 p-14 shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] ">
@@ -57,25 +57,25 @@ const Home = () => {
         <div className="mt-32 flex lg:flex-wrap items-center justify-center gap-20 px-4 lg:px-16 md:grid-cols-2 xl:grid-cols-4 ">
           <div className="relative pb-24 bg-[#1a1a1f] mb-10 flex flex-col items-center justify-center rounded-lg py-2 px-4 hover:scale-105 transition delay-150 duration-150 ease-in-out shadow-lg flex-grow overflow-hidden">
             <div className="absolute inset-0 border-2 border-transparent rounded-lg loading-border-blue"></div>
-            <Image src="/Logos/typescript.png" alt="typescript" width={60} height={40} className="mt-20" />
+            <Image src="/public/Logos/typescript.png" alt="typescript" width={60} height={40} className="mt-20" />
             <p className="text-white font-bold mt-10">TypeScript</p>
           </div>
 
           <div className="relative pb-24 bg-[#1a1a1f] mb-10 flex flex-col items-center justify-center rounded-lg py-2 px-4 hover:scale-105 transition delay-150 duration-150 ease-in-out shadow-lg flex-grow overflow-hidden">
             <div className="absolute inset-0 border-2 border-transparent rounded-lg loading-border-cyan"></div>
-            <Image src="/Logos/react.png" alt="react" width={60} height={40} className="mt-20" />
+            <Image src="/public/Logos/react.png" alt="react" width={60} height={40} className="mt-20" />
             <p className="text-white font-bold mt-10">React</p>
           </div>
 
           <div className="relative pb-24 bg-[#1a1a1f] mb-10 flex flex-col items-center justify-center rounded-lg py-2 px-4 hover:scale-105 transition delay-150 duration-150 ease-in-out shadow-lg flex-grow overflow-hidden">
             <div className="absolute inset-0 border-2 border-transparent rounded-lg loading-border-yellow"></div>
-            <Image src="/Logos/javascript.png" alt="javascript" width={60} height={40} className="mt-20" />
+            <Image src="/public/Logos/javascript.png" alt="javascript" width={60} height={40} className="mt-20" />
             <p className="text-white font-bold mt-10">JavaScript</p>
           </div>
 
           <div className="relative pb-24 bg-[#1a1a1f] mb-10 flex flex-col items-center justify-center rounded-lg py-2 px-4 hover:scale-105 transition delay-150 duration-150 ease-in-out shadow-lg flex-grow overflow-hidden">
             <div className="absolute inset-0 border-2 border-transparent rounded-lg loading-border-green"></div>
-            <Image src="/Logos/tailwind.png" alt="tailwind" width={60} height={40} className="mt-20" />
+            <Image src="/public/Logos/tailwind.png" alt="tailwind" width={60} height={40} className="mt-20" />
             <p className="text-white font-bold mt-10">Tailwind CSS</p>
 
           </div></div>
@@ -83,24 +83,24 @@ const Home = () => {
         <div className="mt-32 flex lg:flex-wrap items-center justify-center gap-20 px-4 lg:px-16 md:grid-cols-2 xl:grid-cols-4 ">
           <div className="relative pb-24 bg-[#1a1a1f] mb-10 flex flex-col items-center justify-center rounded-lg py-2 px-4 hover:scale-105 transition delay-150 duration-150 ease-in-out shadow-lg flex-grow overflow-hidden">
             <div className="absolute inset-0 border-2 border-transparent rounded-lg loading-border-blue"></div>
-            <Image src="/Logos/mysql1.png" alt="mysql1" width={60} height={40} className="mt-20" />
+            <Image src="/public/Logos/mysql1.png" alt="mysql1" width={60} height={40} className="mt-20" />
             <p className="text-white font-bold mt-10">MySQL</p>
           </div>
 
           <div className="relative pb-24 bg-[#1a1a1f] mb-10 flex flex-col items-center justify-center rounded-lg py-2 px-4 hover:scale-105 transition delay-150 duration-150 ease-in-out shadow-lg flex-grow overflow-hidden">
             <div className="absolute inset-0 border-2 border-transparent rounded-lg loading-border-cyan"></div>
-            <Image src="/Logos/python.png" alt="react" width={60} height={40} className="mt-20" />
+            <Image src="/public/Logos/python.png" alt="react" width={60} height={40} className="mt-20" />
             <p className="text-white font-bold mt-10">Python</p>
           </div>
 
           <div className="relative pb-24 bg-[#1a1a1f] mb-10 flex flex-col items-center justify-center rounded-lg py-2 px-4 hover:scale-105 transition delay-150 duration-150 ease-in-out shadow-lg flex-grow overflow-hidden">
             <div className="absolute inset-0 border-2 border-transparent rounded-lg loading-border-black"></div>
-            <Image src="/Logos/git.png" alt="nodejs" width={60} height={40} className="mt-20" />
+            <Image src="/public/Logos/git.png" alt="nodejs" width={60} height={40} className="mt-20" />
             <p className="text-white font-bold mt-10">NextJS</p>
           </div>
           <div className="relative pb-24 bg-[#1a1a1f] mb-10 flex flex-col items-center justify-center rounded-lg py-2 px-4 hover:scale-105 transition delay-150 duration-150 ease-in-out shadow-lg flex-grow overflow-hidden">
             <div className="absolute inset-0 border-2 border-transparent rounded-lg loading-border-red"></div>
-            <img src="/Logos/wireframe.png" alt="test" width={60} height={40} className="mt-20" />
+            <img src="/public/Logos/wireframe.png" alt="test" width={60} height={40} className="mt-20" />
             <p className="text-white font-bold mt-10">Git</p>
           </div></div>
           <div className="-mt-24" id="projetos"></div>
