@@ -10,7 +10,7 @@
   
   export const projetos: Projeto[] = [
     {
-      nome: "Verbalize *Em Desenvolvimento*",
+      nome: "Verbalize",
       imagem: "/verbalize.png",
       descricao: "Este é o projeto Verbalize. ele é um projeto em grupo que ainda está em desenvolvimento com o intuito de ser uma plataforma de chat bidirecional onde você ensina sua linguagem enquanto aprende a do outro. as linguagens que eu usei para fazer o Front-End dele foram: React | Next, utilizando MySQL, Typescript e Tailwind CSS.",
       githubLink: "https://github.com/uPedroLima11/Next_Verbalise_Frontend",
