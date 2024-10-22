@@ -19,7 +19,7 @@
     {
       nome: "Sabor e Saúde",
       imagem: "/projeto2.png",
-      descricao: "Esse é um Site de Receitas desenvolvido no 2º semestre da faculdade. a pagina em si é um site de receitas que tem o intuito de ajudar as pessoas que desejam emagrecer ou apenas ter uma boa saude. com isso o site fornece diversas receitas para ajudar a quem quer emagrecer",
+      descricao: "Esse é um Site de Receitas desenvolvido no 2º semestre da faculdade utilizando apenas html e css. a pagina em si é um site de receitas que tem o intuito de ajudar as pessoas que desejam emagrecer ou apenas ter uma boa saude. com isso o site fornece diversas receitas para ajudar a quem quer emagrecer",
       githubLink: "https://github.com/uPedroLima11/Site-Receitas",
       liveDemoLink: "https://site-receitas-pedro.vercel.app",
     },
