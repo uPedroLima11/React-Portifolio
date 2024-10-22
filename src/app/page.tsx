@@ -82,14 +82,18 @@ const Home = () => {
 
           <div className="max-w-xl bg-[#1a1a1f] p-8 rounded-lg shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]">
             <h1 className="font-light">
-              <span className="ml-4">Olá!</span> Sou estudante do Senac-RS e estou cursando Análise e Desenvolvimento de Sistemas.
-              <br /> Desde pequeno, sou apaixonado por tecnologia! Atualmente, estou focado no desenvolvimento front-end,
-              onde uso <span className="font-bold">React | TypeScript | JavaScript | Tailwind | Figma</span> para criar interfaces atrativas.
-              <br /> <span className="ml-4">Meu</span> objetivo é transformar ideias em experiências digitais e aprender com cada projeto.
+              <span className="ml-4">Olá!</span> Sou estudante de Análise e Desenvolvimento de Sistemas no Senac-RS e, desde pequeno,
+              tenho uma paixão por tecnologia. Atualmente, estou focado no desenvolvimento front-end, utilizando minhas habilidades
+              em <span className="font-bold">React, TypeScript, JavaScript, Tailwind e Figma </span>para criar interfaces atraentes e funcionais.
+              <br /> <span className="ml-4">Meu </span> principal objetivo é transformar ideias em experiências digitais memoráveis. Cada projeto
+              representa uma nova oportunidade de aprendizado e crescimento, e estou sempre em busca das últimas
+              inovações do setor. Estou animado para contribuir com soluções que melhorem a vida das pessoas no
+              ambiente digital!
             </h1>
           </div>
         </div>
       </section>
+
 
 
       <section className="mt-16">
