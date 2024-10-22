@@ -44,7 +44,7 @@ const Home = () => {
           <h1 className="rounded-lg font-light bg-[#1a1a1f] -mr-24 p-14 shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] ">
             <span className="ml-4">Olá!</span> Sou estudante do Senac-RS e estou cursando Análise e Desenvolvimento de Sistemas <br />e, se tem uma coisa que eu amo desde pequeno,
             é tecnologia! Atualmente, estou focado <br /> no mundo do desenvolvimento front-end, onde gosto usar minhas habilidades em <span className="font-bold">
-              React | <br /> TypeScript | JavaScript | Tailwind | Figma </span>para criar interfaces atrativas e interessante para o mundo <br /> <br /> <span className="ml-4">Meu</span> maior objetivo é
+              React | <br /> TypeScript | JavaScript | Tailwind | Figma </span>para criar interfaces atrativas e interessante para<br />o mundo. <br /> <span className="ml-4">Meu</span> maior objetivo é
             transformar ideias em experiências digitais que as pessoas possam <br /> adorar. Cada projeto que eu faço é uma nova oportunidade de aprender e crescer,
             e eu <br /> estou sempre em busca das últimas novidades no mundo da tecnologia. Estou animado <br /> para contribuir com soluções que melhorem
             a vida das pessoas no ambiente digital!
