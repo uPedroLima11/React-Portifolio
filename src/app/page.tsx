@@ -103,9 +103,9 @@ const Home = () => {
             <img src="/git.png" alt="test" width={60} height={40} className="mt-20" />
             <p className="text-white font-bold mt-10">Git</p>
           </div></div>
-          <div className="-mt-24" id="projetos"></div>
+        <div className="-mt-24" id="projetos"></div>
       </section>
-      
+
 
       <section className="mt-40">
         <h1 className="text-center text-3xl font-bold">Alguns Projetos Desenvolvidos</h1>
