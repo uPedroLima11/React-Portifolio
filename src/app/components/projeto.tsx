@@ -17,11 +17,11 @@
       liveDemoLink: "https://verbalize-senac.vercel.app",
     },
     {
-      nome: "Projeto2",
-      imagem: "/programadorr.jpg",
-      descricao: "Projeto 2 foca em interfaces com React.",
-      githubLink: "https://github.com/projeto2",
-      liveDemoLink: "https://projeto2-demo.com",
+      nome: "Sabor e Saúde",
+      imagem: "/projeto2.png",
+      descricao: "Esse é um Site de Receitas desenvolvido no 2 semestre da faculdade. a pagina é um site de receitas que tem o intuito de ajudar as pessoas que desejam emagrecer ou também ter uma boa saude. com isso o site fornece diversas receitas para ajudar a quem quer emagrecer",
+      githubLink: "https://github.com/uPedroLima11/App-Restaurante",
+      liveDemoLink: "https://app-restaurante-nu.vercel.app",
     },
     {
       nome: "Projeto3",
