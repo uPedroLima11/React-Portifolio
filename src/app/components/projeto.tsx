@@ -20,7 +20,7 @@ export const projetos: Projeto[] = [
   {
     nome: "ElectroHub *",
     imagem: "/electrohub.png",
-    descricao: "*Este site que desenvolvi é uma Loja de venda de eletrônicos, oferecendo uma ampla variedade de produtos para os consumidores. O design é moderno e responsivo, garantindo uma navegação intuitiva em dispositivos móveis e desktops. Utilizei as tecnologias React, Next.js, TypeScript e Tailwind CSS para construir o projeto. Meu foco foi proporcionar uma experiência de interface atrativa, eficiente e otimizada. A combinação dessas ferramentas resulta em um site rápido e fácil de usar.*",
+    descricao: "Este site que desenvolvi é uma Loja de venda de eletrônicos, oferecendo uma ampla variedade de produtos para os consumidores. O design é moderno e responsivo, garantindo uma navegação intuitiva em dispositivos móveis e desktops. Utilizei as tecnologias React, Next.js, TypeScript e Tailwind CSS para construir o projeto. Meu foco foi proporcionar uma experiência de interface atrativa, eficiente e otimizada.",
     githubLink: "https://github.com/uPedroLima11/Next_Loja",
     liveDemoLink: "https://next-loja-nine.vercel.app",
   },
