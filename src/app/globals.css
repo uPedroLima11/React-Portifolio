@@ -7,16 +7,16 @@
     clip-path: inset(0 100% 100% 0);
   }
   10% {
-    clip-path: inset(0 0 100% 0); /* O tempo para aparecer agora é menor */
+    clip-path: inset(0 0 100% 0); 
   }
   30% {
-    clip-path: inset(0 0 0 100%); /* Tempo para desaparecer */
+    clip-path: inset(0 0 0 100%); 
   }
   50% {
-    clip-path: inset(100% 0 0 0); /* Desaparecendo totalmente */
+    clip-path: inset(100% 0 0 0); 
   }
   100% {
-    clip-path: inset(0 100% 100% 0); /* Reinicia a animação */
+    clip-path: inset(0 100% 100% 0); 
   }
 }
 
@@ -58,13 +58,13 @@
 }
 
 .loading-border-green {
-  border-color: #0EA5E9;
+  border-color: #33dbdb;
   animation: border-move 3.7s linear infinite;
   border-width: 6px;
 }
 
 .loading-border-black {
-  border-color: #020f14;
+  border-color: #ffffff;
   animation: border-move 3.7s linear infinite;
   border-width: 6px;
 }

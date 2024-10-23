@@ -99,7 +99,7 @@ const Home = () => {
       <section className="mt-16">
         <h1 className="text-center text-3xl font-bold">Tech Stack</h1>
 
-        <div className="mt-32 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 px-4 lg:px-16">
+        <div className="mt-32 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-16 px-4 lg:px-16">
           <div className="relative bg-[#1a1a1f] flex flex-col items-center justify-center rounded-lg py-8 px-6 hover:scale-105 transition duration-150 shadow-lg overflow-hidden">
             <div className="absolute inset-0 border-2 border-transparent rounded-lg loading-border-blue"></div>
             <Image src="/typescript.png" alt="typescript" width={60} height={40} className="mt-10" />
@@ -108,7 +108,7 @@ const Home = () => {
 
           <div className="relative bg-[#1a1a1f] flex flex-col items-center justify-center rounded-lg py-8 px-6 hover:scale-105 transition duration-150 shadow-lg overflow-hidden">
             <div className="absolute inset-0 border-2 border-transparent rounded-lg loading-border-cyan"></div>
-            <Image src="/react.png" alt="react" width={60} height={40} className="mt-10" />
+            <Image src="/react.svg" alt="react" width={60} height={40} className="mt-10" />
             <p className="text-white font-bold mt-6">React</p>
           </div>
 
@@ -131,14 +131,14 @@ const Home = () => {
           </div>
 
           <div className="relative bg-[#1a1a1f] flex flex-col items-center justify-center rounded-lg py-8 px-6 hover:scale-105 transition duration-150 shadow-lg overflow-hidden">
-            <div className="absolute inset-0 border-2 border-transparent rounded-lg loading-border-cyan"></div>
-            <Image src="/python.png" alt="python" width={60} height={40} className="mt-10" />
+            <div className="absolute inset-0 border-2 border-transparent rounded-lg loading-border-yellow"></div>
+            <Image src="/python.svg" alt="python" width={60} height={40} className="mt-10" />
             <p className="text-white font-bold mt-6">Python</p>
           </div>
 
           <div className="relative bg-[#1a1a1f] flex flex-col items-center justify-center rounded-lg py-8 px-6 hover:scale-105 transition duration-150 shadow-lg overflow-hidden">
             <div className="absolute inset-0 border-2 border-transparent rounded-lg loading-border-black"></div>
-            <Image src="/next.png" alt="nextjs" width={60} height={40} className="mt-10" />
+            <Image src="/next.svg" alt="nextjs" width={60} height={40} className="mt-10" />
             <p className="text-white font-bold mt-6">NextJS</p>
           </div>
 
