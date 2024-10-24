@@ -6,17 +6,21 @@
   0% {
     clip-path: inset(0 100% 100% 0);
   }
+
   10% {
-    clip-path: inset(0 0 100% 0); 
+    clip-path: inset(0 0 100% 0);
   }
+
   30% {
-    clip-path: inset(0 0 0 100%); 
+    clip-path: inset(0 0 0 100%);
   }
+
   50% {
-    clip-path: inset(100% 0 0 0); 
+    clip-path: inset(100% 0 0 0);
   }
+
   100% {
-    clip-path: inset(0 100% 100% 0); 
+    clip-path: inset(0 100% 100% 0);
   }
 }
 
@@ -24,6 +28,7 @@
   0% {
     opacity: 0;
   }
+
   100% {
     opacity: 1;
   }
@@ -51,6 +56,7 @@
   animation: border-move 3.7s linear infinite;
   border-width: 6px;
 }
+
 .loading-border-red {
   border-color: #f04c1a;
   animation: border-move 3.7s linear infinite;
@@ -69,13 +75,13 @@
   border-width: 6px;
 }
 
-  html, body {
+html,
+body {
   color: white;
-  background-color:#24242c
-
+  background-color: #24242c
 }
+
 body {
   @apply bg-[#24242c] text-white antialiased;
 
 }
-

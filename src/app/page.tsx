@@ -227,6 +227,7 @@ const Home = () => {
       <div className="mt-10"></div>
       <Footer />
     </div>
+    
 
   );
 }

@@ -33,7 +33,7 @@ export const projetos: Projeto[] = [
     githubLink: "https://github.com/uPedroLima11/Site-Receitas",
     liveDemoLink: "https://site-receitas-pedro.vercel.app",
   },
-  
+
   {
     nome: "Projeto4 * Em Desenvolvimento *",
     imagem: "/verbalize.png",

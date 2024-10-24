@@ -1,12 +1,21 @@
-import Link from "next/link";
+'use client';
 
+import { useRef } from 'react';
+import Link from 'next/link';
 
-export default function Header() {
+const Header: React.FC = () => {
+  const navbarRef = useRef<HTMLDivElement | null>(null);
+
+  const handleToggle = () => {
+    if (navbarRef.current) {
+      navbarRef.current.classList.toggle('hidden');
+    }
+  };
 
   return (
-    <nav className="py-5 font-sans bg-gradient-to-r bg-[#24242c] shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] fixed w-full z-20 top-0">
+    <nav className="py-5 font-sans bg-gradient-to-r from-[#24242c] to-[#1a1a1f] shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] fixed w-full z-20 top-0">
       <div className="w-full flex items-center justify-between px-4 md:px-6 lg:px-10">
-        <a href="/" className="flex items-center flex-wrap space-x-3">
+        <a href="/" className="flex items-center space-x-3">
           <img
             src="/desenvolvedor.png"
             className="w-8 sm:w-10 md:w-12 invert"
@@ -20,9 +29,7 @@ export default function Header() {
         <button
           id="menu-toggle"
           className="lg:hidden p-2 focus:outline-none"
-          onClick={() =>
-            document.getElementById('navbar-sticky')?.classList.toggle('hidden')
-          }
+          onClick={handleToggle}
         >
           <svg
             className="w-6 h-6 text-white"
@@ -42,12 +49,13 @@ export default function Header() {
 
         <div
           id="navbar-sticky"
+          ref={navbarRef}
           className="hidden lg:flex w-full items-center lg:w-auto lg:order-1"
         >
           <ul className="flex flex-col lg:flex-row gap-5 lg:gap-10 p-4 lg:p-0">
             <li>
               <Link
-                href="#sobremim"
+                href="/#sobremim"
                 className="text-white text-xs md:text-sm lg:text-base font-bold hover:text-[#B38000]"
               >
                 Sobre Mim
@@ -55,7 +63,7 @@ export default function Header() {
             </li>
             <li>
               <Link
-                href="#projetos"
+                href="/#projetos"
                 className="text-white text-xs md:text-sm lg:text-base font-bold hover:text-[#B38000]"
               >
                 Projetos
@@ -73,7 +81,7 @@ export default function Header() {
         </div>
       </div>
     </nav>
-
   );
-}
+};
 
+export default Header;
