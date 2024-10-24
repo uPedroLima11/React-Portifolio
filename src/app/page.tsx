@@ -45,7 +45,7 @@ const Home = () => {
             alt="eu"
             width={250}
             height={250}
-            className="mr-0 md:mr-14 -rotate-6"
+            className="mr-0 md:mr-14 -rotate-6 animate-move"
           />
 
           <div className="flex gap-6 mt-2  md:mt-10 mr-0 lg:mr-12">
