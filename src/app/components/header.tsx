@@ -1,15 +1,14 @@
 'use client';
 
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import Link from 'next/link';
 
 const Header: React.FC = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navbarRef = useRef<HTMLDivElement | null>(null);
 
   const handleToggle = () => {
-    if (navbarRef.current) {
-      navbarRef.current.classList.toggle('hidden');
-    }
+    setIsMenuOpen(!isMenuOpen);
   };
 
   return (
@@ -27,9 +26,9 @@ const Header: React.FC = () => {
         </a>
 
         <button
-          id="menu-toggle"
           className="lg:hidden p-2 focus:outline-none"
           onClick={handleToggle}
+          aria-label="Toggle menu"
         >
           <svg
             className="w-6 h-6 text-white"
@@ -47,10 +46,12 @@ const Header: React.FC = () => {
           </svg>
         </button>
 
+        {/* Navbar para telas grandes */}
         <div
-          id="navbar-sticky"
           ref={navbarRef}
-          className="hidden lg:flex w-full items-center lg:w-auto lg:order-1"
+          className={`lg:flex w-full items-center lg:w-auto transition-all duration-300 ease-in-out ${
+            isMenuOpen ? 'flex' : 'hidden'
+          }`}
         >
           <ul className="flex flex-col lg:flex-row gap-5 lg:gap-10 p-4 lg:p-0">
             <li>
@@ -80,6 +81,38 @@ const Header: React.FC = () => {
           </ul>
         </div>
       </div>
+
+      {/* Navbar para telas pequenas */}
+      {isMenuOpen && (
+        <div className="lg:hidden bg-[#24242c] p-4">
+          <ul className="flex flex-col gap-4">
+            <li>
+              <Link
+                href="/#sobremim"
+                className="text-white text-sm font-bold hover:text-[#B38000]"
+              >
+                Sobre Mim
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/#projetos"
+                className="text-white text-sm font-bold hover:text-[#B38000]"
+              >
+                Projetos
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/contatos"
+                className="text-white text-sm font-bold hover:text-[#B38000]"
+              >
+                Entre em Contato
+              </Link>
+            </li>
+          </ul>
+        </div>
+      )}
     </nav>
   );
 };
