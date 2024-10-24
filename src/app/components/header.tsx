@@ -46,7 +46,6 @@ const Header: React.FC = () => {
           </svg>
         </button>
 
-        {/* Navbar para telas grandes */}
         <div
           ref={navbarRef}
           className={`lg:flex w-full items-center lg:w-auto transition-all duration-300 ease-in-out ${
@@ -82,7 +81,6 @@ const Header: React.FC = () => {
         </div>
       </div>
 
-      {/* Navbar para telas pequenas */}
       {isMenuOpen && (
         <div className="lg:hidden bg-[#24242c] p-4">
           <ul className="flex flex-col gap-4">
