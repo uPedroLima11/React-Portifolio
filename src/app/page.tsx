@@ -31,12 +31,14 @@ const Home = () => {
             e responsivas. Utilizo React, TypeScript e Tailwind CSS <br />
             para transformar ideias em experiências digitais fluidas.
           </h1>
-          <button
-            type="button"
-            className="mt-6 text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-14 py-2.5 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
-          >
-            Converse Comigo
-          </button>
+          <Link
+            href="/contatos">
+            <button
+              type="button"
+              className="mt-6 text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-14 py-2.5 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
+            >
+              Converse Comigo
+            </button></Link>
         </div>
 
         <div className="mt-10 md:mt-0 flex flex-col items-center">
@@ -45,6 +47,7 @@ const Home = () => {
             alt="eu"
             width={250}
             height={250}
+            quality={100}
             className="mr-0 md:mr-14 -rotate-6 animate-move"
           />
 
@@ -71,10 +74,11 @@ const Home = () => {
 
           <div>
             <Image
-              src="/linguagens.png"
+              src="/tela.png"
               alt="Sobre mim"
               width={450}
               height={400}
+              quality={100}
               className="rounded-xl mr-16  border-4 border-[#101013]"
             />
           </div>
@@ -102,49 +106,49 @@ const Home = () => {
         <div className="mt-32 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-16 px-4 lg:px-16">
           <div className="relative bg-[#1a1a1f] flex flex-col items-center justify-center rounded-lg py-8 px-6 hover:scale-105 transition duration-150 shadow-lg overflow-hidden">
             <div className="absolute inset-0 border-2 border-transparent rounded-lg loading-border-blue"></div>
-            <Image src="/typescript.png" alt="typescript" width={60} height={40} className="mt-10" />
+            <Image src="/typescript.png" alt="typescript" width={60} height={40} quality={100} className="mt-10" />
             <p className="text-white font-bold mt-6">TypeScript</p>
           </div>
 
           <div className="relative bg-[#1a1a1f] flex flex-col items-center justify-center rounded-lg py-8 px-6 hover:scale-105 transition duration-150 shadow-lg overflow-hidden">
             <div className="absolute inset-0 border-2 border-transparent rounded-lg loading-border-cyan"></div>
-            <Image src="/react.svg" alt="react" width={60} height={40} className="mt-10" />
+            <Image src="/react.svg" alt="react" width={60} height={40} quality={100} className="mt-10" />
             <p className="text-white font-bold mt-6">React</p>
           </div>
 
           <div className="relative bg-[#1a1a1f] flex flex-col items-center justify-center rounded-lg py-8 px-6 hover:scale-105 transition duration-150 shadow-lg overflow-hidden">
             <div className="absolute inset-0 border-2 border-transparent rounded-lg loading-border-yellow"></div>
-            <Image src="/javascript.png" alt="javascript" width={60} height={40} className="mt-10" />
+            <Image src="/javascript.png" alt="javascript" width={60} height={40} quality={100} className="mt-10" />
             <p className="text-white font-bold mt-6">JavaScript</p>
           </div>
 
           <div className="relative bg-[#1a1a1f] flex flex-col items-center justify-center rounded-lg py-8 px-6 hover:scale-105 transition duration-150 shadow-lg overflow-hidden">
             <div className="absolute inset-0 border-2 border-transparent rounded-lg loading-border-green"></div>
-            <Image src="/tailwind.png" alt="tailwind" width={60} height={40} className="mt-10" />
+            <Image src="/tailwind.png" alt="tailwind" width={60} height={40} quality={100} className="mt-10" />
             <p className="text-white font-bold mt-6">Tailwind CSS</p>
           </div>
 
           <div className="relative bg-[#1a1a1f] flex flex-col items-center justify-center rounded-lg py-8 px-6 hover:scale-105 transition duration-150 shadow-lg overflow-hidden">
             <div className="absolute inset-0 border-2 border-transparent rounded-lg loading-border-blue"></div>
-            <Image src="/mysql1.png" alt="mysql" width={60} height={40} className="mt-10" />
+            <Image src="/mysql1.png" alt="mysql" width={60} height={40} quality={100} className="mt-10" />
             <p className="text-white font-bold mt-6">MySQL</p>
           </div>
 
           <div className="relative bg-[#1a1a1f] flex flex-col items-center justify-center rounded-lg py-8 px-6 hover:scale-105 transition duration-150 shadow-lg overflow-hidden">
             <div className="absolute inset-0 border-2 border-transparent rounded-lg loading-border-yellow"></div>
-            <Image src="/python.svg" alt="python" width={60} height={40} className="mt-10" />
+            <Image src="/python.svg" alt="python" width={60} height={40} quality={100} className="mt-10" />
             <p className="text-white font-bold mt-6">Python</p>
           </div>
 
           <div className="relative bg-[#1a1a1f] flex flex-col items-center justify-center rounded-lg py-8 px-6 hover:scale-105 transition duration-150 shadow-lg overflow-hidden">
             <div className="absolute inset-0 border-2 border-transparent rounded-lg loading-border-black"></div>
-            <Image src="/next.svg" alt="nextjs" width={60} height={40} className="mt-10" />
+            <Image src="/next.svg" alt="nextjs" width={60} height={40} quality={100} className="mt-10" />
             <p className="text-white font-bold mt-6">NextJS</p>
           </div>
 
           <div className="relative bg-[#1a1a1f] flex flex-col items-center justify-center rounded-lg py-8 px-6 hover:scale-105 transition duration-150 shadow-lg overflow-hidden">
             <div className="absolute inset-0 border-2 border-transparent rounded-lg loading-border-red"></div>
-            <img src="/git.png" alt="git" width={60} height={40} className="mt-10" />
+            <Image src="/git.png" alt="git" width={60} height={40} quality={100} className="mt-10" />
             <p className="text-white font-bold mt-6">Git</p>
           </div>
         </div>
@@ -166,6 +170,7 @@ const Home = () => {
                 alt={projeto.nome}
                 width={480}
                 height={420}
+                quality={100}
                 className="mt-8 hidden md:block"
               />
               <Image
@@ -173,6 +178,7 @@ const Home = () => {
                 alt={projeto.nome}
                 width={300}
                 height={200}
+                quality={100}
                 className="mt-8 block md:hidden w-full max-w-xs border border-gray-500 rounded-lg "
               />
 
@@ -216,6 +222,7 @@ const Home = () => {
                 alt={selectedProject.nome}
                 width={400}
                 height={300}
+                quality={100}
                 className="border border-gray-500 rounded-lg"
               />
               <p className="mt-4 text-white font-light">{selectedProject.descricao}</p>
@@ -227,7 +234,7 @@ const Home = () => {
       <div className="mt-10"></div>
       <Footer />
     </div>
-    
+
 
   );
 }
