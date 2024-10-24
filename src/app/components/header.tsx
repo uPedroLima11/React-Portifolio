@@ -80,40 +80,9 @@ const Header: React.FC = () => {
           </ul>
         </div>
       </div>
-
-      {isMenuOpen && (
-        <div className="lg:hidden bg-[#24242c] p-4">
-          <ul className="flex flex-col gap-4">
-            <li>
-              <Link
-                href="/#sobremim"
-                className="text-white text-sm font-bold hover:text-[#B38000]"
-              >
-                Sobre Mim
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/#projetos"
-                className="text-white text-sm font-bold hover:text-[#B38000]"
-              >
-                Projetos
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/contatos"
-                className="text-white text-sm font-bold hover:text-[#B38000]"
-              >
-                Entre em Contato
-              </Link>
-            </li>
-          </ul>
-        </div>
-      )}
+    
     </nav>
   );
 };
 
 export default Header;
-<br />
