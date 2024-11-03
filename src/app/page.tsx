@@ -67,6 +67,7 @@ const Home = () => {
       <section className="p-12">
         <div className="flex justify-center">
           <h1 className="text-3xl font-bold">Sobre Mim</h1>
+          <h1>teste</h1>
         </div>
 
 
