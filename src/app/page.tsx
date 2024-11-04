@@ -43,12 +43,12 @@ const Home = () => {
 
         <div className="mt-10 md:mt-0 flex flex-col items-center">
           <Image
-            src="/MinhaFoto.png"
+            src="/eu.jpg"
             alt="eu"
             width={250}
             height={250}
             quality={100}
-            className="mr-0 md:mr-14 animate-move"
+            className="mr-0 md:mr-14 animate-move rounded-full border-4"
           />
 
           <div className="flex gap-6 mt-2  md:mt-10 mr-0 lg:mr-12">
