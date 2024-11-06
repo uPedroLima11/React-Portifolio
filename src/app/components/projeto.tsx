@@ -19,11 +19,11 @@ export const projetos: Projeto[] = [
   },
 
   {
-    nome: "Verbalize",
-    imagem: "/verbalize.png",
-    descricao: "Este é o projeto Verbalize. ele é um projeto em grupo que ainda está em desenvolvimento com o intuito de ser uma plataforma de chat bidirecional onde você ensina sua linguagem enquanto aprende a do outro. as linguagens que eu usei para fazer o Front-End dele foram: React | Next, utilizando MySQL, Typescript e Tailwind CSS.",
-    githubLink: "https://github.com/uPedroLima11/Next_Verbalise_Frontend",
-    liveDemoLink: "https://verbalize-senac.vercel.app",
+    nome: "Previsão do Tempo - App de Clima",
+    imagem: "/previsaotempo.png",
+    descricao: "Este é um projeto de um site de previsão do tempo para oferecer uma experiência completa e fácil de usar, com informações detalhadas sobre o clima atual e futuro. Ele traz ícones personalizados, tornando a visualização mais intuitiva e envolvente. O design, moderno e responsivo, garante uma navegação tranquila tanto em dispositivos móveis quanto em desktops. Utilizei React, TypeScript e Tailwind CSS para dar vida ao projeto, com o objetivo de criar uma interface bonita e otimizada, além de traduzir as informações de clima de forma clara e acessível para o público.",
+    githubLink: "https://github.com/uPedroLima11/Previsao-do-Tempo",
+    liveDemoLink: "https://pedro-previsao-do-tempo.vercel.app",
   },
 
   {
@@ -34,11 +34,13 @@ export const projetos: Projeto[] = [
     liveDemoLink: "https://site-receitas-pedro.vercel.app",
   },
 
+  
   {
-    nome: "Projeto4 * Em Desenvolvimento *",
+    nome: "Verbalize",
     imagem: "/verbalize.png",
-    descricao: "* Em Desenvolvimento *",
-    githubLink: "https://github.com/projeto4",
-    liveDemoLink: "https://projeto4-demo.com",
+    descricao: "Este é o projeto Verbalize. ele é um projeto em grupo que ainda está em desenvolvimento com o intuito de ser uma plataforma de chat bidirecional onde você ensina sua linguagem enquanto aprende a do outro. as linguagens que eu usei para fazer o Front-End dele foram: React | Next, utilizando MySQL, Typescript e Tailwind CSS.",
+    githubLink: "https://github.com/uPedroLima11/Next_Verbalise_Frontend",
+    liveDemoLink: "https://verbalize-senac.vercel.app",
   },
+
 ];
