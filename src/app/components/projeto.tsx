@@ -20,7 +20,7 @@ export const projetos: Projeto[] = [
 
   {
     nome: "Previsão do Tempo - App de Clima",
-    imagem: "/previsaotempo.png",
+    imagem: "/previsaotempo1.png",
     descricao: "Este é um projeto de um site de previsão do tempo para oferecer uma experiência completa e fácil de usar, com informações detalhadas sobre o clima atual e futuro. Ele traz ícones personalizados, tornando a visualização mais intuitiva e envolvente. O design, moderno e responsivo, garante uma navegação tranquila tanto em dispositivos móveis quanto em desktops. Utilizei React, TypeScript e Tailwind CSS para dar vida ao projeto, com o objetivo de criar uma interface bonita e otimizada, além de traduzir as informações de clima de forma clara e acessível para o público.",
     githubLink: "https://github.com/uPedroLima11/Previsao-do-Tempo",
     liveDemoLink: "https://pedro-previsao-do-tempo.vercel.app",
