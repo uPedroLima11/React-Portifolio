@@ -27,11 +27,11 @@ export const projetos: Projeto[] = [
   },
 
   {
-    nome: "Sabor e Saúde",
-    imagem: "/projeto2.png",
-    descricao: "Este é um Site de Receitas desenvolvido no 2º semestre da faculdade utilizando apenas Html e Tailwind CSS. a pagina em si é um site de receitas que tem o intuito de ajudar as pessoas que desejam emagrecer ou apenas ter uma boa saude. com isso o site fornece diversas receitas para ajudar a quem quer emagrecer",
-    githubLink: "https://github.com/uPedroLima11/Site-Receitas",
-    liveDemoLink: "https://site-receitas-pedro.vercel.app",
+    nome: "Relato Cidadão",
+    imagem: "/relatocidadao.png",
+    descricao: "O Relato Cidadão é uma plataforma social desenvolvida para conectar cidadãos e prefeituras na resolução de problemas urbanos, como buracos em vias públicas. Usuários podem registrar relatos com fotos e localização, enquanto as prefeituras têm acesso ao feed para identificar e priorizar reparos. para fazer a aplicação utilizei React + Next.js, TypeScript e Tailwind CSS no front-end, oferecendo uma interface moderna, responsiva e intuitiva. No back-end, optei por utilizar PostgreSQL e Prisma, garantindo escalabilidade e performance do projeto.",
+    githubLink: "https://github.com/uPedroLima11/RelatoCidadao",
+    liveDemoLink: "https://relato-cidadao.vercel.app",
   },
 
   
