@@ -3,7 +3,7 @@ import Link from "next/link";
 import Footer from "../components/footer";
 import Header from "../components/header";
 
-const Contatos = () => {
+export default function Contatos() {
   return (
     <div className="min-h-screen flex flex-col">
       <header>
@@ -91,4 +91,3 @@ const Contatos = () => {
   );
 };
 
-export default Contatos;

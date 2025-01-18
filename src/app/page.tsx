@@ -3,15 +3,28 @@ import Link from "next/link";
 import Header from "./components/header";
 import Image from "next/image";
 import { useState } from "react";
-import { Projeto, projetos } from "./components/projeto"
+import { Projeto, projetos } from "./components/projeto";
 import Footer from "./components/footer";
-const Home = () => {
+import { useTranslation } from 'react-i18next';
+import '../../i18n';
 
-  const [selectedProject, setSelectedProject] = useState<Projeto | null>(null);
+export default function Home() {
+  const { t, i18n } = useTranslation();
+  const [projetoSelecionado, setProjetoSelecionado] = useState<Projeto | null>(null);
 
-  const handleOpenModal = (projeto: Projeto) => setSelectedProject(projeto);
-  const handleCloseModal = () => setSelectedProject(null);
+  const handleAbrirModal = (projeto: Projeto) => setProjetoSelecionado(projeto);
+  const handleFecharModal = () => setProjetoSelecionado(null);
 
+  const obterDescricao = (descricao: { pt: string; en: string; es: string }) => {
+    switch (i18n.language) {
+      case 'en':
+        return descricao.en;
+      case 'es':
+        return descricao.es;
+      default:
+        return descricao.pt;
+    }
+  };
 
   return (
     <div>
@@ -21,24 +34,24 @@ const Home = () => {
 
       <section className="flex flex-col-reverse md:flex-row items-center justify-between py-24 px-6 md:px-32 space-y-10 md:space-y-0 w-full">
         <div className="px-6 text-center md:text-left text-4xl md:text-7xl font-light flex-col">
-          <h1 className="mt-16 md:mt-40">Olá,</h1>
+          <h1 className="mt-16 md:mt-40">{t('Olá,')}</h1>
           <h2 className="flex items-center justify-center md:justify-start mt-4">
-            Sou <span className="font-semibold ml-4">Pedro</span>
+            {t('Sou')} <span className="font-semibold ml-4">Pedro</span>
             <span className="text-3xl md:text-5xl animate-fade relative translate-y-0 ml-3">|</span>
           </h2>
           <h1 className="text-base md:text-lg mt-4">
-            ✨ Desenvolvedor Front-End ✨ Focado em criar interfaces intuitivas <br />
-            e responsivas. Utilizo React, TypeScript e Tailwind CSS <br />
-            para transformar ideias em experiências digitais fluidas.
+            ✨ {t('Desenvolvedor Front-End')} ✨ {t('Focado em criar interfaces intuitivas')} <br />
+            {t('e responsivas. Utilizo React, TypeScript e Tailwind CSS')} <br />
+            {t('para transformar ideias em experiências digitais fluidas.')}
           </h1>
-          <Link
-            href="/contatos">
+          <Link href="/contatos">
             <button
               type="button"
               className="mt-6 text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-14 py-2.5 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
             >
-              Converse Comigo
-            </button></Link>
+              {t('Converse Comigo')}
+            </button>
+          </Link>
         </div>
 
         <div className="mt-10 md:mt-0 flex flex-col items-center">
@@ -51,7 +64,7 @@ const Home = () => {
             className="mr-0 md:mr-14 animate-move rounded-full border-4"
           />
 
-          <div className="flex gap-6 mt-2  md:mt-10 mr-0 lg:mr-12">
+          <div className="flex gap-6 mt-2 md:mt-10 mr-0 lg:mr-12">
             <Link href="https://www.linkedin.com/in/upedrolima/">
               <Image src="/linkedin.png" alt="linkedin" width={50} height={50} />
             </Link>
@@ -61,17 +74,17 @@ const Home = () => {
             <Link href="https://github.com/uPedroLima11">
               <Image src="/github.png" alt="github" width={50} height={50} />
             </Link>
-          </div><div id="sobremim"></div>
+          </div>
+          <div id="sobremim"></div>
         </div>
       </section>
+
       <section className="p-12">
         <div className="flex justify-center">
-          <h1 className="text-3xl font-bold">Sobre Mim</h1>
+          <h1 className="text-3xl font-bold">{t('Sobre Mim')}</h1>
         </div>
 
-
         <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-12">
-
           <div>
             <Image
               src="/tela.png"
@@ -79,29 +92,20 @@ const Home = () => {
               width={450}
               height={400}
               quality={100}
-              className="rounded-xl mr-16  border-4 border-[#101013]"
+              className="rounded-xl mr-16 border-4 border-[#101013]"
             />
           </div>
 
-
           <div className="max-w-xl bg-[#1a1a1f] p-8 rounded-lg shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]">
             <h1 className="font-light">
-              <span className="ml-4">Olá!</span> Sou estudante de Análise e Desenvolvimento de Sistemas no Senac-RS e, desde pequeno,
-              tenho uma paixão por tecnologia. Atualmente, estou focado no desenvolvimento front-end, utilizando minhas habilidades
-              em <span className="font-bold">React, TypeScript, JavaScript, Tailwind e Figma </span>para criar interfaces atraentes e funcionais.
-              <br /> <span className="ml-4">Meu </span> principal objetivo é transformar ideias em experiências digitais memoráveis. Cada projeto
-              representa uma nova oportunidade de aprendizado e crescimento, e estou sempre em busca das últimas
-              inovações do setor. Estou animado para contribuir com soluções que melhorem a vida das pessoas no
-              ambiente digital!
+              <span className="ml-4">{t('Olá!')}</span> {t('Sou estudante de Análise e Desenvolvimento de Sistemas no Senac-RS e, desde pequeno, tenho uma paixão por tecnologia. Atualmente, estou focado no desenvolvimento front-end, utilizando minhas habilidades em')} <span className="font-bold">React, TypeScript, JavaScript, Tailwind e Figma </span> {t('para criar interfaces atraentes e funcionais.')} <br /> <span className="ml-4">{t('Meu')}</span> {t('principal objetivo é transformar ideias em experiências digitais memoráveis. Cada projeto representa uma nova oportunidade de aprendizado e crescimento, e estou sempre em busca das últimas inovações do setor. Estou animado para contribuir com soluções que melhorem a vida das pessoas no ambiente digital!')}
             </h1>
           </div>
         </div>
       </section>
 
-
-
       <section className="mt-16">
-        <h1 className="text-center text-3xl font-bold">Tech Stack</h1>
+        <h1 className="text-center text-3xl font-bold">{t('Tech Stack')}</h1>
 
         <div className="mt-32 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-16 px-4 lg:px-16">
           <div className="relative bg-[#1a1a1f] flex flex-col items-center justify-center rounded-lg py-8 px-6 hover:scale-105 transition duration-150 shadow-lg overflow-hidden">
@@ -157,7 +161,7 @@ const Home = () => {
       </section>
 
       <section className="mt-40">
-        <h1 className="text-center text-3xl font-bold">Alguns Projetos Desenvolvidos</h1>
+        <h1 className="text-center text-3xl font-bold">{t('Alguns Projetos Desenvolvidos')}</h1>
 
         <div className="mt-28 grid grid-cols-1 md:grid-cols-2 gap-10 lg:px-16">
           {projetos.map((projeto, index) => (
@@ -197,35 +201,35 @@ const Home = () => {
                 </Link>
 
                 <button
-                  onClick={() => handleOpenModal(projeto)}
+                  onClick={() => handleAbrirModal(projeto)}
                   className="py-2 px-4 text-white rounded-lg font-bold bg-slate-800 hover:text-[#B38000]"
                 >
-                  Mais Informações
+                  {t('Mais Informações')}
                 </button>
               </div>
             </div>
           ))}
         </div>
 
-        {selectedProject && (
+        {projetoSelecionado && (
           <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 z-50">
             <div className="bg-[#1a1a1f] p-8 rounded-lg w-96 relative">
               <button
-                onClick={handleCloseModal}
+                onClick={handleFecharModal}
                 className="absolute top-2 right-2 text-white font-light hover:text-gray-700"
               >
                 ✕
               </button>
-              <h2 className="text-2xl font-bold mb-4">{selectedProject.nome}</h2>
+              <h2 className="text-2xl font-bold mb-4">{projetoSelecionado.nome}</h2>
               <Image
-                src={selectedProject.imagem}
-                alt={selectedProject.nome}
+                src={projetoSelecionado.imagem}
+                alt={projetoSelecionado.nome}
                 width={400}
                 height={300}
                 quality={100}
                 className="border border-gray-500 rounded-lg"
               />
-              <p className="mt-4 text-white font-light">{selectedProject.descricao}</p>
+              <p className="mt-4 text-white font-light">{obterDescricao(projetoSelecionado.descricao)}</p>
             </div>
           </div>
         )}
@@ -234,8 +238,6 @@ const Home = () => {
       <div className="mt-10"></div>
       <Footer />
     </div>
-
-
   );
-}
-export default Home; 
+};
+
