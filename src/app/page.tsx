@@ -54,7 +54,7 @@ export default function Home() {
               </button>
             </Link>
             <Link
-              href="/curriculo.pdf"
+              href="/curriculo_Pedro.pdf"
               download="Curriculo_Pedro.pdf"
             >
               <button
