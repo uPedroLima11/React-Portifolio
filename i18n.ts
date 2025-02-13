@@ -22,7 +22,8 @@ const resources = {
             "para criar interfaces atraentes e funcionais.": "to create attractive and functional interfaces.",
             "principal objetivo é transformar ideias em experiências digitais memoráveis. Cada projeto representa uma nova oportunidade de aprendizado e crescimento, e estou sempre em busca das últimas inovações do setor. Estou animado para contribuir com soluções que melhorem a vida das pessoas no ambiente digital!": "My main goal is to turn ideas into memorable digital experiences. Each project represents a new opportunity for learning and growth, and I am always looking for the latest innovations in the sector. I am excited to contribute solutions that improve people's lives in the digital environment!",
             "Projetos": "Project",
-            "Entre em Contato": "Contact Me"
+            "Entre em Contato": "Contact Me",
+            "Baixar Currículo": "Download Resume"
         }
     },
     es: {
@@ -45,7 +46,8 @@ const resources = {
             "para criar interfaces atraentes e funcionais.": "para crear interfaces atractivas y funcionales.",
             "principal objetivo é transformar ideias em experiências digitais memoráveis. Cada projeto representa uma nova oportunidade de aprendizado e crescimento, e estou sempre em busca das últimas inovações do setor. Estou animado para contribuir com soluções que melhorem a vida das pessoas no ambiente digital!": "Mi principal objetivo es transformar ideas en experiencias digitales memorables. Cada proyecto representa una nueva oportunidad de aprendizaje y crecimiento, y siempre estoy en busca de las últimas innovaciones del sector. ¡Estoy emocionado de contribuir con soluciones que mejoren la vida de las personas en el entorno digital!",
             "Projetos": "Proyectos",
-            "Entre em Contato": "Contáctame"
+            "Entre em Contato": "Contáctame",
+            "Baixar Currículo": "Descargar Currículum"
         }
     },
     pt: {

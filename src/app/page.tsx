@@ -44,14 +44,27 @@ export default function Home() {
             {t('e responsivas. Utilizo React, TypeScript e Tailwind CSS')} <br />
             {t('para transformar ideias em experiências digitais fluidas.')}
           </h1>
-          <Link href="/contatos">
-            <button
-              type="button"
-              className="mt-6 text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-14 py-2.5 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
+          <div className="flex gap-4 justify-center md:justify-start">
+            <Link href="/contatos">
+              <button
+                type="button"
+                className="mt-6 text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-14 py-2.5 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
+              >
+                {t('Converse Comigo')}
+              </button>
+            </Link>
+            <Link
+              href="/curriculo.pdf"
+              download="Curriculo_Pedro.pdf"
             >
-              {t('Converse Comigo')}
-            </button>
-          </Link>
+              <button
+                type="button"
+                className="mt-6 text-white bg-blue-500 hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-14 py-2.5 dark:bg-blue-900 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              >
+                {t('Baixar Currículo')}
+              </button>
+            </Link>
+          </div>
         </div>
 
         <div className="mt-10 md:mt-0 flex flex-col items-center">
