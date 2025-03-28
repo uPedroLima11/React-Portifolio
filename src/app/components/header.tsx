@@ -1,4 +1,4 @@
-'use client'; 
+'use client';
 
 import { useRef, useState } from 'react';
 import Link from 'next/link';
@@ -15,8 +15,8 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="py-5 font-sans bg-gradient-to-r bg-[#24242c]  shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] fixed w-full z-20 top-0">
-      <div className="flex items-center justify-between px-4 md:px-6 lg:px-10">
+    <nav className="py-5 font-sans bg-gradient-to-r bg-[#24242c] shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] fixed w-full max-w-screen overflow-hidden z-20 top-0">
+      <div className="flex items-center justify-between px-4 md:px-6 lg:px-10 w-full">
         <a href="/" className="flex items-center space-x-3">
           <div className="flex flex-col items-center">
             <img
@@ -51,10 +51,10 @@ export default function Navbar() {
           </Link>
         </div>
 
-        <div className="flex items-center"> 
+        <div className="flex items-center">
           <SelecionarLinguagem />
           <button
-            className="lg:hidden w-2 focus:outline-none ml-2" 
+            className="lg:hidden ml-4 focus:outline-none" 
             onClick={handleToggle}
             aria-label="Toggle menu"
           >
@@ -73,16 +73,16 @@ export default function Navbar() {
               ></path>
             </svg>
           </button>
-        </div> 
-      </div> 
+        </div>
+      </div>
 
       <div
         ref={navbarRef}
-        className={`flex flex-col items-end transition-all duration-300 ease-in-out ${
+        className={`flex flex-col items-center transition-all duration-300 ease-in-out ${
           isMenuOpen ? 'flex' : 'hidden'
-        } bg-[#24242c] p-4 rounded-md`}
+        } bg-[#24242c] p-4 rounded-md w-full`}
       >
-        <ul className="flex flex-col gap-4">
+        <ul className="flex flex-col gap-4 w-full text-center">
           <li>
             <Link
               href="/#sobremim"

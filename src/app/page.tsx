@@ -27,46 +27,42 @@ export default function Home() {
   };
 
   return (
-    <div>
-      <header>
-        <Header />
-      </header>
+    <div className="w-full overflow-hidden"> 
+    <header>
+      <Header />
+    </header>
 
-      <section className="flex flex-col-reverse md:flex-row items-center justify-between py-24 px-6 md:px-32 space-y-10 md:space-y-0 w-full">
-        <div className="px-6 text-center md:text-left text-4xl md:text-7xl font-light flex-col">
-          <h1 className="mt-16 md:mt-40">{t('Olá,')}</h1>
-          <h2 className="flex items-center justify-center md:justify-start mt-4">
-            {t('Sou')} <span className="font-semibold ml-4">Pedro</span>
-            <span className="text-3xl md:text-5xl animate-fade relative translate-y-0 ml-3">|</span>
-          </h2>
-          <h1 className="text-base md:text-lg mt-4">
-            ✨ {t('Desenvolvedor Front-End')} ✨ {t('Focado em criar interfaces intuitivas')} <br />
-            {t('e responsivas. Utilizo React, TypeScript e Tailwind CSS')} <br />
-            {t('para transformar ideias em experiências digitais fluidas.')}
-          </h1>
-          <div className="flex gap-4 justify-center md:justify-start">
-            <Link href="/contatos">
-              <button
-                type="button"
-                className="mt-6 text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-14 py-2.5 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
-              >
-                {t('Converse Comigo')}
-              </button>
-            </Link>
-            <Link
-              href="/curriculo_Pedro.pdf"
-              download="Curriculo_Pedro.pdf"
+    <section className="flex flex-col-reverse md:flex-row items-center justify-between py-24 px-6 md:px-32 space-y-10 md:space-y-0 w-full">
+      <div className="px-6 text-center md:text-left text-4xl md:text-7xl font-light flex-col">
+        <h1 className="mt-16 md:mt-40">{t('Olá,')}</h1>
+        <h2 className="flex items-center justify-center md:justify-start mt-4">
+          {t('Sou')} <span className="font-semibold ml-4">Pedro</span>
+          <span className="text-3xl md:text-5xl animate-fade relative translate-y-0 ml-3">|</span>
+        </h2>
+        <h1 className="text-base md:text-lg mt-4">
+          ✨ {t('Desenvolvedor Front-End')} ✨ {t('Focado em criar interfaces intuitivas')} <br />
+          {t('e responsivas. Utilizo React, TypeScript e Tailwind CSS')} <br />
+          {t('para transformar ideias em experiências digitais fluidas.')}
+        </h1>
+        <div className="flex gap-4 justify-center md:justify-start">
+          <Link href="/contatos">
+            <button
+              type="button"
+              className="mt-6 text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-14 py-2.5 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
             >
-              <button
-                type="button"
-                className="mt-6 text-white bg-blue-500 hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-14 py-2.5 dark:bg-blue-900 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-              >
-                {t('Baixar Currículo')}
-              </button>
-            </Link>
-          </div>
+              {t('Converse Comigo')}
+            </button>
+          </Link>
+          <Link href="/curriculo_Pedro.pdf" download="Curriculo_Pedro.pdf">
+            <button
+              type="button"
+              className="mt-6 text-white bg-blue-500 hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-14 py-2.5 dark:bg-blue-900 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            >
+              {t('Baixar Currículo')}
+            </button>
+          </Link>
         </div>
-
+      </div>
         <div className="mt-10 md:mt-0 flex flex-col items-center">
           <Image
             src="/eu.jpg"
