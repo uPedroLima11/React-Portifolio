@@ -32,14 +32,14 @@ export const projetos: Projeto[] = [
     nome: "Verbalize",
     imagem: "/verbalize.png",
     descricao: {
-      pt: "Este é o Verbalize. ele é um projeto em grupo que foi desenvolvido com o intuito de ser uma plataforma de chat bidirecional onde você ensina sua linguagem enquanto aprende a do outro. as linguagens que eu usei para fazer o Front-End dele foram: React | Next, Typescript e Tailwind CSS. Quanto ao Back-end optei por usar Mysql junto com Prisma",
+      pt: "Este é o Verbalize. ele é um projeto desenvolvido em grupo com o intuito de ser uma plataforma de chat bidirecional onde você ensina sua linguagem enquanto aprende a do outro. as linguagens que eu usei para fazer o Front-End dele foram: React | Next, Typescript e Tailwind CSS. Quanto ao Back-end optei por usar Mysql junto com Prisma",
       en: "This is Verbalize. It is a group project developed to be a bidirectional chat platform where you teach your language while learning the other's. The languages I used to build its Front-End were: React | Next, Typescript, and Tailwind CSS. For the Back-end, I chose to use Mysql along with Prisma.",
       es: "Este es Verbalize. Es un proyecto grupal desarrollado para ser una plataforma de chat bidireccional donde enseñas tu idioma mientras aprendes el del otro. Los lenguajes que utilicé para construir su Front-End fueron: React | Next, Typescript y Tailwind CSS. Para el Back-end, opté por usar Mysql junto con Prisma."
     },
     githubLink: "https://github.com/uPedroLima11/Next_Verbalise_Frontend",
     liveDemoLink: "https://verbalize-senac.vercel.app",
   },
-  
+
   {
     nome: "ElectroHub",
     imagem: "/electrohub.png",
