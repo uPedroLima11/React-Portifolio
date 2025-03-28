@@ -4,6 +4,8 @@ import Header from "./components/header";
 import Image from "next/image";
 import { useState } from "react";
 import { Projeto, projetos } from "./components/projeto";
+import { figma, Prototipo } from "./components/figma";
+
 import Footer from "./components/footer";
 import { useTranslation } from 'react-i18next';
 import '../../i18n';
@@ -12,7 +14,7 @@ export default function Home() {
   const { t, i18n } = useTranslation();
   const [projetoSelecionado, setProjetoSelecionado] = useState<Projeto | null>(null);
 
-  const handleAbrirModal = (projeto: Projeto) => setProjetoSelecionado(projeto);
+  const handleAbrirModal = (projeto: Projeto | Prototipo) => setProjetoSelecionado(projeto as Projeto);
   const handleFecharModal = () => setProjetoSelecionado(null);
 
   const obterDescricao = (descricao: { pt: string; en: string; es: string }) => {
@@ -27,42 +29,42 @@ export default function Home() {
   };
 
   return (
-    <div className="w-full overflow-hidden"> 
-    <header>
-      <Header />
-    </header>
+    <div className="w-full overflow-hidden">
+      <header>
+        <Header />
+      </header>
 
-    <section className="flex flex-col-reverse md:flex-row items-center justify-between py-24 px-6 md:px-32 space-y-10 md:space-y-0 w-full">
-      <div className="px-6 text-center md:text-left text-4xl md:text-7xl font-light flex-col">
-        <h1 className="mt-16 md:mt-40">{t('Olá,')}</h1>
-        <h2 className="flex items-center justify-center md:justify-start mt-4">
-          {t('Sou')} <span className="font-semibold ml-4">Pedro</span>
-          <span className="text-3xl md:text-5xl animate-fade relative translate-y-0 ml-3">|</span>
-        </h2>
-        <h1 className="text-base md:text-lg mt-4">
-          ✨ {t('Desenvolvedor Front-End')} ✨ {t('Focado em criar interfaces intuitivas')} <br />
-          {t('e responsivas. Utilizo React, TypeScript e Tailwind CSS')} <br />
-          {t('para transformar ideias em experiências digitais fluidas.')}
-        </h1>
-        <div className="flex gap-4 justify-center md:justify-start">
-          <Link href="/contatos">
-            <button
-              type="button"
-              className="mt-6 text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-14 py-2.5 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
-            >
-              {t('Converse Comigo')}
-            </button>
-          </Link>
-          <Link href="/curriculo_Pedro.pdf" download="Curriculo_Pedro.pdf">
-            <button
-              type="button"
-              className="mt-6 text-white bg-blue-500 hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-14 py-2.5 dark:bg-blue-900 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-            >
-              {t('Baixar Currículo')}
-            </button>
-          </Link>
+      <section className="flex flex-col-reverse md:flex-row items-center justify-between py-24 px-6 md:px-32 space-y-10 md:space-y-0 w-full">
+        <div className="px-6 text-center md:text-left text-4xl md:text-7xl font-light flex-col">
+          <h1 className="mt-16 md:mt-40">{t('Olá,')}</h1>
+          <h2 className="flex items-center justify-center md:justify-start mt-4">
+            {t('Sou')} <span className="font-semibold ml-4">Pedro</span>
+            <span className="text-3xl md:text-5xl animate-fade relative translate-y-0 ml-3">|</span>
+          </h2>
+          <h1 className="text-base md:text-lg mt-4">
+            ✨ {t('Desenvolvedor Front-End')} ✨ {t('Focado em criar interfaces intuitivas')} <br />
+            {t('e responsivas. Utilizo React, TypeScript e Tailwind CSS')} <br />
+            {t('para transformar ideias em experiências digitais fluidas.')}
+          </h1>
+          <div className="flex gap-4 justify-center md:justify-start">
+            <Link href="/contatos">
+              <button
+                type="button"
+                className="mt-6 text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-14 py-2.5 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
+              >
+                {t('Converse Comigo')}
+              </button>
+            </Link>
+            <Link href="/curriculo_Pedro.pdf" download="Curriculo_Pedro.pdf">
+              <button
+                type="button"
+                className="mt-6 text-white bg-blue-500 hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-14 py-2.5 dark:bg-blue-900 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              >
+                {t('Baixar Currículo')}
+              </button>
+            </Link>
+          </div>
         </div>
-      </div>
         <div className="mt-10 md:mt-0 flex flex-col items-center">
           <Image
             src="/eu.jpg"
@@ -243,6 +245,79 @@ export default function Home() {
           </div>
         )}
       </section>
+
+
+
+      <section className="mt-40">
+        <h1 className="text-center text-3xl font-bold">{t('Algumas Prototipações feitas em Figma')}</h1>
+
+        <div className="mt-28 grid grid-cols-1 md:grid-cols-2 gap-10 lg:px-16">
+          {figma.map((prototipo, index) => (
+            <div
+              key={index}
+              className="relative pb-11 bg-[#1a1a1f] mb-10 flex flex-col items-center justify-center rounded-lg py-2 hover:scale-105 transition delay-150 duration-150 ease-in-out shadow-2xl overflow-hidden"
+            >
+              <Image
+                src={prototipo.imagem}
+                alt={prototipo.nome}
+                width={480}
+                height={420}
+                quality={100}
+                className="mt-8 hidden md:block"
+              />
+              <Image
+                src={prototipo.imagem}
+                alt={prototipo.nome}
+                width={300}
+                height={200}
+                quality={100}
+                className="mt-8 block md:hidden w-full max-w-xs border border-gray-500 rounded-lg "
+              />
+
+              <p className="text-white text-xl font-bold mt-10">{prototipo.nome}</p>
+
+              <div className="flex flex-col md:flex-row gap-4 mt-6">
+                <Link href={prototipo.prototipacaoLink} target="_blank">
+                  <button className="py-2 px-4 bg-green-500 text-black font-semibold rounded-lg hover:bg-green-600">
+                  {t('Prototipação')}
+                  </button>
+                </Link>
+
+                <button
+                  onClick={() => handleAbrirModal(prototipo)}
+                  className="py-2 px-4 text-white rounded-lg font-bold bg-slate-800 hover:text-[#B38000]"
+                >
+                  {t('Mais Informações')}
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {projetoSelecionado && (
+          <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 z-50">
+            <div className="bg-[#1a1a1f] p-8 rounded-lg w-96 relative">
+              <button
+                onClick={handleFecharModal}
+                className="absolute top-2 right-2 text-white font-light hover:text-gray-700"
+              >
+                ✕
+              </button>
+              <h2 className="text-2xl font-bold mb-4">{projetoSelecionado.nome}</h2>
+              <Image
+                src={projetoSelecionado.imagem}
+                alt={projetoSelecionado.nome}
+                width={400}
+                height={300}
+                quality={100}
+                className="border border-gray-500 rounded-lg"
+              />
+              <p className="mt-4 text-white font-light">{obterDescricao(projetoSelecionado.descricao)}</p>
+            </div>
+          </div>
+        )}
+      </section>
+
 
       <div className="mt-10"></div>
       <Footer />
