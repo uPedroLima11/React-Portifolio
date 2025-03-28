@@ -15,8 +15,8 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="py-5 font-sans bg-gradient-to-r bg-[#24242c] shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] fixed w-full max-w-screen overflow-hidden z-20 top-0">
-      <div className="flex items-center justify-between px-4 md:px-6 lg:px-10 w-full">
+    <nav className="py-5 font-sans bg-gradient-to-r bg-[#24242c] shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] fixed w-full z-20 top-0">
+      <div className="flex items-center justify-between px-4 md:px-6 lg:px-10">
         <a href="/" className="flex items-center space-x-3">
           <div className="flex flex-col items-center">
             <img
@@ -51,10 +51,10 @@ export default function Navbar() {
           </Link>
         </div>
 
-        <div className="flex items-center">
-          <SelecionarLinguagem />
+        <div className="flex items-center"> 
+          <SelecionarLinguagem /> 
           <button
-            className="lg:hidden ml-4 focus:outline-none" 
+            className="lg:hidden focus:outline-none ml-2" 
             onClick={handleToggle}
             aria-label="Toggle menu"
           >
@@ -73,12 +73,12 @@ export default function Navbar() {
               ></path>
             </svg>
           </button>
-        </div>
-      </div>
+        </div> 
+      </div> 
 
       <div
         ref={navbarRef}
-        className={`flex flex-col items-center transition-all duration-300 ease-in-out ${
+        className={`flex flex-col items-end transition-all duration-300 ease-in-out ${
           isMenuOpen ? 'flex' : 'hidden'
         } bg-[#24242c] p-4 rounded-md w-full`}
       >
