@@ -167,11 +167,8 @@ export default function Home() {
             <p className="text-white font-bold mt-6">Git</p>
           </div>
         </div>
-
-        <div className="-mt-24" id="projetos"></div>
       </section>
-
-      <section className="mt-40">
+      <section className="mt-24">
         <h1 className="text-center text-3xl font-bold">{t('Alguns Projetos Desenvolvidos')}</h1>
 
         <div className="mt-28 grid grid-cols-1 md:grid-cols-2 gap-10 lg:px-16">
@@ -248,7 +245,7 @@ export default function Home() {
 
 
 
-      <section className="mt-40">
+      <section className="mt-12">
         <h1 className="text-center text-3xl font-bold">{t('Algumas Prototipações feitas em Figma')}</h1>
 
         <div className="mt-28 grid grid-cols-1 md:grid-cols-2 gap-10 lg:px-16">
