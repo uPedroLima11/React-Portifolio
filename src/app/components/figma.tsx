@@ -16,14 +16,14 @@ export interface Prototipo {
 export const figma: Prototipo[] = [
 
   {
-    nome: "Diário Digital",
-    imagem: "/figma1.png",
+    nome: "StockControl",
+    imagem: "/stockcontrol.png",
     descricao: {
-      pt: "Diário Digital é uma plataforma em desenvolvimento que permite aos usuários registrar e compartilhar seus pensamentos e experiências diárias de forma interativa. Com acesso a notícias reais, os usuários podem comentar e compartilhar informações relevantes, promovendo discussões saudáveis. Atualmente em desenvolvimento utilizando React Native, com TypeScript e Tailwind CSS, o aplicativo oferece uma experiência fluida e responsiva. A funcionalidade de autenticação permite que os usuários acessem seus diários de qualquer lugar, contribuindo para uma comunidade mais informada e conectada.",
-      en: "Digital Diary is a platform in development that allows users to record and share their daily thoughts and experiences interactively. With access to real news, users can comment and share relevant information, promoting healthy discussions. Currently under development using React Native, with TypeScript and Tailwind CSS, the app offers a smooth and responsive experience. The authentication feature allows users to access their diaries from anywhere, contributing to a more informed and connected community.",
-      es: "Diario Digital es una plataforma en desarrollo que permite a los usuarios registrar y compartir sus pensamientos y experiencias diarias de forma interactiva. Con acceso a noticias reales, los usuarios pueden comentar y compartir información relevante, promoviendo discusiones saludables. Actualmente en desarrollo utilizando React Native, con TypeScript y Tailwind CSS, la aplicación ofrece una experiencia fluida y receptiva. La funcionalidad de autenticación permite a los usuarios acceder a sus diarios desde cualquier lugar, contribuyendo a una comunidad más informada y conectada."
+      pt: "Sistema de Gestão de Produtos com Licença é uma aplicação web em desenvolvimento como parte do meu TCC. Voltada para o controle de produtos, a plataforma permite cadastro, edição e visualização com gráficos, filtros e relatórios. Um dos diferenciais é a ativação por chave de licença. As prototipações foram feitas no Figma e o sistema está sendo desenvolvido com Next.js, TypeScript e Tailwind CSS, com foco em responsividade, usabilidade e experiência moderna.",
+      en: "Product Management System with License is a web application in development as part of my TCC. Focused on product control, the platform allows registration, editing, and visualization with graphs, filters, and reports. One of the differentiators is activation by license key. The prototypes were made in Figma and the system is being developed with Next.js, TypeScript, and Tailwind CSS, focusing on responsiveness, usability, and modern experience.",
+      es: "Sistema de Gestión de Productos con Licencia es una aplicación web en desarrollo como parte de mi TCC. Enfocado en el control de productos, la plataforma permite el registro, edición y visualización con gráficos, filtros e informes. Uno de los diferenciadores es la activación por clave de licencia. Los prototipos fueron hechos en Figma y el sistema se está desarrollando con Next.js, TypeScript y Tailwind CSS, centrándose en la capacidad de respuesta, usabilidad y experiencia moderna."
     },
-    prototipacaoLink: "https://www.figma.com/design/UYKxJa5zQmBXoBiwGD7YHR/Wireframe-Di%C3%A1rio-Digital?node-id=0-1&t=0QkADsBVkL4Ja8xh-1",
+    prototipacaoLink: "https://www.figma.com/design/K0KzZU3f6R2OBYCeu1kqIp/StockControl?node-id=0-1&t=hXdvxeHPK1mwWVZv-1",
   },
   
   {
