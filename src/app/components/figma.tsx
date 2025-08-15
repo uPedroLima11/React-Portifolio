@@ -17,7 +17,7 @@ export const figma: Prototipo[] = [
 
   {
     nome: "StockControl",
-    imagem: "/stockcontrol1.png",
+    imagem: "/stockcontrol.png",
     descricao: {
       pt: "Sistema de Gestão de Estoque de Produtos com Licença é uma aplicação web em desenvolvimento como parte do meu TCC. Voltada para o controle de produtos, a plataforma permite cadastro, edição e visualização com gráficos, filtros e relatórios. Um dos diferenciais é a ativação por chave de licença. As prototipações foram feitas no Figma e o sistema está sendo desenvolvido com Next.js, TypeScript e Tailwind CSS, com foco em responsividade, usabilidade e experiência moderna.",
       en: "Product Management System with License is a web application in development as part of my TCC. Focused on product control, the platform allows registration, editing, and visualization with graphs, filters, and reports. One of the differentiators is activation by license key. The prototypes were made in Figma and the system is being developed with Next.js, TypeScript, and Tailwind CSS, focusing on responsiveness, usability, and modern experience.",

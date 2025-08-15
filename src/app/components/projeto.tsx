@@ -18,7 +18,7 @@ export const projetos: Projeto[] = [
 
   {
   nome: "StockControl",
-  imagem: "/stockcontrol1.png",
+  imagem: "/stock.png",
   descricao: {
     pt: "O StockControl é um sistema web multitenant desenvolvido em dupla durante o meu TCC para gestão de estoque de produtos em empresas. Ele permite que os usuários gerenciem itens, realizem baixas e acompanhem todas as informações através de uma dashboard intuitiva e moderna. O front-end foi construído com React, Next.js e Tailwind CSS, enquanto o back-end utiliza Fastify para desempenho e escalabilidade. O projeto foi desafiador e enriquecedor, contando com feedback de professores para aprimorar cada detalhe.",
     en: "StockControl is a multitenant web system developed as a duo project during our TCC for managing product inventory in companies. It allows users to manage items, record stock reductions, and access all information through an intuitive and modern dashboard. The front-end was built with React, Next.js, and Tailwind CSS, while the back-end uses Fastify for performance and scalability. The project was challenging and enriching, benefiting from professors' feedback to refine every detail.",
