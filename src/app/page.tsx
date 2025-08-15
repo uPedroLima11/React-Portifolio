@@ -42,10 +42,11 @@ export default function Home() {
             <span className="text-3xl md:text-5xl animate-fade relative translate-y-0 ml-3">|</span>
           </h2>
           <h1 className="text-base md:text-lg mt-4">
-            ✨ {t('Desenvolvedor Front-End')} ✨ {t('Focado em criar interfaces intuitivas')} <br />
-            {t('e responsivas. Utilizo React, TypeScript e Tailwind CSS')} <br />
-            {t('para transformar ideias em experiências digitais fluidas.')}
+            <span className="font-semibold">{t('Fullstack Developer')} </span>{t('com grande experiência em Front-End')} <br />
+            {t('Crio interfaces intuitivas e responsivas utilizando')} <span className="font-bold">React, Next.js, TypeScript e Tailwind CSS</span> <br />
+            {t('e construo back-ends escaláveis com Fastify e bancos de dados como MySQL e PostgreSQL.')}
           </h1>
+
           <div className="flex gap-4 justify-center md:justify-start">
             <Link href="/contatos">
               <button
@@ -276,7 +277,7 @@ export default function Home() {
               <div className="flex flex-col md:flex-row gap-4 mt-6">
                 <Link href={prototipo.prototipacaoLink} target="_blank">
                   <button className="py-2 px-4 bg-green-500 text-black font-semibold rounded-lg hover:bg-green-600">
-                  {t('Prototipação')}
+                    {t('Prototipação')}
                   </button>
                 </Link>
 

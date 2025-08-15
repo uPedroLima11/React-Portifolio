@@ -17,16 +17,17 @@ export interface Projeto {
 export const projetos: Projeto[] = [
 
   {
-    nome: "Relato Cidadão",
-    imagem: "/relatocidadao.png",
-    descricao: {
-      pt: "O Relato Cidadão é uma plataforma social que conecta cidadãos e prefeituras na resolução de problemas urbanos, como buracos em vias públicas. Usuários registram relatos com fotos e localização, enquanto as prefeituras acessam o feed para identificar e priorizar reparos. A aplicação foi desenvolvida com React + Next.js, TypeScript e Tailwind CSS no front-end, proporcionando uma interface moderna e responsiva. No back-end, utilizei PostgreSQL e Prisma para garantir escalabilidade e performance. Além disso, integrei a API do IBGE para buscar estados e cidades, e a API da Cloudinary para upload de imagens, oferecendo uma experiência eficiente.",
-      en: "Relato Cidadão is a social platform that connects citizens and city halls in solving urban problems, such as potholes on public roads. Users report incidents with photos and location, while city halls access the feed to identify and prioritize repairs. The application was developed with React + Next.js, TypeScript, and Tailwind CSS on the front-end, providing a modern and responsive interface. On the back-end, I used PostgreSQL and Prisma to ensure scalability and performance. In addition, I integrated the IBGE API to fetch states and cities, and the Cloudinary API for image upload, offering an efficient experience.",
-      es: "Relato Cidadão es una plataforma social que conecta a ciudadanos y ayuntamientos en la resolución de problemas urbanos, como baches en vías públicas. Los usuarios informan incidentes con fotos y ubicación, mientras que los ayuntamientos acceden al feed para identificar y priorizar reparaciones. La aplicación se desarrolló con React + Next.js, TypeScript y Tailwind CSS en el front-end, proporcionando una interfaz moderna y receptiva. En el back-end, utilicé PostgreSQL y Prisma para garantizar escalabilidad y rendimiento. Además, integré la API del IBGE para buscar estados y ciudades, y la API de Cloudinary para la carga de imágenes, ofreciendo una experiencia eficiente."
-    },
-    githubLink: "https://github.com/uPedroLima11/RelatoCidadao",
-    liveDemoLink: "https://relato-cidadao.vercel.app",
+  nome: "StockControl",
+  imagem: "/stockcontrol1.png",
+  descricao: {
+    pt: "O StockControl é um sistema web multitenant desenvolvido em dupla durante o meu TCC para gestão de estoque de produtos em empresas. Ele permite que os usuários gerenciem itens, realizem baixas e acompanhem todas as informações através de uma dashboard intuitiva e moderna. O front-end foi construído com React, Next.js e Tailwind CSS, enquanto o back-end utiliza Fastify para desempenho e escalabilidade. O projeto foi desafiador e enriquecedor, contando com feedback de professores para aprimorar cada detalhe.",
+    en: "StockControl is a multitenant web system developed as a duo project during our TCC for managing product inventory in companies. It allows users to manage items, record stock reductions, and access all information through an intuitive and modern dashboard. The front-end was built with React, Next.js, and Tailwind CSS, while the back-end uses Fastify for performance and scalability. The project was challenging and enriching, benefiting from professors' feedback to refine every detail.",
+    es: "StockControl es un sistema web multitenant desarrollado en dupla durante nuestro TCC para la gestión de inventario de productos en empresas. Permite a los usuarios administrar artículos, registrar disminuciones de stock y acceder a toda la información a través de un panel intuitivo y moderno. El front-end se construyó con React, Next.js y Tailwind CSS, mientras que el back-end utiliza Fastify para garantizar rendimiento y escalabilidad. El proyecto fue desafiante y enriquecedor, contando con la retroalimentación de los profesores para perfeccionar cada detalle."
   },
+  githubLink: "https://github.com/uPedroLima11/StockControl---Frontend",
+  liveDemoLink: "https://stockcontrol-six.vercel.app",
+},
+
   
   {
     nome: "Verbalize",
@@ -40,16 +41,16 @@ export const projetos: Projeto[] = [
     liveDemoLink: "https://verbalize-senac.vercel.app",
   },
 
-  {
-    nome: "ElectroHub",
-    imagem: "/electrohub.png",
+   {
+    nome: "Relato Cidadão",
+    imagem: "/relatocidadao.png",
     descricao: {
-      pt: "Este site que desenvolvi é uma Loja de venda de eletrônicos, oferecendo uma ampla variedade de produtos para os consumidores. O design é moderno e responsivo, garantindo uma navegação intuitiva em dispositivos móveis e desktops. Utilizei as tecnologias React, Next.js, TypeScript e Tailwind CSS para construir o projeto. Meu foco foi proporcionar uma experiência de interface atrativa, eficiente e otimizada.",
-      en: "This site I developed is an electronics store, offering a wide variety of products for consumers. The design is modern and responsive, ensuring intuitive navigation on mobile and desktop devices. I used React, Next.js, TypeScript, and Tailwind CSS technologies to build the project. My focus was to provide an attractive, efficient, and optimized interface experience.",
-      es: "Este sitio que desarrollé es una tienda de electrónica, ofreciendo una amplia variedad de productos para los consumidores. El diseño es moderno y receptivo, asegurando una navegación intuitiva en dispositivos móviles y de escritorio. Utilicé las tecnologías React, Next.js, TypeScript y Tailwind CSS para construir el proyecto. Mi enfoque fue proporcionar una experiencia de interfaz atractiva, eficiente y optimizada."
+      pt: "O Relato Cidadão é uma plataforma social que conecta cidadãos e prefeituras na resolução de problemas urbanos, como buracos em vias públicas. Usuários registram relatos com fotos e localização, enquanto as prefeituras acessam o feed para identificar e priorizar reparos. A aplicação foi desenvolvida com React + Next.js, TypeScript e Tailwind CSS no front-end, proporcionando uma interface moderna e responsiva. No back-end, utilizei PostgreSQL e Prisma para garantir escalabilidade e performance. Além disso, integrei a API do IBGE para buscar estados e cidades, e a API da Cloudinary para upload de imagens, oferecendo uma experiência eficiente.",
+      en: "Relato Cidadão is a social platform that connects citizens and city halls in solving urban problems, such as potholes on public roads. Users report incidents with photos and location, while city halls access the feed to identify and prioritize repairs. The application was developed with React + Next.js, TypeScript, and Tailwind CSS on the front-end, providing a modern and responsive interface. On the back-end, I used PostgreSQL and Prisma to ensure scalability and performance. In addition, I integrated the IBGE API to fetch states and cities, and the Cloudinary API for image upload, offering an efficient experience.",
+      es: "Relato Cidadão es una plataforma social que conecta a ciudadanos y ayuntamientos en la resolución de problemas urbanos, como baches en vías públicas. Los usuarios informan incidentes con fotos y ubicación, mientras que los ayuntamientos acceden al feed para identificar y priorizar reparaciones. La aplicación se desarrolló con React + Next.js, TypeScript y Tailwind CSS en el front-end, proporcionando una interfaz moderna y receptiva. En el back-end, utilicé PostgreSQL y Prisma para garantizar escalabilidad y rendimiento. Además, integré la API del IBGE para buscar estados y ciudades, y la API de Cloudinary para la carga de imágenes, ofreciendo una experiencia eficiente."
     },
-    githubLink: "https://github.com/uPedroLima11/Next_Loja",
-    liveDemoLink: "https://next-loja-nine.vercel.app",
+    githubLink: "https://github.com/uPedroLima11/RelatoCidadao",
+    liveDemoLink: "https://relato-cidadao.vercel.app",
   },
 
   {
