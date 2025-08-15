@@ -56,7 +56,7 @@ export default function Home() {
                 {t('Converse Comigo')}
               </button>
             </Link>
-            <Link href="/curriculo_Pedro_Lima.pdf" download="Curriculo_Pedro.pdf">
+            <Link href="/curriculo.pdf" download="Curriculo_Pedro.pdf">
               <button
                 type="button"
                 className="mt-6 text-white bg-blue-500 hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-14 py-2.5 dark:bg-blue-900 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
