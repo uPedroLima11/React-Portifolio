@@ -14,8 +14,16 @@ export default function Navbar() {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+    setIsMenuOpen(false);
+  };
+
   return (
-    <nav className="py-5 font-sans bg-gradient-to-r bg-[#24242c] shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] fixed w-full z-20 top-0">
+    <nav className="py-5 font-sans bg-[#24242c] shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] fixed w-full z-20 top-0">
       <div className="flex items-center justify-between px-4 md:px-6 lg:px-10">
         <a href="/" className="flex items-center space-x-3">
           <div className="flex flex-col items-center">
@@ -31,21 +39,21 @@ export default function Navbar() {
         </a>
 
         <div className="hidden lg:flex items-center justify-center space-x-10">
-          <Link
-            href="/#sobremim"
-            className="text-white text-sm sm:text-base font-bold hover:text-[#B38000]"
+          <button
+            onClick={() => scrollToSection('sobremim')}
+            className="text-white text-sm sm:text-base font-bold hover:text-[#B38000] transition-colors duration-300"
           >
             {t('Sobre Mim')}
-          </Link>
-          <Link
-            href="/#projetos"
-            className="text-white text-sm sm:text-base font-bold hover:text-[#B38000]"
+          </button>
+          <button
+            onClick={() => scrollToSection('projetos2')}
+            className="text-white text-sm sm:text-base font-bold hover:text-[#B38000] transition-colors duration-300"
           >
             {t('Projetos')}
-          </Link>
+          </button>
           <Link
             href="/contatos"
-            className="text-white text-sm sm:text-base font-bold hover:text-[#B38000]"
+            className="text-white text-sm sm:text-base font-bold hover:text-[#B38000] transition-colors duration-300"
           >
             {t('Entre em Contato')}
           </Link>
@@ -84,25 +92,25 @@ export default function Navbar() {
       >
         <ul className="flex flex-col gap-4 w-full text-center">
           <li>
-            <Link
-              href="/#sobremim"
-              className="text-white text-sm sm:text-base font-bold hover:text-[#B38000]"
+            <button
+              onClick={() => scrollToSection('sobremim')}
+              className="text-white text-sm sm:text-base font-bold hover:text-[#B38000] transition-colors duration-300"
             >
               {t('Sobre Mim')}
-            </Link>
+            </button>
           </li>
           <li>
-            <Link
-              href="/#projetos"
-              className="text-white text-sm sm:text-base font-bold hover:text-[#B38000]"
+            <button
+              onClick={() => scrollToSection('projetos')}
+              className="text-white text-sm sm:text-base font-bold hover:text-[#B38000] transition-colors duration-300"
             >
               {t('Projetos')}
-            </Link>
+            </button>
           </li>
           <li>
             <Link
               href="/contatos"
-              className="text-white text-sm sm:text-base font-bold hover:text-[#B38000]"
+              className="text-white text-sm sm:text-base font-bold hover:text-[#B38000] transition-colors duration-300"
             >
               {t('Entre em Contato')}
             </Link>

@@ -6,31 +6,38 @@
   0% {
     clip-path: inset(0 100% 100% 0);
   }
-
   10% {
     clip-path: inset(0 0 100% 0);
   }
-
   30% {
     clip-path: inset(0 0 0 100%);
   }
-
   50% {
     clip-path: inset(100% 0 0 0);
   }
-
   100% {
     clip-path: inset(0 100% 100% 0);
   }
 }
 
 @keyframes fade {
-  0% {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
     opacity: 0;
   }
+}
 
+@keyframes move {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
   100% {
-    opacity: 1;
+    transform: translateY(0);
   }
 }
 
@@ -38,6 +45,9 @@
   animation: fade 1.5s ease-in-out infinite;
 }
 
+.animate-move {
+  animation: move 1s ease-in-out infinite;
+}
 
 .loading-border-blue {
   border-color: #3178C6;
@@ -78,27 +88,9 @@
 html,
 body {
   color: white;
-  background-color: #24242c
+  background-color: #24242c;
 }
 
 body {
   @apply bg-[#24242c] text-white antialiased;
-
-}
-
-
-@keyframes move {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-5px); 
-  }
-  100% {
-    transform: translateY(0);
-  }
-}
-
-.animate-move {
-  animation: move 1s ease-in-out infinite; 
 }

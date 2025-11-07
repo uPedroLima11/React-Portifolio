@@ -2,10 +2,8 @@
 import Link from "next/link";
 import Header from "./components/header";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Projeto, projetos } from "./components/projeto";
-import { figma, Prototipo } from "./components/figma";
-
 import Footer from "./components/footer";
 import { useTranslation } from 'react-i18next';
 import '../../i18n';
@@ -13,8 +11,13 @@ import '../../i18n';
 export default function Home() {
   const { t, i18n } = useTranslation();
   const [projetoSelecionado, setProjetoSelecionado] = useState<Projeto | null>(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [visivel, setVisivel] = useState(false);
 
-  const handleAbrirModal = (projeto: Projeto | Prototipo) => setProjetoSelecionado(projeto as Projeto);
+  const projectsPerPage = 4;
+  const totalPages = Math.ceil(projetos.length / projectsPerPage);
+
+  const handleAbrirModal = (projeto: Projeto) => setProjetoSelecionado(projeto);
   const handleFecharModal = () => setProjetoSelecionado(null);
 
   const obterDescricao = (descricao: { pt: string; en: string; es: string }) => {
@@ -28,8 +31,17 @@ export default function Home() {
     }
   };
 
+  const currentProjects = projetos.slice(
+    (currentPage - 1) * projectsPerPage,
+    currentPage * projectsPerPage
+  );
+
+  useEffect(() => {
+    setVisivel(true);
+  }, []);
+
   return (
-    <div className=" w-full overflow-hidden ">
+    <div className="w-full overflow-hidden bg-[#24242c]">
       <header>
         <Header />
       </header>
@@ -47,11 +59,11 @@ export default function Home() {
             {t('e construo back-ends escaláveis com Fastify e bancos de dados como MySQL e PostgreSQL.')}
           </h1>
 
-          <div className="flex gap-4 justify-center md:justify-start">
+          <div className="flex gap-4 justify-center md:justify-start mt-8">
             <Link href="/contatos">
               <button
                 type="button"
-                className="mt-6 text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-14 py-2.5 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
+                className="mt-6 text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-8 py-3 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 transition-colors duration-300"
               >
                 {t('Converse Comigo')}
               </button>
@@ -59,7 +71,7 @@ export default function Home() {
             <Link href="/curriculo.pdf" download="Curriculo_Pedro.pdf">
               <button
                 type="button"
-                className="mt-6 text-white bg-blue-500 hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-14 py-2.5 dark:bg-blue-900 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                className="mt-6 text-white bg-blue-500 hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-8 py-3 dark:bg-blue-900 dark:hover:bg-blue-700 dark:focus:ring-blue-800 transition-colors duration-300"
               >
                 {t('Baixar Currículo')}
               </button>
@@ -68,7 +80,7 @@ export default function Home() {
         </div>
         <div className="mt-10 md:mt-0 flex flex-col items-center">
           <Image
-            src="/eu.jpg"
+            src="/linkedinphoto2.png"
             alt="eu"
             width={250}
             height={250}
@@ -116,210 +128,242 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mt-16">
+      <section className="mt-16 px-6 md:px-16">
         <h1 className="text-center text-3xl font-bold">{t('Tech Stack')}</h1>
 
-        <div className="mt-32 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-16 px-4 lg:px-16">
-          <div className="relative bg-[#1a1a1f] flex flex-col items-center justify-center rounded-lg py-8 px-6 hover:scale-105 transition duration-150 shadow-lg overflow-hidden">
-            <div className="absolute inset-0 border-2 border-transparent rounded-lg loading-border-blue"></div>
-            <Image src="/typescript.png" alt="typescript" width={60} height={40} quality={100} className="mt-10" />
-            <p className="text-white font-bold mt-6">TypeScript</p>
-          </div>
-
-          <div className="relative bg-[#1a1a1f] flex flex-col items-center justify-center rounded-lg py-8 px-6 hover:scale-105 transition duration-150 shadow-lg overflow-hidden">
-            <div className="absolute inset-0 border-2 border-transparent rounded-lg loading-border-cyan"></div>
-            <Image src="/react.svg" alt="react" width={60} height={40} quality={100} className="mt-10" />
-            <p className="text-white font-bold mt-6">React</p>
-          </div>
-
-          <div className="relative bg-[#1a1a1f] flex flex-col items-center justify-center rounded-lg py-8 px-6 hover:scale-105 transition duration-150 shadow-lg overflow-hidden">
-            <div className="absolute inset-0 border-2 border-transparent rounded-lg loading-border-yellow"></div>
-            <Image src="/javascript.png" alt="javascript" width={60} height={40} quality={100} className="mt-10" />
-            <p className="text-white font-bold mt-6">JavaScript</p>
-          </div>
-
-          <div className="relative bg-[#1a1a1f] flex flex-col items-center justify-center rounded-lg py-8 px-6 hover:scale-105 transition duration-150 shadow-lg overflow-hidden">
-            <div className="absolute inset-0 border-2 border-transparent rounded-lg loading-border-green"></div>
-            <Image src="/tailwind.png" alt="tailwind" width={60} height={40} quality={100} className="mt-10" />
-            <p className="text-white font-bold mt-6">Tailwind CSS</p>
-          </div>
-
-          <div className="relative bg-[#1a1a1f] flex flex-col items-center justify-center rounded-lg py-8 px-6 hover:scale-105 transition duration-150 shadow-lg overflow-hidden">
-            <div className="absolute inset-0 border-2 border-transparent rounded-lg loading-border-blue"></div>
-            <Image src="/mysql1.png" alt="mysql" width={60} height={40} quality={100} className="mt-10" />
-            <p className="text-white font-bold mt-6">MySQL</p>
-          </div>
-
-          <div className="relative bg-[#1a1a1f] flex flex-col items-center justify-center rounded-lg py-8 px-6 hover:scale-105 transition duration-150 shadow-lg overflow-hidden">
-            <div className="absolute inset-0 border-2 border-transparent rounded-lg loading-border-yellow"></div>
-            <Image src="/python.svg" alt="python" width={60} height={40} quality={100} className="mt-10" />
-            <p className="text-white font-bold mt-6">Python</p>
-          </div>
-
-          <div className="relative bg-[#1a1a1f] flex flex-col items-center justify-center rounded-lg py-8 px-6 hover:scale-105 transition duration-150 shadow-lg overflow-hidden">
-            <div className="absolute inset-0 border-2 border-transparent rounded-lg loading-border-black"></div>
-            <Image src="/next.svg" alt="nextjs" width={60} height={40} quality={100} className="mt-10" />
-            <p className="text-white font-bold mt-6">NextJS</p>
-          </div>
-
-          <div className="relative bg-[#1a1a1f] flex flex-col items-center justify-center rounded-lg py-8 px-6 hover:scale-105 transition duration-150 shadow-lg overflow-hidden">
-            <div className="absolute inset-0 border-2 border-transparent rounded-lg loading-border-red"></div>
-            <Image src="/git.png" alt="git" width={60} height={40} quality={100} className="mt-10" />
-            <p className="text-white font-bold mt-6">Git</p>
-          </div>
-        </div>
-      </section>
-      <section className="mt-24">
-        <h1 className="text-center text-3xl font-bold">{t('Alguns Projetos Desenvolvidos')}</h1>
-
-        <div className="mt-28 grid grid-cols-1 md:grid-cols-2 gap-10 lg:px-16">
-          {projetos.map((projeto, index) => (
+        <div className="mt-16 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-6">
+          {[
+            { name: "TypeScript", src: "/typescript.png", color: "blue" },
+            { name: "React", src: "/react.svg", color: "cyan" },
+            { name: "JavaScript", src: "/javascript.png", color: "yellow" },
+            { name: "Tailwind CSS", src: "/tailwind.png", color: "green" },
+            { name: "MySQL", src: "/mysql1.png", color: "blue" },
+            { name: "Python", src: "/python.svg", color: "yellow" },
+            { name: "NextJS", src: "/next.svg", color: "black" },
+            { name: "Git", src: "/git.png", color: "red" }
+          ].map((tech, index) => (
             <div
               key={index}
-              className="relative pb-11 bg-[#1a1a1f] mb-10 flex flex-col items-center justify-center rounded-lg py-2 hover:scale-105 transition delay-150 duration-150 ease-in-out shadow-2xl overflow-hidden"
+              className="relative bg-[#1a1a1f] flex flex-col items-center justify-center rounded-lg py-6 px-4 hover:scale-105 transition duration-300 shadow-lg overflow-hidden border border-gray-800"
             >
+              <div className={`absolute inset-0 border-2 border-transparent rounded-lg loading-border-${tech.color}`}></div>
               <Image
-                src={projeto.imagem}
-                alt={projeto.nome}
-                width={480}
-                height={420}
+                src={tech.src}
+                alt={tech.name}
+                width={50}
+                height={40}
                 quality={100}
-                className="mt-8 hidden md:block"
+                className="transition duration-300"
               />
-              <Image
-                src={projeto.imagem}
-                alt={projeto.nome}
-                width={300}
-                height={200}
-                quality={100}
-                className="mt-8 block md:hidden w-full max-w-xs border border-gray-500 rounded-lg "
-              />
+              <p className="text-white font-semibold mt-4 text-sm text-center">{tech.name}</p>
+            </div>
+          ))}
+        </div>
+      </section>
 
-              <p className="text-white text-xl font-bold mt-10">{projeto.nome}</p>
+      <section className="px-6 md:px-32 py-24">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+            GitHub Insights
+          </h2>
+          <p className="text-gray-400 mt-2">{t('estatisticas.minha_atividade')}</p>
+        </div>
 
-              <div className="flex flex-col md:flex-row gap-4 mt-6">
-                <Link href={projeto.githubLink} target="_blank">
-                  <button className="py-2 px-4 bg-gray-300 font-semibold text-black rounded-lg hover:bg-gray-400">
-                    Github
-                  </button>
-                </Link>
-                <Link href={projeto.liveDemoLink} target="_blank">
-                  <button className="py-2 px-4 bg-green-500 text-black font-semibold rounded-lg hover:bg-green-600">
-                    Live Demo
-                  </button>
-                </Link>
+        <div className={`flex flex-col md:flex-row justify-center items-center gap-8 transition-all duration-1000 delay-500 ${visivel ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
+          }`}>
+          <div className="text-center bg-[#1a1a1f] p-6 rounded-xl shadow-lg border border-gray-800">
+            <img
+              width="400"
+              src="https://github-readme-stats.vercel.app/api?username=upedrolima11&show_icons=true&rank_icon=github&ring_color=E49B0F&theme=transparent&border_color=808080&icon_color=E49B0F&include_all_commits=true&count_private=true&title_color=808080&text_color=808080"
+              alt="GitHub Stats"
+              className="mx-auto"
+            />
+            <div className="text-blue-300 text-sm font-medium mt-2">{t('estatisticas.estatisticas_gerais')}</div>
+          </div>
 
-                <button
-                  onClick={() => handleAbrirModal(projeto)}
-                  className="py-2 px-4 text-white rounded-lg font-bold bg-slate-800 hover:text-[#B38000]"
-                >
-                  {t('Mais Informações')}
-                </button>
+          <div className="text-center bg-[#1a1a1f] p-6 rounded-xl shadow-lg border border-gray-800">
+            <img
+              height="167"
+              src="https://github-readme-stats.vercel.app/api/top-langs/?username=upedrolima11&border_color=808080&layout=compact&theme=transparent&title_color=808080&text_color=808080"
+              alt="Top Languages"
+              className="mx-auto"
+            />
+            <div className="text-blue-300 text-sm font-medium mt-2">{t('estatisticas.linguagens_mais_usadas')}</div>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mt-12">
+          {[
+            {
+              valor: 29,
+              label: t("estatisticas.repositorios_publicos"),
+              sufixo: '+',
+              icon: "📂",
+              color: "from-blue-500 to-cyan-500"
+            },
+            {
+              valor: 731,
+              label: t("estatisticas.commits_realizados"),
+              sufixo: '+',
+              icon: "💾",
+              color: "from-green-500 to-emerald-500"
+            },
+            {
+              valor: "TypeScript",
+              label: t("estatisticas.linguagem_principal"),
+              sufixo: '',
+              icon: "🚀",
+              color: "from-purple-500 to-pink-500"
+            },
+            {
+              valor: 73,
+              label: t("estatisticas.contribuicoes_recentes"),
+              sufixo: '',
+              icon: "📊",
+              color: "from-orange-500 to-red-500"
+            }
+          ].map((estatistica, index) => (
+            <div
+              key={index}
+              className="text-center bg-[#1a1a1f] p-4 md:p-6 rounded-xl shadow-lg border border-gray-800 hover:shadow-xl transition-all duration-300 hover:scale-105 group"
+            >
+              <div className="text-2xl mb-2">{estatistica.icon}</div>
+              <div id="projetos2" className={`text-xl md:text-2xl font-bold text-white mb-2 bg-gradient-to-r ${estatistica.color} bg-clip-text text-transparent`}>
+                {estatistica.valor}{estatistica.sufixo}
               </div>
+              <div className="text-blue-300 text-xs md:text-sm font-medium">{estatistica.label}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+      <section className=" px-4 md:px-8 lg:px-16" id="projetos">
+        <h1 className="text-center text-3xl font-bold mb-16">{t('Alguns Projetos Desenvolvidos')}</h1>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-6 md:gap-8 max-w-7xl mx-auto">
+          {currentProjects.map((projeto, index) => (
+            <div
+              key={index}
+              className="cursor-pointer relative bg-[#1a1a1f] rounded-2xl p-6 hover:scale-105 transition duration-300 shadow-2xl overflow-hidden border border-gray-800 hover:border-blue-500/30 group"
+            >
+              <div className="relative w-full h-56 md:h-60 lg:h-64 overflow-hidden rounded-xl border border-gray-700 bg-gradient-to-br from-gray-900 to-gray-800">
+                <Image
+                  src={projeto.imagem}
+                  alt={projeto.nome}
+                  fill
+                  quality={100}
+                  className="cursor-pointer object-contain p-3 transition-transform duration-500 group-hover:scale-105"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 40vw"
+                />
+                <div className="absolute inset-0 bg-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </div>
+              <div className="mt-6 space-y-4">
+                <h3 className="text-white text-xl font-bold text-center group-hover:text-blue-400 transition-colors duration-300">
+                  {projeto.nome}
+                </h3>
+                <div className="flex flex-col sm:flex-row gap-3 justify-center flex-wrap">
+                  <Link href={projeto.githubLink} target="_blank">
+                    <button className="flex items-center gap-2 py-2 px-4 bg-gray-700 hover:bg-gray-600 font-semibold text-white rounded-lg text-sm transition-all duration-300 hover:scale-105 shadow-lg">
+                      <Image src="/github.png" alt="GitHub" width={16} height={16} className="invert" />
+                      GitHub
+                    </button>
+                  </Link>
+
+                   {projeto.liveDemoLink && (
+                    <Link href={projeto.liveDemoLink} target="_blank">
+                      <button className="flex items-center gap-2 py-2 px-4 bg-green-600 hover:bg-green-500 text-white font-semibold rounded-lg text-sm transition-all duration-300 hover:scale-105 shadow-lg">
+                        <span className="text-lg">🌐</span>
+                        Live Demo
+                      </button></Link>
+                  )}
+                  {projeto.figmaLink && (
+                    <Link href={projeto.figmaLink} target="_blank">
+                      <button className="flex items-center gap-2 py-2 px-4 bg-purple-600 hover:bg-purple-500 text-white font-semibold rounded-lg text-sm transition-all duration-300 hover:scale-105 shadow-lg">
+                        <span className="text-lg">🎨</span>
+                        Prototipação
+                      </button>
+                    </Link>
+                  )}
+
+                  <button
+                    onClick={() => handleAbrirModal(projeto)}
+                    className="flex items-center gap-2 py-2 px-4 bg-slate-800 hover:bg-slate-700 text-white rounded-lg font-bold text-sm transition-all duration-300 hover:scale-105 hover:text-blue-400 shadow-lg"
+                  >
+                    <span className="text-lg">ℹ️</span>
+                    {t('Mais Informações')}
+                  </button>
+                </div>
+              </div>
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
             </div>
           ))}
         </div>
 
-        {projetoSelecionado && (
-          <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 z-50">
-            <div className="bg-[#1a1a1f] p-8 rounded-lg w-96 relative">
-              <button
-                onClick={handleFecharModal}
-                className="absolute top-2 right-2 text-white font-light hover:text-gray-700"
-              >
-                ✕
-              </button>
-              <h2 className="text-2xl font-bold mb-4">{projetoSelecionado.nome}</h2>
-              <Image
-                src={projetoSelecionado.imagem}
-                alt={projetoSelecionado.nome}
-                width={400}
-                height={300}
-                quality={100}
-                className="border border-gray-500 rounded-lg"
-              />
-              <p className="mt-4 text-white font-light">{obterDescricao(projetoSelecionado.descricao)}</p>
-            </div>
-          </div>
-        )}
-      </section>
-
-
-
-      <section className="mt-12">
-        <h1 className="text-center text-3xl font-bold">{t('Algumas Prototipações feitas em Figma')}</h1>
-
-        <div className="mt-28 grid grid-cols-1 md:grid-cols-2 gap-10 lg:px-16">
-          {figma.map((prototipo, index) => (
-            <div
-              key={index}
-              className="relative pb-11 bg-[#1a1a1f] mb-10 flex flex-col items-center justify-center rounded-lg py-2 hover:scale-105 transition delay-150 duration-150 ease-in-out shadow-2xl overflow-hidden"
+        {totalPages > 1 && (
+          <div className="flex justify-center items-center mt-16 gap-4">
+            <button
+              onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+              disabled={currentPage === 1}
+              className="px-5 py-2.5 bg-gray-800 text-white rounded-xl disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-700 transition-all duration-300 text-sm font-medium shadow-lg"
             >
-              <Image
-                src={prototipo.imagem}
-                alt={prototipo.nome}
-                width={480}
-                height={420}
-                quality={100}
-                className="mt-8 hidden md:block"
-              />
-              <Image
-                src={prototipo.imagem}
-                alt={prototipo.nome}
-                width={300}
-                height={200}
-                quality={100}
-                className="mt-8 block md:hidden w-full max-w-xs border border-gray-500 rounded-lg "
-              />
+              ← Anterior
+            </button>
 
-              <p className="text-white text-xl font-bold mt-10">{prototipo.nome}</p>
-
-              <div className="flex flex-col md:flex-row gap-4 mt-6">
-                <Link href={prototipo.prototipacaoLink} target="_blank">
-                  <button className="py-2 px-4 bg-green-500 text-black font-semibold rounded-lg hover:bg-green-600">
-                    {t('Prototipação')}
-                  </button>
-                </Link>
-
+            <div className="flex gap-2">
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
                 <button
-                  onClick={() => handleAbrirModal(prototipo)}
-                  className="py-2 px-4 text-white rounded-lg font-bold bg-slate-800 hover:text-[#B38000]"
+                  key={page}
+                  onClick={() => setCurrentPage(page)}
+                  className={`px-4 py-2.5 rounded-xl transition-all duration-300 text-sm font-medium shadow-lg ${currentPage === page
+                    ? 'bg-blue-600 text-white shadow-blue-500/25'
+                    : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
+                    }`}
                 >
-                  {t('Mais Informações')}
+                  {page}
                 </button>
-              </div>
+              ))}
             </div>
-          ))}
-        </div>
 
-        {projetoSelecionado && (
-          <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 z-50">
-            <div className="bg-[#1a1a1f] p-8 rounded-lg w-96 relative">
-              <button
-                onClick={handleFecharModal}
-                className="absolute top-2 right-2 text-white font-light hover:text-gray-700"
-              >
-                ✕
-              </button>
-              <h2 className="text-2xl font-bold mb-4">{projetoSelecionado.nome}</h2>
-              <Image
-                src={projetoSelecionado.imagem}
-                alt={projetoSelecionado.nome}
-                width={400}
-                height={300}
-                quality={100}
-                className="border border-gray-500 rounded-lg"
-              />
-              <p className="mt-4 text-white font-light">{obterDescricao(projetoSelecionado.descricao)}</p>
-            </div>
+            <button
+              onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+              disabled={currentPage === totalPages}
+              className="px-5 py-2.5 bg-gray-800 text-white rounded-xl disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-700 transition-all duration-300 text-sm font-medium shadow-lg"
+            >
+              Próxima →
+            </button>
           </div>
         )}
       </section>
+      {projetoSelecionado && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 z-50 p-4">
+          <div className="bg-[#1a1a1f] p-6 rounded-xl w-full max-w-md relative border border-gray-700 max-h-[90vh] overflow-y-auto shadow-2xl">
+            <button
+              onClick={handleFecharModal}
+              className="absolute top-3 right-3 text-white hover:text-gray-400 text-xl font-light transition-colors duration-300 z-10 bg-gray-800 rounded-full w-8 h-8 flex items-center justify-center"
+            >
+              ✕
+            </button>
+            <h2 className="text-2xl font-bold mb-4 text-center bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+              {projetoSelecionado.nome}
+            </h2>
+            <div className="relative w-full h-48 mb-4 rounded-lg border border-gray-600 overflow-hidden bg-gray-900">
+              <Image
+                src={projetoSelecionado.imagem}
+                alt={projetoSelecionado.nome}
+                fill
+                quality={100}
+                className="object-contain p-2"
+                sizes="(max-width: 768px) 100vw, 400px"
+              />
+            </div>
+            <p className="text-gray-300 font-light leading-relaxed">
+              {obterDescricao(projetoSelecionado.descricao)}
+            </p>
+          </div>
+        </div>
+      )}
 
-
-      <div className="mt-10"></div>
+      <div className="mt-20"></div>
       <Footer />
     </div>
   );
-};
-
+}
