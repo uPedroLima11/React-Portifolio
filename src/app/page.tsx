@@ -12,7 +12,7 @@ export default function Home() {
   const { t, i18n } = useTranslation();
   const [projetoSelecionado, setProjetoSelecionado] = useState<Projeto | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const [visivel, setVisivel] = useState(false);
+  const [, setVisivel] = useState(false);
 
   const projectsPerPage = 4;
   const totalPages = Math.ceil(projetos.length / projectsPerPage);
