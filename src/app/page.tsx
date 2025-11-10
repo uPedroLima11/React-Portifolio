@@ -169,29 +169,6 @@ export default function Home() {
           <p className="text-gray-400 mt-2">{t('estatisticas.minha_atividade')}</p>
         </div>
 
-        <div className={`flex flex-col md:flex-row justify-center items-center gap-8 transition-all duration-1000 delay-500 ${visivel ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
-          }`}>
-          <div className="text-center bg-[#1a1a1f] p-6 rounded-xl shadow-lg border border-gray-800">
-            <img
-              width="400"
-              src="https://github-readme-stats.vercel.app/api?username=upedrolima11&show_icons=true&rank_icon=github&ring_color=E49B0F&theme=transparent&border_color=808080&icon_color=E49B0F&include_all_commits=true&count_private=true&title_color=808080&text_color=808080"
-              alt="GitHub Stats"
-              className="mx-auto"
-            />
-            <div className="text-blue-300 text-sm font-medium mt-2">{t('estatisticas.estatisticas_gerais')}</div>
-          </div>
-
-          <div className="text-center bg-[#1a1a1f] p-6 rounded-xl shadow-lg border border-gray-800">
-            <img
-              height="167"
-              src="https://github-readme-stats.vercel.app/api/top-langs/?username=upedrolima11&border_color=808080&layout=compact&theme=transparent&title_color=808080&text_color=808080"
-              alt="Top Languages"
-              className="mx-auto"
-            />
-            <div className="text-blue-300 text-sm font-medium mt-2">{t('estatisticas.linguagens_mais_usadas')}</div>
-          </div>
-        </div>
-
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mt-12">
           {[
             {
