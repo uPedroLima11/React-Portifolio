@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfólio — Pedro Mendes Lima
 
-## Getting Started
+Portfólio pessoal desenvolvido com Next.js (App Router), TypeScript e Tailwind CSS, com suporte a português, inglês e espanhol.
 
-First, run the development server:
+## Stack
+
+- Next.js 14 (App Router)
+- TypeScript
+- Tailwind CSS
+- i18next / react-i18next
+
+## Rodando localmente
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+A aplicação sobe em [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Comando | Descrição |
+| --- | --- |
+| `npm run dev` | Servidor de desenvolvimento |
+| `npm run build` | Build de produção |
+| `npm run start` | Servidor de produção |
+| `npm run lint` | ESLint |
 
-## Learn More
+## Estrutura
 
-To learn more about Next.js, take a look at the following resources:
+```
+src/app
+├── components      Header, Footer, seletor de idioma e dados dos projetos
+├── contatos        Página de contato
+├── globals.css     Estilos base e utilitários
+├── layout.tsx      Metadados, fontes e shell da aplicação
+└── page.tsx        Página inicial
+i18n.ts             Traduções (pt, en, es)
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Traduções
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Todos os textos ficam em `i18n.ts`, organizados por seção (`hero`, `sobre`, `stack`, `projetos`, `contato`, `footer`). Para adicionar um idioma, basta criar um novo objeto seguindo o formato de `pt` e registrá-lo em `idiomas` e em `resources`.
 
-## Deploy on Vercel
+## Projetos
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Os cards da seção de projetos são gerados a partir do array `projetos` em `src/app/components/projeto.tsx`. Cada item tem nome, imagem, resumo e descrição nos três idiomas, lista de tecnologias e links para código, deploy e protótipo.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Contato
+
+- [LinkedIn](https://www.linkedin.com/in/upedrolima/)
+- [GitHub](https://github.com/uPedroLima11)

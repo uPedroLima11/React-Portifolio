@@ -1,346 +1,515 @@
 "use client";
-import Link from "next/link";
-import Header from "./components/header";
+
+import { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
-import { useState, useEffect } from "react";
-import { Projeto, projetos } from "./components/projeto";
+import Link from "next/link";
+import { useTranslation } from "react-i18next";
+import Header from "./components/header";
 import Footer from "./components/footer";
-import { useTranslation } from 'react-i18next';
-import '../../i18n';
+import { Projeto, projetos, obterTexto } from "./components/projeto";
+import "../../i18n";
+
+const redes = [
+  { nome: "LinkedIn", href: "https://www.linkedin.com/in/upedrolima/", icone: "/linkedin.png" },
+  { nome: "GitHub", href: "https://github.com/uPedroLima11", icone: "/github.png" },
+  { nome: "Instagram", href: "https://www.instagram.com/upedro_lima/", icone: "/instagram1.png" },
+];
+
+type Tecnologia = { nome: string; src?: string; inverter?: boolean };
+
+const trilho: { nome: string; src: string; inverter?: boolean }[] = [
+  { nome: "React", src: "/react.svg" },
+  { nome: "Next.js", src: "/next.svg", inverter: true },
+  { nome: "TypeScript", src: "/typescript.png" },
+  { nome: "JavaScript", src: "/javascript.png" },
+  { nome: "Tailwind CSS", src: "/tailwind.png" },
+  { nome: "Node.js", src: "/nodejsplain.svg" },
+  { nome: "MySQL", src: "/mysql1.png" },
+  { nome: "Python", src: "/python.svg" },
+  { nome: "Git", src: "/git.png" },
+  { nome: "Figma", src: "/figma.svg" },
+];
+
+const grupos: { chave: string; itens: Tecnologia[] }[] = [
+  {
+    chave: "stack.front",
+    itens: [
+      { nome: "React", src: "/react.svg" },
+      { nome: "Next.js", src: "/next.svg", inverter: true },
+      { nome: "TypeScript", src: "/typescript.png" },
+      { nome: "JavaScript", src: "/javascript.png" },
+      { nome: "Tailwind CSS", src: "/tailwind.png" },
+      { nome: "Figma", src: "/figma.svg" },
+    ],
+  },
+  {
+    chave: "stack.back",
+    itens: [
+      { nome: "Node.js", src: "/nodejsplain.svg" },
+      { nome: "Express" },
+      { nome: "Java" },
+      { nome: "Spring Boot" },
+      { nome: "MySQL", src: "/mysql1.png" },
+      { nome: "PostgreSQL" },
+      { nome: "Prisma" },
+    ],
+  },
+  {
+    chave: "stack.ferramentas",
+    itens: [
+      { nome: "Git", src: "/git.png" },
+      { nome: "GitHub", src: "/github.png" },
+      { nome: "Python", src: "/python.svg" },
+      { nome: "Vercel" },
+    ],
+  },
+];
+
+const fatos = [
+  { rotulo: "sobre.fato_formacao", valor: "sobre.fato_formacao_valor" },
+  { rotulo: "sobre.fato_foco", valor: "sobre.fato_foco_valor" },
+  { rotulo: "sobre.fato_local", valor: "sobre.fato_local_valor" },
+  { rotulo: "sobre.fato_idiomas", valor: "sobre.fato_idiomas_valor" },
+];
 
 export default function Home() {
   const { t, i18n } = useTranslation();
-  const [projetoSelecionado, setProjetoSelecionado] = useState<Projeto | null>(null);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [, setVisivel] = useState(false);
+  const [projetoAberto, setProjetoAberto] = useState<Projeto | null>(null);
+  const [repositorios, setRepositorios] = useState(29);
 
-  const projectsPerPage = 4;
-  const totalPages = Math.ceil(projetos.length / projectsPerPage);
-
-  const handleAbrirModal = (projeto: Projeto) => setProjetoSelecionado(projeto);
-  const handleFecharModal = () => setProjetoSelecionado(null);
-
-  const obterDescricao = (descricao: { pt: string; en: string; es: string }) => {
-    switch (i18n.language) {
-      case 'en':
-        return descricao.en;
-      case 'es':
-        return descricao.es;
-      default:
-        return descricao.pt;
-    }
-  };
-
-  const currentProjects = projetos.slice(
-    (currentPage - 1) * projectsPerPage,
-    currentPage * projectsPerPage
-  );
+  const fecharModal = useCallback(() => setProjetoAberto(null), []);
 
   useEffect(() => {
-    setVisivel(true);
+    let ativo = true;
+
+    fetch("https://api.github.com/users/uPedroLima11")
+      .then((resposta) => (resposta.ok ? resposta.json() : null))
+      .then((dados) => {
+        if (ativo && dados?.public_repos) setRepositorios(dados.public_repos);
+      })
+      .catch(() => null);
+
+    return () => {
+      ativo = false;
+    };
   }, []);
 
+  useEffect(() => {
+    if (!projetoAberto) return;
+
+    const fecharComEsc = (evento: KeyboardEvent) => {
+      if (evento.key === "Escape") fecharModal();
+    };
+
+    document.addEventListener("keydown", fecharComEsc);
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.removeEventListener("keydown", fecharComEsc);
+      document.body.style.overflow = "";
+    };
+  }, [projetoAberto, fecharModal]);
+
+  const numeros = [
+    { valor: `${repositorios}`, rotulo: t("github.repos") },
+    { valor: "731+", rotulo: t("github.commits") },
+    { valor: "TypeScript", rotulo: t("github.linguagem") },
+    { valor: "73", rotulo: t("github.contribuicoes") },
+  ];
+
   return (
-    <div className="w-full overflow-hidden bg-[#24242c]">
-      <header>
-        <Header />
-      </header>
+    <>
+      <Header />
 
-      <section className="flex flex-col-reverse md:flex-row items-center justify-between py-24 px-6 md:px-32 space-y-10 md:space-y-0 w-full">
-        <div className="px-6 text-center md:text-left text-4xl md:text-7xl font-light flex-col">
-          <h1 className="mt-16 md:mt-40">{t('Olá,')}</h1>
-          <h2 className="flex items-center justify-center md:justify-start mt-4">
-            {t('Sou')} <span className="font-semibold ml-4">Pedro</span>
-            <span className="text-3xl md:text-5xl animate-fade relative translate-y-0 ml-3">|</span>
-          </h2>
-          <h1 className="text-base md:text-lg mt-4">
-            <span className="font-semibold">{t('Fullstack Developer')} </span>{t('com grande experiência em Front-End')} <br />
-            {t('Crio interfaces intuitivas e responsivas utilizando')} <span className="font-bold">React, Next.js, TypeScript e Tailwind CSS</span> <br />
-            {t('e construo back-ends escaláveis com Fastify e bancos de dados como MySQL e PostgreSQL.')}
-          </h1>
+      <main id="topo">
+        <section className="mx-auto max-w-content px-5 pb-16 pt-32 md:px-8 md:pb-24 md:pt-44">
+          <div className="grid items-center gap-14 lg:grid-cols-[1.15fr_0.85fr] lg:gap-20">
+            <div className="animate-rise">
+              <p className="eyebrow flex items-center gap-3">
+                <span className="h-px w-8 bg-sand/60" />
+                {t("hero.eyebrow")}
+              </p>
 
-          <div className="flex gap-4 justify-center md:justify-start mt-8">
-            <Link href="/contatos">
-              <button
-                type="button"
-                className="mt-6 text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-8 py-3 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 transition-colors duration-300"
-              >
-                {t('Converse Comigo')}
-              </button>
-            </Link>
-            <Link href="/curriculo.pdf" download="Curriculo_Pedro.pdf">
-              <button
-                type="button"
-                className="mt-6 text-white bg-blue-500 hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-8 py-3 dark:bg-blue-900 dark:hover:bg-blue-700 dark:focus:ring-blue-800 transition-colors duration-300"
-              >
-                {t('Baixar Currículo')}
-              </button>
-            </Link>
-          </div>
-        </div>
-        <div className="mt-10 md:mt-0 flex flex-col items-center">
-          <Image
-            src="/linkedinphoto2.png"
-            alt="eu"
-            width={250}
-            height={250}
-            quality={100}
-            className="mr-0 md:mr-14 animate-move rounded-full border-4"
-          />
+              <h1 className="mt-7 text-4xl font-medium leading-[1.05] tracking-tight text-zinc-100 sm:text-5xl lg:text-6xl">
+                <span className="block text-lg font-normal text-zinc-500 sm:text-xl">
+                  {t("hero.saudacao")}
+                </span>
+                Pedro Mendes Lima
+                <span className="ml-1 inline-block animate-caret text-sand">_</span>
+              </h1>
 
-          <div className="flex gap-6 mt-2 md:mt-10 mr-0 lg:mr-12">
-            <Link href="https://www.linkedin.com/in/upedrolima/">
-              <Image src="/linkedin.png" alt="linkedin" width={50} height={50} />
-            </Link>
-            <Link href="https://www.instagram.com/upedro_lima/">
-              <Image src="/instagram1.png" alt="instagram" width={50} height={50} />
-            </Link>
-            <Link href="https://github.com/uPedroLima11">
-              <Image src="/github.png" alt="github" width={50} height={50} />
-            </Link>
-          </div>
-          <div id="sobremim"></div>
-        </div>
-      </section>
+              <p className="mt-7 max-w-xl text-base leading-relaxed text-zinc-400 sm:text-lg">
+                {t("hero.resumo")}
+              </p>
 
-      <section className="p-12">
-        <div className="flex justify-center">
-          <h1 className="text-3xl font-bold">{t('Sobre Mim')}</h1>
-        </div>
-
-        <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-12">
-          <div>
-            <Image
-              src="/tela.png"
-              alt="Sobre mim"
-              width={450}
-              height={400}
-              quality={100}
-              className="rounded-xl mr-16 border-4 border-[#101013]"
-            />
-          </div>
-
-          <div className="max-w-xl bg-[#1a1a1f] p-8 rounded-lg shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]">
-            <h1 className="font-light">
-              <span className="ml-4">{t('Olá!')}</span> {t('Sou estudante de Análise e Desenvolvimento de Sistemas no Senac-RS e, desde pequeno, tenho uma paixão por tecnologia. Atualmente, estou focado no desenvolvimento front-end, utilizando minhas habilidades em')} <span className="font-bold">React, TypeScript, JavaScript, Tailwind e Figma </span> {t('para criar interfaces atraentes e funcionais.')} <br /> <span className="ml-4">{t('Meu')}</span> {t('principal objetivo é transformar ideias em experiências digitais memoráveis. Cada projeto representa uma nova oportunidade de aprendizado e crescimento, e estou sempre em busca das últimas inovações do setor. Estou animado para contribuir com soluções que melhorem a vida das pessoas no ambiente digital!')}
-            </h1>
-          </div>
-        </div>
-      </section>
-
-      <section className="mt-16 px-6 md:px-16">
-        <h1 className="text-center text-3xl font-bold">{t('Tech Stack')}</h1>
-
-        <div className="mt-16 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-6">
-          {[
-            { name: "TypeScript", src: "/typescript.png", color: "blue" },
-            { name: "React", src: "/react.svg", color: "cyan" },
-            { name: "JavaScript", src: "/javascript.png", color: "yellow" },
-            { name: "Tailwind CSS", src: "/tailwind.png", color: "green" },
-            { name: "MySQL", src: "/mysql1.png", color: "blue" },
-            { name: "Python", src: "/python.svg", color: "yellow" },
-            { name: "NextJS", src: "/next.svg", color: "black" },
-            { name: "Git", src: "/git.png", color: "red" }
-          ].map((tech, index) => (
-            <div
-              key={index}
-              className="relative bg-[#1a1a1f] flex flex-col items-center justify-center rounded-lg py-6 px-4 hover:scale-105 transition duration-300 shadow-lg overflow-hidden border border-gray-800"
-            >
-              <div className={`absolute inset-0 border-2 border-transparent rounded-lg loading-border-${tech.color}`}></div>
-              <Image
-                src={tech.src}
-                alt={tech.name}
-                width={50}
-                height={40}
-                quality={100}
-                className="transition duration-300"
-              />
-              <p className="text-white font-semibold mt-4 text-sm text-center">{tech.name}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="px-6 md:px-32 py-24">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-            GitHub Insights
-          </h2>
-          <p className="text-gray-400 mt-2">{t('estatisticas.minha_atividade')}</p>
-        </div>
-
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mt-12">
-          {[
-            {
-              valor: 29,
-              label: t("estatisticas.repositorios_publicos"),
-              sufixo: '+',
-              icon: "📂",
-              color: "from-blue-500 to-cyan-500"
-            },
-            {
-              valor: 731,
-              label: t("estatisticas.commits_realizados"),
-              sufixo: '+',
-              icon: "💾",
-              color: "from-green-500 to-emerald-500"
-            },
-            {
-              valor: "TypeScript",
-              label: t("estatisticas.linguagem_principal"),
-              sufixo: '',
-              icon: "🚀",
-              color: "from-purple-500 to-pink-500"
-            },
-            {
-              valor: 73,
-              label: t("estatisticas.contribuicoes_recentes"),
-              sufixo: '',
-              icon: "📊",
-              color: "from-orange-500 to-red-500"
-            }
-          ].map((estatistica, index) => (
-            <div
-              key={index}
-              className="text-center bg-[#1a1a1f] p-4 md:p-6 rounded-xl shadow-lg border border-gray-800 hover:shadow-xl transition-all duration-300 hover:scale-105 group"
-            >
-              <div className="text-2xl mb-2">{estatistica.icon}</div>
-              <div id="projetos2" className={`text-xl md:text-2xl font-bold text-white mb-2 bg-gradient-to-r ${estatistica.color} bg-clip-text text-transparent`}>
-                {estatistica.valor}{estatistica.sufixo}
+              <div className="mt-10 flex flex-wrap items-center gap-3">
+                <Link href="/contatos" className="btn-primary">
+                  {t("hero.cta_contato")}
+                </Link>
+                <Link
+                  href="/curriculo.pdf"
+                  download="Curriculo-Pedro-Mendes-Lima.pdf"
+                  className="btn-ghost"
+                >
+                  {t("hero.cta_cv")}
+                </Link>
               </div>
-              <div className="text-blue-300 text-xs md:text-sm font-medium">{estatistica.label}</div>
-            </div>
-          ))}
-        </div>
-      </section>
-      <section className=" px-4 md:px-8 lg:px-16" id="projetos">
-        <h1 className="text-center text-3xl font-bold mb-16">{t('Alguns Projetos Desenvolvidos')}</h1>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-6 md:gap-8 max-w-7xl mx-auto">
-          {currentProjects.map((projeto, index) => (
-            <div
-              key={index}
-              className="cursor-pointer relative bg-[#1a1a1f] rounded-2xl p-6 hover:scale-105 transition duration-300 shadow-2xl overflow-hidden border border-gray-800 hover:border-blue-500/30 group"
-            >
-              <div className="relative w-full h-56 md:h-60 lg:h-64 overflow-hidden rounded-xl border border-gray-700 bg-gradient-to-br from-gray-900 to-gray-800">
-                <Image
-                  src={projeto.imagem}
-                  alt={projeto.nome}
-                  fill
-                  quality={100}
-                  className="cursor-pointer object-contain p-3 transition-transform duration-500 group-hover:scale-105"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 40vw"
-                />
-                <div className="absolute inset-0 bg-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </div>
-              <div className="mt-6 space-y-4">
-                <h3 className="text-white text-xl font-bold text-center group-hover:text-blue-400 transition-colors duration-300">
-                  {projeto.nome}
-                </h3>
-                <div className="flex flex-col sm:flex-row gap-3 justify-center flex-wrap">
-                  <Link href={projeto.githubLink} target="_blank">
-                    <button className="flex items-center gap-2 py-2 px-4 bg-gray-700 hover:bg-gray-600 font-semibold text-white rounded-lg text-sm transition-all duration-300 hover:scale-105 shadow-lg">
-                      <Image src="/github.png" alt="GitHub" width={16} height={16} className="invert" />
-                      GitHub
-                    </button>
-                  </Link>
-
-                   {projeto.liveDemoLink && (
-                    <Link href={projeto.liveDemoLink} target="_blank">
-                      <button className="flex items-center gap-2 py-2 px-4 bg-green-600 hover:bg-green-500 text-white font-semibold rounded-lg text-sm transition-all duration-300 hover:scale-105 shadow-lg">
-                        <span className="text-lg">🌐</span>
-                        Live Demo
-                      </button></Link>
-                  )}
-                  {projeto.figmaLink && (
-                    <Link href={projeto.figmaLink} target="_blank">
-                      <button className="flex items-center gap-2 py-2 px-4 bg-purple-600 hover:bg-purple-500 text-white font-semibold rounded-lg text-sm transition-all duration-300 hover:scale-105 shadow-lg">
-                        <span className="text-lg">🎨</span>
-                        Prototipação
-                      </button>
-                    </Link>
-                  )}
-
-                  <button
-                    onClick={() => handleAbrirModal(projeto)}
-                    className="flex items-center gap-2 py-2 px-4 bg-slate-800 hover:bg-slate-700 text-white rounded-lg font-bold text-sm transition-all duration-300 hover:scale-105 hover:text-blue-400 shadow-lg"
+              <div className="mt-10 flex items-center gap-3">
+                {redes.map((rede) => (
+                  <Link
+                    key={rede.nome}
+                    href={rede.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={rede.nome}
+                    className="flex h-11 w-11 items-center justify-center rounded-xl border border-line bg-surface transition-all duration-200 hover:-translate-y-0.5 hover:border-sand/60"
                   >
-                    <span className="text-lg">ℹ️</span>
-                    {t('Mais Informações')}
-                  </button>
+                    <Image src={rede.icone} alt="" width={20} height={20} />
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            <div className="relative mx-auto w-full max-w-[340px] lg:max-w-none">
+              <div className="absolute -inset-4 rounded-[2rem] bg-sand/10 blur-2xl" />
+              <div className="absolute inset-0 translate-x-4 translate-y-4 rounded-3xl border border-sand/30" />
+              <Image
+                src="/eu2.jpg"
+                alt="Pedro Mendes Lima"
+                width={1931}
+                height={1787}
+                quality={95}
+                priority
+                sizes="(max-width: 1024px) 340px, 420px"
+                className="relative aspect-square w-full rounded-3xl border border-line object-cover object-top grayscale transition-all duration-500 hover:grayscale-0"
+              />
+            </div>
+          </div>
+        </section>
+
+        <div aria-hidden="true" className="marquee fade-x overflow-hidden border-y border-line py-6">
+          <div className="flex w-max animate-slide items-center gap-16 pr-16">
+            {[...trilho, ...trilho].map((item, indice) => (
+              <div key={`${item.nome}-${indice}`} className="flex shrink-0 items-center gap-3 opacity-50 transition-opacity hover:opacity-100">
+                <Image
+                  src={item.src}
+                  alt=""
+                  width={26}
+                  height={26}
+                  className={item.inverter ? "invert" : undefined}
+                />
+                <span className="whitespace-nowrap font-mono text-xs uppercase tracking-widest text-zinc-400">
+                  {item.nome}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <section id="sobre" className="mx-auto max-w-content px-5 py-24 md:px-8 md:py-32">
+          <p className="eyebrow">{t("sobre.eyebrow")}</p>
+          <h2 className="mt-4 max-w-2xl text-3xl font-medium tracking-tight text-zinc-100 sm:text-4xl">
+            {t("sobre.titulo")}
+          </h2>
+
+          <div className="mt-14 grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
+            <div className="relative">
+              <Image
+                src="/tela.png"
+                alt=""
+                width={1500}
+                height={1000}
+                quality={90}
+                sizes="(max-width: 1024px) 100vw, 520px"
+                className="w-full rounded-2xl border border-line object-cover"
+              />
+              <dl className="mt-6 divide-y divide-line overflow-hidden rounded-2xl border border-line bg-surface/60">
+                {fatos.map((fato) => (
+                  <div key={fato.rotulo} className="px-5 py-4">
+                    <dt className="font-mono text-[0.65rem] uppercase tracking-[0.2em] text-zinc-500">
+                      {t(fato.rotulo)}
+                    </dt>
+                    <dd className="mt-1.5 text-sm text-zinc-300">{t(fato.valor)}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+
+            <div className="space-y-6 text-[0.975rem] leading-relaxed text-zinc-400">
+              <p className="border-l-2 border-sand/40 pl-5 text-zinc-300">{t("sobre.p1")}</p>
+              <p>{t("sobre.p2")}</p>
+              <p>{t("sobre.p3")}</p>
+
+              <div className="!mt-12 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-4">
+                {numeros.map((numero) => (
+                  <div key={numero.rotulo} className="bg-surface px-4 py-6 text-center">
+                    <p className="numeric text-xl font-medium text-zinc-100 sm:text-2xl">
+                      {numero.valor}
+                    </p>
+                    <p className="mt-2 text-[0.7rem] leading-snug text-zinc-500">{numero.rotulo}</p>
+                  </div>
+                ))}
+              </div>
+              <p className="!mt-4 text-center text-xs text-zinc-600 sm:text-left">
+                <Link
+                  href="https://github.com/uPedroLima11"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition-colors hover:text-sand"
+                >
+                  {t("github.perfil")} →
+                </Link>
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section id="stack" className="mx-auto max-w-content px-5 py-24 md:px-8 md:py-32">
+          <p className="eyebrow">{t("stack.eyebrow")}</p>
+          <h2 className="mt-4 text-3xl font-medium tracking-tight text-zinc-100 sm:text-4xl">
+            {t("stack.titulo")}
+          </h2>
+          <p className="mt-4 max-w-xl text-zinc-400">{t("stack.descricao")}</p>
+
+          <div className="mt-14 space-y-10">
+            {grupos.map((grupo) => (
+              <div key={grupo.chave} className="grid gap-5 border-t border-line pt-8 md:grid-cols-[200px_1fr]">
+                <h3 className="font-mono text-xs uppercase tracking-[0.2em] text-zinc-500">
+                  {t(grupo.chave)}
+                </h3>
+                <div className="flex flex-wrap gap-3">
+                  {grupo.itens.map((item) => (
+                    <div
+                      key={item.nome}
+                      className="group flex items-center gap-2.5 rounded-xl border border-line bg-surface px-4 py-2.5 transition-all duration-200 hover:-translate-y-0.5 hover:border-sand/50"
+                    >
+                      {item.src ? (
+                        <Image
+                          src={item.src}
+                          alt=""
+                          width={20}
+                          height={20}
+                          className={item.inverter ? "invert" : undefined}
+                        />
+                      ) : (
+                        <span className="flex h-5 w-5 items-center justify-center rounded-md bg-sand/15 font-mono text-[0.6rem] text-sand">
+                          {item.nome.charAt(0)}
+                        </span>
+                      )}
+                      <span className="text-sm text-zinc-300 transition-colors group-hover:text-zinc-100">
+                        {item.nome}
+                      </span>
+                    </div>
+                  ))}
                 </div>
               </div>
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-            </div>
-          ))}
-        </div>
-
-        {totalPages > 1 && (
-          <div className="flex justify-center items-center mt-16 gap-4">
-            <button
-              onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
-              disabled={currentPage === 1}
-              className="px-5 py-2.5 bg-gray-800 text-white rounded-xl disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-700 transition-all duration-300 text-sm font-medium shadow-lg"
-            >
-              ← Anterior
-            </button>
-
-            <div className="flex gap-2">
-              {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
-                <button
-                  key={page}
-                  onClick={() => setCurrentPage(page)}
-                  className={`px-4 py-2.5 rounded-xl transition-all duration-300 text-sm font-medium shadow-lg ${currentPage === page
-                    ? 'bg-blue-600 text-white shadow-blue-500/25'
-                    : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
-                    }`}
-                >
-                  {page}
-                </button>
-              ))}
-            </div>
-
-            <button
-              onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
-              disabled={currentPage === totalPages}
-              className="px-5 py-2.5 bg-gray-800 text-white rounded-xl disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-700 transition-all duration-300 text-sm font-medium shadow-lg"
-            >
-              Próxima →
-            </button>
+            ))}
           </div>
-        )}
-      </section>
-      {projetoSelecionado && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 z-50 p-4">
-          <div className="bg-[#1a1a1f] p-6 rounded-xl w-full max-w-md relative border border-gray-700 max-h-[90vh] overflow-y-auto shadow-2xl">
-            <button
-              onClick={handleFecharModal}
-              className="absolute top-3 right-3 text-white hover:text-gray-400 text-xl font-light transition-colors duration-300 z-10 bg-gray-800 rounded-full w-8 h-8 flex items-center justify-center"
-            >
-              ✕
-            </button>
-            <h2 className="text-2xl font-bold mb-4 text-center bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-              {projetoSelecionado.nome}
+        </section>
+
+        <section id="projetos" className="mx-auto max-w-content px-5 py-24 md:px-8 md:py-32">
+          <p className="eyebrow">{t("projetos.eyebrow")}</p>
+          <div className="mt-4 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+            <h2 className="text-3xl font-medium tracking-tight text-zinc-100 sm:text-4xl">
+              {t("projetos.titulo")}
             </h2>
-            <div className="relative w-full h-48 mb-4 rounded-lg border border-gray-600 overflow-hidden bg-gray-900">
-              <Image
-                src={projetoSelecionado.imagem}
-                alt={projetoSelecionado.nome}
-                fill
-                quality={100}
-                className="object-contain p-2"
-                sizes="(max-width: 768px) 100vw, 400px"
-              />
+            <p className="max-w-md text-sm text-zinc-500 md:text-right">{t("projetos.descricao")}</p>
+          </div>
+
+          <div className="mt-14 grid gap-6 md:grid-cols-2">
+            {projetos.map((projeto) => (
+              <article
+                key={projeto.nome}
+                className={`group flex flex-col overflow-hidden rounded-2xl border border-line bg-surface transition-colors duration-300 hover:border-sand/40 ${
+                  projeto.destaque ? "md:col-span-2" : ""
+                }`}
+              >
+                <div
+                  className={`relative overflow-hidden border-b border-line bg-ink ${
+                    projeto.destaque ? "aspect-[16/7]" : "aspect-[16/9]"
+                  }`}
+                >
+                  <Image
+                    src={projeto.imagem}
+                    alt={projeto.nome}
+                    fill
+                    quality={95}
+                    sizes={
+                      projeto.destaque
+                        ? "(max-width: 1200px) 100vw, 1120px"
+                        : "(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 580px"
+                    }
+                    className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]"
+                  />
+                </div>
+
+                <div className="flex flex-1 flex-col p-6">
+                  <h3 className="text-xl font-medium text-zinc-100">{projeto.nome}</h3>
+                  <p className="mt-2 max-w-lg text-sm leading-relaxed text-zinc-400">
+                    {obterTexto(projeto.resumo, i18n.language)}
+                  </p>
+
+                  <div className="mt-5 flex flex-wrap gap-2">
+                    {projeto.tecnologias.map((tecnologia) => (
+                      <span key={tecnologia} className="tag">
+                        {tecnologia}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className="mt-auto flex flex-wrap items-center gap-x-5 gap-y-2 pt-7 text-sm">
+                    <button
+                      type="button"
+                      onClick={() => setProjetoAberto(projeto)}
+                      className="font-medium text-sand transition-opacity hover:opacity-70"
+                    >
+                      {t("projetos.detalhes")}
+                    </button>
+                    <Link
+                      href={projeto.githubLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-zinc-400 transition-colors hover:text-zinc-100"
+                    >
+                      {t("projetos.codigo")}
+                    </Link>
+                    {projeto.liveDemoLink && (
+                      <Link
+                        href={projeto.liveDemoLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-zinc-400 transition-colors hover:text-zinc-100"
+                      >
+                        {t("projetos.demo")}
+                      </Link>
+                    )}
+                    {projeto.figmaLink && (
+                      <Link
+                        href={projeto.figmaLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-zinc-400 transition-colors hover:text-zinc-100"
+                      >
+                        {t("projetos.prototipo")}
+                      </Link>
+                    )}
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section id="contato" className="mx-auto max-w-content px-5 pb-8 md:px-8">
+          <div className="relative overflow-hidden rounded-3xl border border-line bg-surface px-6 py-16 text-center md:px-16 md:py-20">
+            <div className="absolute -top-24 left-1/2 h-48 w-96 -translate-x-1/2 rounded-full bg-sand/10 blur-3xl" />
+            <div className="relative">
+              <p className="eyebrow">{t("contato.eyebrow")}</p>
+              <h2 className="mx-auto mt-4 max-w-2xl text-3xl font-medium tracking-tight text-zinc-100 sm:text-4xl">
+                {t("contato.titulo")}
+              </h2>
+              <p className="mx-auto mt-4 max-w-lg text-zinc-400">{t("contato.descricao")}</p>
+              <div className="mt-10 flex flex-wrap justify-center gap-3">
+                <Link href="/contatos" className="btn-primary">
+                  {t("contato.enviar_email")}
+                </Link>
+                <Link
+                  href="https://www.linkedin.com/in/upedrolima/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-ghost"
+                >
+                  LinkedIn
+                </Link>
+              </div>
             </div>
-            <p className="text-gray-300 font-light leading-relaxed">
-              {obterDescricao(projetoSelecionado.descricao)}
-            </p>
+          </div>
+        </section>
+      </main>
+
+      {projetoAberto && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label={projetoAberto.nome}
+          onClick={fecharModal}
+          className="fixed inset-0 z-50 flex items-end justify-center bg-black/80 p-0 backdrop-blur-sm sm:items-center sm:p-6"
+        >
+          <div
+            onClick={(evento) => evento.stopPropagation()}
+            className="max-h-[88vh] w-full max-w-2xl animate-rise overflow-y-auto rounded-t-3xl border border-line bg-surface sm:rounded-3xl"
+          >
+            <div className="relative aspect-[16/8] w-full overflow-hidden border-b border-line bg-ink">
+              <Image
+                src={projetoAberto.imagem}
+                alt={projetoAberto.nome}
+                fill
+                quality={90}
+                sizes="672px"
+                className="object-cover object-top"
+              />
+              <button
+                type="button"
+                onClick={fecharModal}
+                aria-label={t("projetos.fechar")}
+                className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full border border-line bg-ink/80 text-zinc-300 backdrop-blur transition-colors hover:text-sand"
+              >
+                ✕
+              </button>
+            </div>
+
+            <div className="p-6 md:p-8">
+              <h2 className="text-2xl font-medium text-zinc-100">{projetoAberto.nome}</h2>
+
+              <div className="mt-4 flex flex-wrap gap-2">
+                {projetoAberto.tecnologias.map((tecnologia) => (
+                  <span key={tecnologia} className="tag">
+                    {tecnologia}
+                  </span>
+                ))}
+              </div>
+
+              <p className="mt-6 text-sm leading-relaxed text-zinc-400">
+                {obterTexto(projetoAberto.descricao, i18n.language)}
+              </p>
+
+              <div className="mt-8 flex flex-wrap gap-3">
+                <Link
+                  href={projetoAberto.githubLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-ghost !px-5 !py-2.5 !text-xs"
+                >
+                  {t("projetos.codigo")}
+                </Link>
+                {projetoAberto.liveDemoLink && (
+                  <Link
+                    href={projetoAberto.liveDemoLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-primary !px-5 !py-2.5 !text-xs"
+                  >
+                    {t("projetos.demo")}
+                  </Link>
+                )}
+                {projetoAberto.figmaLink && (
+                  <Link
+                    href={projetoAberto.figmaLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-ghost !px-5 !py-2.5 !text-xs"
+                  >
+                    {t("projetos.prototipo")}
+                  </Link>
+                )}
+              </div>
+            </div>
           </div>
         </div>
       )}
 
-      <div className="mt-20"></div>
       <Footer />
-    </div>
+    </>
   );
 }

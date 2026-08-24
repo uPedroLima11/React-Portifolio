@@ -1,30 +1,58 @@
+'use client';
+
 import Link from 'next/link';
-import Image from "next/image";
+import Image from 'next/image';
+import { useTranslation } from 'react-i18next';
+import '../../../i18n';
+
+const redes = [
+  { nome: 'LinkedIn', href: 'https://www.linkedin.com/in/upedrolima/', icone: '/linkedin.png' },
+  { nome: 'GitHub', href: 'https://github.com/uPedroLima11', icone: '/github.png' },
+  { nome: 'Instagram', href: 'https://www.instagram.com/upedro_lima/', icone: '/instagram1.png' },
+];
 
 export default function Footer() {
-    return (
-        <footer className="bg-zinc-900">
-            <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
-                <div className="md:flex md:justify-end">
-                    <div className="mb-6 md:mb-0 "></div>
-                    <div className="flex justify-center items-center gap-8 sm:gap-6 ">
-                        <div><Link className='' href='https://www.linkedin.com/in/upedrolima/'><Image src="/linkedin.png" alt='linkeding' width={30} height={30} className='border-2 rounded-3xl' /></Link></div>
-                        <div><Link className='' href='https://www.instagram.com/upedro_lima/'><Image src="/instagram1.png" alt='instagram' width={30} height={30} className='border-2 rounded-2xl' /></Link></div>
-                        <div><Link className='' href='https://github.com/uPedroLima11'><Image src="/github.png" alt='github' width={30} height={30} className='border-2 rounded-3xl' /></Link></div>
-                        <div></div>
-                    </div>
-                </div>
-                <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
-                <div className="sm:flex sm:items-center sm:justify-between">
-                    <span className="text-sm text-white sm:text-center dark:text-gray-400">
-                        Copyright  © 2024 by {' '}
-                        <a href="" className="hover:underline">
-                            Pedro Mendes Lima™
-                        </a>
+  const { t } = useTranslation();
+  const ano = new Date().getFullYear();
 
-                    </span>
-                </div>
-            </div>
-        </footer>
-    );
+  return (
+    <footer className="mt-24 border-t border-line bg-surface/40">
+      <div className="mx-auto max-w-content px-5 py-12 md:px-8">
+        <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
+          <div>
+            <Link href="/" className="text-lg font-medium text-zinc-100">
+              Pedro Mendes Lima
+            </Link>
+            <p className="mt-1 font-mono text-[0.7rem] uppercase tracking-[0.22em] text-zinc-500">
+              {t('hero.eyebrow')}
+            </p>
+          </div>
+
+          <div className="flex items-center gap-3">
+            {redes.map((rede) => (
+              <Link
+                key={rede.nome}
+                href={rede.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={rede.nome}
+                className="flex h-11 w-11 items-center justify-center rounded-xl border border-line bg-elevated transition-all duration-200 hover:-translate-y-0.5 hover:border-sand/60"
+              >
+                <Image src={rede.icone} alt="" width={20} height={20} />
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        <hr className="rule my-10" />
+
+        <div className="flex flex-col gap-3 text-xs text-zinc-500 sm:flex-row sm:items-center sm:justify-between">
+          <span>
+            © {ano} Pedro Mendes Lima. {t('footer.direitos')}
+          </span>
+          <span className="font-mono tracking-wide">{t('footer.feito')}</span>
+        </div>
+      </div>
+    </footer>
+  );
 }

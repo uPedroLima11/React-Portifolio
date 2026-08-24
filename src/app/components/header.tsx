@@ -1,118 +1,161 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
 import SelecionarLinguagem from './SelecionarLinguagem';
+import '../../../i18n';
 
-export default function Navbar() {
+const secoes = [
+  { id: 'sobre', chave: 'nav.sobre' },
+  { id: 'stack', chave: 'nav.stack' },
+  { id: 'projetos', chave: 'nav.projetos' },
+  { id: 'contato', chave: 'nav.contato' },
+];
+
+export default function Header() {
   const { t } = useTranslation();
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const navbarRef = useRef<HTMLDivElement | null>(null);
+  const [menuAberto, setMenuAberto] = useState(false);
+  const [rolou, setRolou] = useState(false);
+  const [ativa, setAtiva] = useState('');
 
-  const handleToggle = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+  useEffect(() => {
+    const aoRolar = () => setRolou(window.scrollY > 24);
+    aoRolar();
+    window.addEventListener('scroll', aoRolar, { passive: true });
+    return () => window.removeEventListener('scroll', aoRolar);
+  }, []);
 
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-    setIsMenuOpen(false);
-  };
+  useEffect(() => {
+    const alvos = secoes
+      .map((secao) => document.getElementById(secao.id))
+      .filter((elemento): elemento is HTMLElement => Boolean(elemento));
+
+    if (alvos.length === 0) return;
+
+    const observador = new IntersectionObserver(
+      (entradas) => {
+        const visivel = entradas
+          .filter((entrada) => entrada.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (visivel) setAtiva(visivel.target.id);
+      },
+      { rootMargin: '-45% 0px -45% 0px', threshold: [0, 0.25, 0.5, 1] }
+    );
+
+    alvos.forEach((alvo) => observador.observe(alvo));
+    return () => observador.disconnect();
+  }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = menuAberto ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [menuAberto]);
 
   return (
-    <nav className="py-5 font-sans bg-[#24242c] shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] fixed w-full z-20 top-0">
-      <div className="flex items-center justify-between px-4 md:px-6 lg:px-10">
-        <a href="/" className="flex items-center space-x-3">
-          <div className="flex flex-col items-center">
-            <img
-              src="/desenvolvedor.png"
-              className="w-8 sm:w-10 md:w-12 invert"
-              alt="Logo"
-            />
-            <h1 className="text-white sm:text-base md:text-base font-serif text-center">
-              Pedro Mendes Lima
-            </h1>
-          </div>
-        </a>
+    <nav
+      className={`fixed top-0 z-40 w-full transition-all duration-300 ${
+        rolou
+          ? 'border-b border-line bg-ink/80 backdrop-blur-xl'
+          : 'border-b border-transparent bg-transparent'
+      }`}
+    >
+      <div className="mx-auto flex max-w-content items-center justify-between px-5 py-4 md:px-8">
+        <Link href="/" className="group flex items-center gap-3">
+          <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-line bg-elevated font-mono text-sm text-sand transition-colors duration-300 group-hover:border-sand/60">
+            PL
+          </span>
+          <span className="hidden flex-col leading-tight sm:flex">
+            <span className="text-sm font-medium text-zinc-100">Pedro Mendes Lima</span>
+            <span className="font-mono text-[0.65rem] uppercase tracking-[0.2em] text-zinc-500">
+              {t('hero.eyebrow')}
+            </span>
+          </span>
+        </Link>
 
-        <div className="hidden lg:flex items-center justify-center space-x-10">
-          <button
-            onClick={() => scrollToSection('sobremim')}
-            className="text-white text-sm sm:text-base font-bold hover:text-[#B38000] transition-colors duration-300"
-          >
-            {t('Sobre Mim')}
-          </button>
-          <button
-            onClick={() => scrollToSection('projetos2')}
-            className="text-white text-sm sm:text-base font-bold hover:text-[#B38000] transition-colors duration-300"
-          >
-            {t('Projetos')}
-          </button>
-          <Link
-            href="/contatos"
-            className="text-white text-sm sm:text-base font-bold hover:text-[#B38000] transition-colors duration-300"
-          >
-            {t('Entre em Contato')}
-          </Link>
+        <div className="hidden items-center gap-8 lg:flex">
+          {secoes.map((secao) => (
+            <Link
+              key={secao.id}
+              href={`/#${secao.id}`}
+              className={`relative py-1 text-sm transition-colors duration-200 ${
+                ativa === secao.id ? 'text-sand' : 'text-zinc-400 hover:text-zinc-100'
+              }`}
+            >
+              {t(secao.chave)}
+              <span
+                className={`absolute -bottom-0.5 left-0 h-px bg-sand transition-all duration-300 ${
+                  ativa === secao.id ? 'w-full' : 'w-0'
+                }`}
+              />
+            </Link>
+          ))}
         </div>
 
-        <div className="flex items-center"> 
-          <SelecionarLinguagem /> 
-          <button
-            className="lg:hidden focus:outline-none ml-2" 
-            onClick={handleToggle}
-            aria-label="Toggle menu"
+        <div className="flex items-center gap-2">
+          <SelecionarLinguagem />
+          <Link
+            href="/curriculo.pdf"
+            download="Curriculo-Pedro-Mendes-Lima.pdf"
+            className="hidden rounded-full border border-line px-4 py-2 text-xs font-medium text-zinc-200 transition-colors duration-200 hover:border-sand/60 hover:text-sand md:inline-flex"
           >
-            <svg
-              className="w-6 h-6 text-white"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h16M4 18h16"
-              ></path>
-            </svg>
+            {t('hero.cta_cv')}
+          </Link>
+          <button
+            type="button"
+            onClick={() => setMenuAberto((aberto) => !aberto)}
+            aria-label={t('nav.menu')}
+            aria-expanded={menuAberto}
+            className="flex h-10 w-10 items-center justify-center rounded-xl border border-line text-zinc-300 transition-colors hover:text-sand lg:hidden"
+          >
+            <span className="relative block h-3 w-4">
+              <span
+                className={`absolute left-0 block h-px w-full bg-current transition-all duration-300 ${
+                  menuAberto ? 'top-1.5 rotate-45' : 'top-0'
+                }`}
+              />
+              <span
+                className={`absolute left-0 top-1.5 block h-px w-full bg-current transition-opacity duration-200 ${
+                  menuAberto ? 'opacity-0' : 'opacity-100'
+                }`}
+              />
+              <span
+                className={`absolute left-0 block h-px w-full bg-current transition-all duration-300 ${
+                  menuAberto ? 'top-1.5 -rotate-45' : 'top-3'
+                }`}
+              />
+            </span>
           </button>
-        </div> 
-      </div> 
+        </div>
+      </div>
 
       <div
-        ref={navbarRef}
-        className={`flex flex-col items-end transition-all duration-300 ease-in-out ${
-          isMenuOpen ? 'flex' : 'hidden'
-        } bg-[#24242c] p-4 rounded-md w-full`}
+        className={`overflow-hidden border-t border-line bg-ink/95 backdrop-blur-xl transition-[max-height] duration-300 ease-out lg:hidden ${
+          menuAberto ? 'max-h-96' : 'max-h-0 border-t-transparent'
+        }`}
       >
-        <ul className="flex flex-col gap-4 w-full text-center">
-          <li>
-            <button
-              onClick={() => scrollToSection('sobremim')}
-              className="text-white text-sm sm:text-base font-bold hover:text-[#B38000] transition-colors duration-300"
-            >
-              {t('Sobre Mim')}
-            </button>
-          </li>
-          <li>
-            <button
-              onClick={() => scrollToSection('projetos')}
-              className="text-white text-sm sm:text-base font-bold hover:text-[#B38000] transition-colors duration-300"
-            >
-              {t('Projetos')}
-            </button>
-          </li>
+        <ul className="mx-auto flex max-w-content flex-col px-5 py-2">
+          {secoes.map((secao) => (
+            <li key={secao.id}>
+              <Link
+                href={`/#${secao.id}`}
+                onClick={() => setMenuAberto(false)}
+                className="block border-b border-line py-4 text-sm text-zinc-300 transition-colors hover:text-sand"
+              >
+                {t(secao.chave)}
+              </Link>
+            </li>
+          ))}
           <li>
             <Link
-              href="/contatos"
-              className="text-white text-sm sm:text-base font-bold hover:text-[#B38000] transition-colors duration-300"
+              href="/curriculo.pdf"
+              download="Curriculo-Pedro-Mendes-Lima.pdf"
+              onClick={() => setMenuAberto(false)}
+              className="block py-4 text-sm text-sand"
             >
-              {t('Entre em Contato')}
+              {t('hero.cta_cv')}
             </Link>
           </li>
         </ul>

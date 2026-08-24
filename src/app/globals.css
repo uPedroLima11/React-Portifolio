@@ -2,95 +2,100 @@
 @tailwind components;
 @tailwind utilities;
 
-@keyframes border-move {
-  0% {
-    clip-path: inset(0 100% 100% 0);
+@layer base {
+  :root {
+    --ink: #0a0a0c;
+    --line: #26262f;
+    --sand: #e0a445;
   }
-  10% {
-    clip-path: inset(0 0 100% 0);
-  }
-  30% {
-    clip-path: inset(0 0 0 100%);
-  }
-  50% {
-    clip-path: inset(100% 0 0 0);
-  }
-  100% {
-    clip-path: inset(0 100% 100% 0);
-  }
-}
 
-@keyframes fade {
-  0%, 100% {
-    opacity: 1;
+  * {
+    border-color: var(--line);
   }
-  50% {
-    opacity: 0;
-  }
-}
 
-@keyframes move {
-  0% {
-    transform: translateY(0);
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+    -webkit-tap-highlight-color: transparent;
   }
-  50% {
-    transform: translateY(-5px);
+
+  body {
+    @apply bg-ink text-zinc-100 antialiased;
+    background-image:
+      radial-gradient(60rem 40rem at 12% -10%, rgba(224, 164, 69, 0.07), transparent 60%),
+      radial-gradient(50rem 34rem at 92% 8%, rgba(120, 130, 170, 0.06), transparent 62%);
+    background-attachment: fixed;
   }
-  100% {
-    transform: translateY(0);
+
+  ::selection {
+    background: rgba(224, 164, 69, 0.25);
+    color: #fff;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--sand);
+    outline-offset: 3px;
   }
 }
 
-.animate-fade {
-  animation: fade 1.5s ease-in-out infinite;
+@layer components {
+  .eyebrow {
+    @apply font-mono text-[0.7rem] uppercase tracking-[0.28em] text-sand;
+  }
+
+  .card {
+    @apply rounded-2xl border border-line bg-surface/80 backdrop-blur-[2px];
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3
+           text-sm font-medium transition-all duration-200 active:scale-[0.98];
+  }
+
+  .btn-primary {
+    @apply btn bg-sand text-ink hover:bg-sand-soft;
+  }
+
+  .btn-ghost {
+    @apply btn border border-line text-zinc-200 hover:border-sand/60 hover:text-sand;
+  }
+
+  .tag {
+    @apply rounded-md border border-line bg-elevated px-2 py-1 font-mono text-[0.65rem]
+           uppercase tracking-wider text-zinc-400;
+  }
+
+  .rule {
+    @apply h-px w-full border-0;
+    background: linear-gradient(90deg, transparent, var(--line) 18%, var(--line) 82%, transparent);
+  }
 }
 
-.animate-move {
-  animation: move 1s ease-in-out infinite;
+@layer utilities {
+  .numeric {
+    font-variant-numeric: tabular-nums;
+  }
+
+  .fade-x {
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  }
 }
 
-.loading-border-blue {
-  border-color: #3178C6;
-  animation: border-move 3.7s linear infinite;
-  border-width: 6px;
+.marquee:hover .animate-slide {
+  animation-play-state: paused;
 }
 
-.loading-border-cyan {
-  border-color: #61DAFB;
-  animation: border-move 3.7s linear infinite;
-  border-width: 6px;
-}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 
-.loading-border-yellow {
-  border-color: #F7DF1E;
-  animation: border-move 3.7s linear infinite;
-  border-width: 6px;
-}
-
-.loading-border-red {
-  border-color: #f04c1a;
-  animation: border-move 3.7s linear infinite;
-  border-width: 6px;
-}
-
-.loading-border-green {
-  border-color: #33dbdb;
-  animation: border-move 3.7s linear infinite;
-  border-width: 6px;
-}
-
-.loading-border-black {
-  border-color: #ffffff;
-  animation: border-move 3.7s linear infinite;
-  border-width: 6px;
-}
-
-html,
-body {
-  color: white;
-  background-color: #24242c;
-}
-
-body {
-  @apply bg-[#24242c] text-white antialiased;
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
