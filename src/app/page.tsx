@@ -366,14 +366,16 @@ export default function Home() {
                     >
                       {t("projetos.detalhes")}
                     </button>
-                    <Link
-                      href={projeto.githubLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-zinc-400 transition-colors hover:text-zinc-100"
-                    >
-                      {t("projetos.codigo")}
-                    </Link>
+                    {projeto.githubLink && (
+                      <Link
+                        href={projeto.githubLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-zinc-400 transition-colors hover:text-zinc-100"
+                      >
+                        {t("projetos.codigo")}
+                      </Link>
+                    )}
                     {projeto.liveDemoLink && (
                       <Link
                         href={projeto.liveDemoLink}
@@ -475,14 +477,16 @@ export default function Home() {
               </p>
 
               <div className="mt-8 flex flex-wrap gap-3">
-                <Link
-                  href={projetoAberto.githubLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-ghost !px-5 !py-2.5 !text-xs"
-                >
-                  {t("projetos.codigo")}
-                </Link>
+                {projetoAberto.githubLink && (
+                  <Link
+                    href={projetoAberto.githubLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-ghost !px-5 !py-2.5 !text-xs"
+                  >
+                    {t("projetos.codigo")}
+                  </Link>
+                )}
                 {projetoAberto.liveDemoLink && (
                   <Link
                     href={projetoAberto.liveDemoLink}

@@ -8,7 +8,7 @@ export interface Projeto {
   resumo: Texto;
   descricao: Texto;
   tecnologias: string[];
-  githubLink: string;
+  githubLink?: string;
   liveDemoLink?: string;
   figmaLink?: string;
   destaque?: boolean;
@@ -18,7 +18,6 @@ export const projetos: Projeto[] = [
   {
     nome: "StockControl",
     imagem: "/stock2.png",
-    destaque: true,
     resumo: {
       pt: "Sistema web multitenant de gestão de estoque, desenvolvido em dupla como TCC.",
       en: "Multitenant inventory management web system, built as a two-person final degree project.",
@@ -34,6 +33,23 @@ export const projetos: Projeto[] = [
     liveDemoLink: "https://stockcontrol-six.vercel.app",
     figmaLink:
       "https://www.figma.com/design/K0KzZU3f6R2OBYCeu1kqIp/StockControl?node-id=0-1&t=hXdvxeHPK1mwWVZv-1",
+  },
+
+  {
+    nome: "FisioAtlas 3D",
+    imagem: "/fisioatlas.png",
+    resumo: {
+      pt: "Atlas de anatomia humana em 3D, gratuito e sem cadastro, para estudar o corpo de forma interativa.",
+      en: "Free 3D human anatomy atlas, no sign-up required, for studying the body interactively.",
+      es: "Atlas de anatomía humana en 3D, gratuito y sin registro, para estudiar el cuerpo de forma interactiva.",
+    },
+    descricao: {
+      pt: "O FisioAtlas 3D é um atlas de anatomia humana interativo pensado para estudantes de fisioterapia e da área da saúde. Nele é possível girar, dar zoom e selecionar mais de 3 mil peças anatômicas reais, baseadas nos modelos científicos BodyParts3D e Human Reference Atlas, com referências masculina e feminina, além de isolar sistemas, aplicar transparência, raio-X e cortes anatômicos. O projeto também conta com quizzes de localização e identificação, flashcards com repetição espaçada, coleções e acompanhamento de progresso. Construí o renderizador diretamente com Three.js, usando BatchedMesh e BVH para manter a navegação fluida mesmo com milhares de estruturas, e a busca roda em um Web Worker. A interface foi feita com React, TypeScript e Zustand, e todos os dados de estudo ficam salvos no próprio navegador via IndexedDB. A proposta é ser uma ferramenta totalmente gratuita: sem cadastro e sem servidor, para que qualquer estudante possa usar à vontade.",
+      en: "FisioAtlas 3D is an interactive human anatomy atlas designed for physiotherapy and health sciences students. It lets you rotate, zoom and select over 3,000 real anatomical parts, based on the scientific BodyParts3D and Human Reference Atlas models, with both male and female references, as well as isolate systems and apply transparency, X-ray and anatomical sections. The project also includes location and identification quizzes, spaced-repetition flashcards, collections and progress tracking. I built the renderer directly with Three.js, using BatchedMesh and BVH to keep navigation smooth even with thousands of structures, and search runs in a Web Worker. The interface was built with React, TypeScript and Zustand, and all study data is stored in the browser itself via IndexedDB. The goal is to be a completely free tool: no sign-up and no server, so any student can use it freely.",
+      es: "FisioAtlas 3D es un atlas de anatomía humana interactivo pensado para estudiantes de fisioterapia y del área de la salud. Permite girar, hacer zoom y seleccionar más de 3 mil piezas anatómicas reales, basadas en los modelos científicos BodyParts3D y Human Reference Atlas, con referencias masculina y femenina, además de aislar sistemas y aplicar transparencia, rayos X y cortes anatómicos. El proyecto también cuenta con quizzes de localización e identificación, flashcards con repetición espaciada, colecciones y seguimiento del progreso. Construí el renderizador directamente con Three.js, usando BatchedMesh y BVH para mantener la navegación fluida incluso con miles de estructuras, y la búsqueda se ejecuta en un Web Worker. La interfaz se hizo con React, TypeScript y Zustand, y todos los datos de estudio se guardan en el propio navegador mediante IndexedDB. La propuesta es ser una herramienta totalmente gratuita: sin registro y sin servidor, para que cualquier estudiante pueda usarla libremente.",
+    },
+    tecnologias: ["React", "TypeScript", "Three.js", "Vite", "Zustand", "IndexedDB"],
+    liveDemoLink: "https://fisioatlas-3d.vercel.app",
   },
 
   {
