@@ -10,6 +10,7 @@ const secoes = [
   { id: 'sobre', chave: 'nav.sobre' },
   { id: 'stack', chave: 'nav.stack' },
   { id: 'projetos', chave: 'nav.projetos' },
+  { id: 'github', chave: 'nav.github' },
   { id: 'contato', chave: 'nav.contato' },
 ];
 

@@ -36,15 +36,30 @@
     outline: 2px solid var(--sand);
     outline-offset: 3px;
   }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--ink);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #2e2e39;
+    border-radius: 999px;
+    border: 2px solid var(--ink);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #3d3d4b;
+  }
 }
 
 @layer components {
   .eyebrow {
     @apply font-mono text-[0.7rem] uppercase tracking-[0.28em] text-sand;
-  }
-
-  .card {
-    @apply rounded-2xl border border-line bg-surface/80 backdrop-blur-[2px];
   }
 
   .btn {
@@ -53,7 +68,12 @@
   }
 
   .btn-primary {
-    @apply btn bg-sand text-ink hover:bg-sand-soft;
+    @apply btn relative isolate overflow-hidden bg-sand text-ink hover:bg-sand-soft;
+  }
+
+  .btn-primary::before {
+    content: "";
+    @apply pointer-events-none absolute inset-y-0 left-0 -z-10 w-1/3 animate-shimmer bg-white/50 blur-md;
   }
 
   .btn-ghost {
@@ -69,6 +89,48 @@
     @apply h-px w-full border-0;
     background: linear-gradient(90deg, transparent, var(--line) 18%, var(--line) 82%, transparent);
   }
+
+  .spotlight {
+    @apply relative;
+  }
+
+  .spotlight::after {
+    content: "";
+    @apply pointer-events-none absolute inset-0 rounded-[inherit] opacity-0 transition-opacity duration-300;
+    background: radial-gradient(
+      20rem circle at var(--mx, 50%) var(--my, 50%),
+      rgba(224, 164, 69, 0.1),
+      transparent 62%
+    );
+  }
+
+  .spotlight:hover::after {
+    @apply opacity-100;
+  }
+
+  .glow-border::before {
+    content: "";
+    @apply pointer-events-none absolute -inset-px rounded-[inherit] opacity-0 transition-opacity duration-300;
+    background: linear-gradient(
+      140deg,
+      rgba(224, 164, 69, 0.55),
+      transparent 42%,
+      rgba(224, 164, 69, 0.28)
+    );
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    padding: 1px;
+  }
+
+  .glow-border:hover::before {
+    @apply opacity-100;
+  }
 }
 
 @layer utilities {
@@ -80,15 +142,48 @@
     -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
     mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
   }
+
+  .dot-grid {
+    background-image: radial-gradient(rgba(255, 255, 255, 0.09) 1px, transparent 1px);
+    background-size: 22px 22px;
+  }
+
+  .fade-radial {
+    -webkit-mask-image: radial-gradient(60% 60% at 50% 45%, #000, transparent 100%);
+    mask-image: radial-gradient(60% 60% at 50% 45%, #000, transparent 100%);
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-br from-zinc-50 via-zinc-200 to-zinc-500 bg-clip-text text-transparent;
+  }
 }
 
 .marquee:hover .animate-slide {
   animation-play-state: paused;
 }
 
+.revelar {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.revelar[data-visivel="true"] {
+  opacity: 1;
+  transform: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  .revelar {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 
   *,

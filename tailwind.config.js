@@ -34,20 +34,30 @@ module.exports = {
           from: { opacity: "0", transform: "translateY(14px)" },
           to: { opacity: "1", transform: "translateY(0)" },
         },
-        drift: {
-          "0%, 100%": { transform: "translateY(0)" },
-          "50%": { transform: "translateY(-10px)" },
-        },
         slide: {
           from: { transform: "translateX(0)" },
           to: { transform: "translateX(-50%)" },
+        },
+        shimmer: {
+          from: { transform: "translateX(-120%) skewX(-18deg)" },
+          to: { transform: "translateX(320%) skewX(-18deg)" },
+        },
+        aurora: {
+          "0%, 100%": { transform: "translate3d(0, 0, 0) scale(1)", opacity: "0.55" },
+          "50%": { transform: "translate3d(6%, -8%, 0) scale(1.18)", opacity: "0.85" },
+        },
+        pulseSoft: {
+          "0%, 100%": { opacity: "0.35", transform: "scale(1)" },
+          "50%": { opacity: "1", transform: "scale(1.35)" },
         },
       },
       animation: {
         caret: "caret 1.2s steps(1) infinite",
         rise: "rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) both",
-        drift: "drift 6s ease-in-out infinite",
         slide: "slide 38s linear infinite",
+        shimmer: "shimmer 2.6s ease-in-out infinite",
+        aurora: "aurora 14s ease-in-out infinite",
+        "pulse-soft": "pulseSoft 2.4s ease-in-out infinite",
       },
     },
   },

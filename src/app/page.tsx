@@ -6,6 +6,13 @@ import Link from "next/link";
 import { useTranslation } from "react-i18next";
 import Header from "./components/header";
 import Footer from "./components/footer";
+import Revelar from "./components/Revelar";
+import CartaoSpotlight from "./components/CartaoSpotlight";
+import EditorCodigo from "./components/EditorCodigo";
+import CartaoResumo from "./components/CartaoResumo";
+import CartaoIdiomas from "./components/CartaoIdiomas";
+import AtividadeGithub from "./components/AtividadeGithub";
+import SecaoContato from "./components/SecaoContato";
 import { Projeto, projetos, obterTexto } from "./components/projeto";
 import "../../i18n";
 
@@ -39,6 +46,7 @@ const grupos: { chave: string; itens: Tecnologia[] }[] = [
       { nome: "TypeScript", src: "/typescript.png" },
       { nome: "JavaScript", src: "/javascript.png" },
       { nome: "Tailwind CSS", src: "/tailwind.png" },
+      { nome: "Bootstrap" },
       { nome: "Figma", src: "/figma.svg" },
     ],
   },
@@ -47,6 +55,7 @@ const grupos: { chave: string; itens: Tecnologia[] }[] = [
     itens: [
       { nome: "Node.js", src: "/nodejsplain.svg" },
       { nome: "Express" },
+      { nome: "PHP" },
       { nome: "Java" },
       { nome: "Spring Boot" },
       { nome: "MySQL", src: "/mysql1.png" },
@@ -65,34 +74,11 @@ const grupos: { chave: string; itens: Tecnologia[] }[] = [
   },
 ];
 
-const fatos = [
-  { rotulo: "sobre.fato_formacao", valor: "sobre.fato_formacao_valor" },
-  { rotulo: "sobre.fato_foco", valor: "sobre.fato_foco_valor" },
-  { rotulo: "sobre.fato_local", valor: "sobre.fato_local_valor" },
-  { rotulo: "sobre.fato_idiomas", valor: "sobre.fato_idiomas_valor" },
-];
-
 export default function Home() {
   const { t, i18n } = useTranslation();
   const [projetoAberto, setProjetoAberto] = useState<Projeto | null>(null);
-  const [repositorios, setRepositorios] = useState(29);
 
   const fecharModal = useCallback(() => setProjetoAberto(null), []);
-
-  useEffect(() => {
-    let ativo = true;
-
-    fetch("https://api.github.com/users/uPedroLima11")
-      .then((resposta) => (resposta.ok ? resposta.json() : null))
-      .then((dados) => {
-        if (ativo && dados?.public_repos) setRepositorios(dados.public_repos);
-      })
-      .catch(() => null);
-
-    return () => {
-      ativo = false;
-    };
-  }, []);
 
   useEffect(() => {
     if (!projetoAberto) return;
@@ -110,80 +96,109 @@ export default function Home() {
     };
   }, [projetoAberto, fecharModal]);
 
-  const numeros = [
-    { valor: `${repositorios}`, rotulo: t("github.repos") },
-    { valor: "731+", rotulo: t("github.commits") },
-    { valor: "TypeScript", rotulo: t("github.linguagem") },
-    { valor: "73", rotulo: t("github.contribuicoes") },
-  ];
-
   return (
     <>
       <Header />
 
       <main id="topo">
-        <section className="mx-auto max-w-content px-5 pb-16 pt-32 md:px-8 md:pb-24 md:pt-44">
-          <div className="grid items-center gap-14 lg:grid-cols-[1.15fr_0.85fr] lg:gap-20">
-            <div className="animate-rise">
-              <p className="eyebrow flex items-center gap-3">
-                <span className="h-px w-8 bg-sand/60" />
-                {t("hero.eyebrow")}
-              </p>
+        <section className="relative overflow-hidden">
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 dot-grid fade-radial opacity-60"
+          />
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -top-32 left-1/4 h-72 w-72 animate-aurora rounded-full bg-sand/10 blur-[90px]"
+          />
 
-              <h1 className="mt-7 text-4xl font-medium leading-[1.05] tracking-tight text-zinc-100 sm:text-5xl lg:text-6xl">
-                <span className="block text-lg font-normal text-zinc-500 sm:text-xl">
-                  {t("hero.saudacao")}
+          <div className="relative mx-auto max-w-content px-5 pb-16 pt-32 md:px-8 md:pb-24 md:pt-44">
+            <div className="grid items-center gap-14 lg:grid-cols-[1.15fr_0.85fr] lg:gap-20">
+              <div className="animate-rise">
+                <span className="inline-flex items-center gap-2 rounded-full border border-emerald-500/25 bg-emerald-500/10 px-3.5 py-1.5 text-[0.7rem] font-medium text-emerald-300">
+                  <span className="h-1.5 w-1.5 animate-pulse-soft rounded-full bg-emerald-400" />
+                  {t("hero.disponivel")}
                 </span>
-                Pedro Mendes Lima
-                <span className="ml-1 inline-block animate-caret text-sand">_</span>
-              </h1>
 
-              <p className="mt-7 max-w-xl text-base leading-relaxed text-zinc-400 sm:text-lg">
-                {t("hero.resumo")}
-              </p>
+                <p className="eyebrow mt-6 flex items-center gap-3">
+                  <span className="h-px w-8 bg-sand/60" />
+                  {t("hero.eyebrow")}
+                </p>
 
-              <div className="mt-10 flex flex-wrap items-center gap-3">
-                <Link href="/contatos" className="btn-primary">
-                  {t("hero.cta_contato")}
-                </Link>
-                <Link
-                  href="/curriculo.pdf"
-                  download="Curriculo-Pedro-Mendes-Lima.pdf"
-                  className="btn-ghost"
-                >
-                  {t("hero.cta_cv")}
-                </Link>
-              </div>
+                <h1 className="mt-5 text-4xl font-medium leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
+                  <span className="block text-lg font-normal text-zinc-500 sm:text-xl">
+                    {t("hero.saudacao")}
+                  </span>
+                  <span className="text-gradient">Pedro Mendes Lima</span>
+                  <span className="ml-1 inline-block animate-caret text-sand">_</span>
+                </h1>
 
-              <div className="mt-10 flex items-center gap-3">
-                {redes.map((rede) => (
-                  <Link
-                    key={rede.nome}
-                    href={rede.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={rede.nome}
-                    className="flex h-11 w-11 items-center justify-center rounded-xl border border-line bg-surface transition-all duration-200 hover:-translate-y-0.5 hover:border-sand/60"
-                  >
-                    <Image src={rede.icone} alt="" width={20} height={20} />
+                <p className="mt-7 max-w-xl text-base leading-relaxed text-zinc-400 sm:text-lg">
+                  {t("hero.resumo")}
+                </p>
+
+                <p className="mt-4 max-w-xl border-l-2 border-sand/40 pl-4 text-sm italic text-zinc-300">
+                  {t("hero.destaque")}
+                </p>
+
+                <div className="mt-10 flex flex-wrap items-center gap-3">
+                  <Link href="/#contato" className="btn-primary">
+                    {t("hero.cta_contato")}
                   </Link>
-                ))}
-              </div>
-            </div>
+                  <Link
+                    href="/curriculo.pdf"
+                    download="Curriculo-Pedro-Mendes-Lima.pdf"
+                    className="btn-ghost"
+                  >
+                    {t("hero.cta_cv")}
+                  </Link>
+                </div>
 
-            <div className="relative mx-auto w-full max-w-[340px] lg:max-w-none">
-              <div className="absolute -inset-4 rounded-[2rem] bg-sand/10 blur-2xl" />
-              <div className="absolute inset-0 translate-x-4 translate-y-4 rounded-3xl border border-sand/30" />
-              <Image
-                src="/eu2.jpg"
-                alt="Pedro Mendes Lima"
-                width={1931}
-                height={1787}
-                quality={95}
-                priority
-                sizes="(max-width: 1024px) 340px, 420px"
-                className="relative aspect-square w-full rounded-3xl border border-line object-cover object-top grayscale transition-all duration-500 hover:grayscale-0"
-              />
+                <div className="mt-10 flex items-center gap-3">
+                  {redes.map((rede) => (
+                    <Link
+                      key={rede.nome}
+                      href={rede.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={rede.nome}
+                      className="flex h-11 w-11 items-center justify-center rounded-xl border border-line bg-surface transition-all duration-200 hover:-translate-y-0.5 hover:border-sand/60"
+                    >
+                      <Image src={rede.icone} alt="" width={20} height={20} />
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
+              <div className="relative mx-auto w-full max-w-[340px] lg:max-w-none">
+                <div className="absolute -inset-4 rounded-[2rem] bg-sand/10 blur-2xl" />
+                <div className="absolute inset-0 translate-x-4 translate-y-4 rounded-3xl border border-sand/30" />
+                <Image
+                  src="/eu2.jpg"
+                  alt="Pedro Mendes Lima"
+                  width={1931}
+                  height={1787}
+                  quality={95}
+                  priority
+                  sizes="(max-width: 1024px) 340px, 420px"
+                  className="relative aspect-square w-full rounded-3xl border border-line object-cover object-top grayscale transition-all duration-500 hover:grayscale-0"
+                />
+                <div className="absolute -bottom-4 -left-4 flex items-center gap-2 rounded-xl border border-line bg-ink/90 px-3 py-2 backdrop-blur">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    aria-hidden="true"
+                    className="h-3.5 w-3.5 text-sand"
+                  >
+                    <path d="M12 21s7-5.686 7-11a7 7 0 1 0-14 0c0 5.314 7 11 7 11Z" />
+                    <circle cx="12" cy="10" r="2.4" />
+                  </svg>
+                  <span className="font-mono text-[0.65rem] uppercase tracking-[0.16em] text-zinc-400">
+                    Pelotas, RS
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -191,7 +206,10 @@ export default function Home() {
         <div aria-hidden="true" className="marquee fade-x overflow-hidden border-y border-line py-6">
           <div className="flex w-max animate-slide items-center gap-16 pr-16">
             {[...trilho, ...trilho].map((item, indice) => (
-              <div key={`${item.nome}-${indice}`} className="flex shrink-0 items-center gap-3 opacity-50 transition-opacity hover:opacity-100">
+              <div
+                key={`${item.nome}-${indice}`}
+                className="flex shrink-0 items-center gap-3 opacity-50 transition-opacity hover:opacity-100"
+              >
                 <Image
                   src={item.src}
                   alt=""
@@ -208,73 +226,85 @@ export default function Home() {
         </div>
 
         <section id="sobre" className="mx-auto max-w-content px-5 py-24 md:px-8 md:py-32">
-          <p className="eyebrow">{t("sobre.eyebrow")}</p>
-          <h2 className="mt-4 max-w-2xl text-3xl font-medium tracking-tight text-zinc-100 sm:text-4xl">
-            {t("sobre.titulo")}
-          </h2>
+          <Revelar>
+            <p className="eyebrow">{t("sobre.eyebrow")}</p>
+            <h2 className="mt-4 max-w-2xl text-3xl font-medium tracking-tight text-zinc-100 sm:text-4xl">
+              {t("sobre.titulo")}
+            </h2>
+          </Revelar>
 
-          <div className="mt-14 grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
-            <div className="relative">
-              <Image
-                src="/tela.png"
-                alt=""
-                width={1500}
-                height={1000}
-                quality={90}
-                sizes="(max-width: 1024px) 100vw, 520px"
-                className="w-full rounded-2xl border border-line object-cover"
-              />
-              <dl className="mt-6 divide-y divide-line overflow-hidden rounded-2xl border border-line bg-surface/60">
-                {fatos.map((fato) => (
-                  <div key={fato.rotulo} className="px-5 py-4">
-                    <dt className="font-mono text-[0.65rem] uppercase tracking-[0.2em] text-zinc-500">
-                      {t(fato.rotulo)}
-                    </dt>
-                    <dd className="mt-1.5 text-sm text-zinc-300">{t(fato.valor)}</dd>
-                  </div>
-                ))}
-              </dl>
+          <div className="mt-14 grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16">
+            <div className="space-y-5">
+              <Revelar>
+                <EditorCodigo />
+              </Revelar>
+              <Revelar atraso={80}>
+                <CartaoResumo />
+              </Revelar>
+              <Revelar atraso={140}>
+                <CartaoIdiomas />
+              </Revelar>
             </div>
 
-            <div className="space-y-6 text-[0.975rem] leading-relaxed text-zinc-400">
-              <p className="border-l-2 border-sand/40 pl-5 text-zinc-300">{t("sobre.p1")}</p>
-              <p>{t("sobre.p2")}</p>
-              <p>{t("sobre.p3")}</p>
+            <div>
+              <Revelar className="space-y-6 text-[0.975rem] leading-relaxed text-zinc-400">
+                <p className="border-l-2 border-sand/40 pl-5 text-zinc-300">{t("sobre.p1")}</p>
+                <p>{t("sobre.p2")}</p>
+                <p>{t("sobre.p3")}</p>
+                <p>{t("sobre.p4")}</p>
+              </Revelar>
 
-              <div className="!mt-12 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-4">
-                {numeros.map((numero) => (
-                  <div key={numero.rotulo} className="bg-surface px-4 py-6 text-center">
-                    <p className="numeric text-xl font-medium text-zinc-100 sm:text-2xl">
-                      {numero.valor}
-                    </p>
-                    <p className="mt-2 text-[0.7rem] leading-snug text-zinc-500">{numero.rotulo}</p>
+              <Revelar atraso={100}>
+                <CartaoSpotlight className="mt-10 overflow-hidden rounded-2xl border border-line bg-surface/70">
+                  <div className="flex items-center justify-between border-b border-line px-5 py-3.5">
+                    <span className="font-mono text-[0.62rem] uppercase tracking-[0.2em] text-zinc-500">
+                      {t("sobre.agora")}
+                    </span>
+                    <span className="flex items-center gap-1.5 rounded-full border border-sand/30 bg-sand/10 px-2.5 py-1 font-mono text-[0.58rem] uppercase tracking-[0.16em] text-sand">
+                      <span className="h-1.5 w-1.5 animate-pulse-soft rounded-full bg-sand" />
+                      {t("sobre.agora_estado")}
+                    </span>
                   </div>
-                ))}
-              </div>
-              <p className="!mt-4 text-center text-xs text-zinc-600 sm:text-left">
-                <Link
-                  href="https://github.com/uPedroLima11"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="transition-colors hover:text-sand"
-                >
-                  {t("github.perfil")} →
-                </Link>
-              </p>
+
+                  <div className="px-5 py-5">
+                    <h3 className="text-base font-medium text-zinc-100">
+                      {t("sobre.agora_titulo")}
+                    </h3>
+                    <p className="mt-2 text-sm leading-relaxed text-zinc-400">
+                      {t("sobre.agora_descricao")}
+                    </p>
+                    <div className="mt-4 flex flex-wrap gap-2">
+                      {["React", "TypeScript", "Express", "Drizzle ORM", "PostgreSQL"].map(
+                        (tecnologia) => (
+                          <span key={tecnologia} className="tag">
+                            {tecnologia}
+                          </span>
+                        )
+                      )}
+                    </div>
+                  </div>
+                </CartaoSpotlight>
+              </Revelar>
             </div>
           </div>
         </section>
 
         <section id="stack" className="mx-auto max-w-content px-5 py-24 md:px-8 md:py-32">
-          <p className="eyebrow">{t("stack.eyebrow")}</p>
-          <h2 className="mt-4 text-3xl font-medium tracking-tight text-zinc-100 sm:text-4xl">
-            {t("stack.titulo")}
-          </h2>
-          <p className="mt-4 max-w-xl text-zinc-400">{t("stack.descricao")}</p>
+          <Revelar>
+            <p className="eyebrow">{t("stack.eyebrow")}</p>
+            <h2 className="mt-4 text-3xl font-medium tracking-tight text-zinc-100 sm:text-4xl">
+              {t("stack.titulo")}
+            </h2>
+            <p className="mt-4 max-w-xl text-zinc-400">{t("stack.descricao")}</p>
+          </Revelar>
 
           <div className="mt-14 space-y-10">
-            {grupos.map((grupo) => (
-              <div key={grupo.chave} className="grid gap-5 border-t border-line pt-8 md:grid-cols-[200px_1fr]">
+            {grupos.map((grupo, indice) => (
+              <Revelar
+                key={grupo.chave}
+                atraso={indice * 70}
+                className="grid gap-5 border-t border-line pt-8 md:grid-cols-[200px_1fr]"
+              >
                 <h3 className="font-mono text-xs uppercase tracking-[0.2em] text-zinc-500">
                   {t(grupo.chave)}
                 </h3>
@@ -303,131 +333,118 @@ export default function Home() {
                     </div>
                   ))}
                 </div>
-              </div>
+              </Revelar>
             ))}
           </div>
         </section>
 
         <section id="projetos" className="mx-auto max-w-content px-5 py-24 md:px-8 md:py-32">
-          <p className="eyebrow">{t("projetos.eyebrow")}</p>
-          <div className="mt-4 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-            <h2 className="text-3xl font-medium tracking-tight text-zinc-100 sm:text-4xl">
-              {t("projetos.titulo")}
-            </h2>
-            <p className="max-w-md text-sm text-zinc-500 md:text-right">{t("projetos.descricao")}</p>
-          </div>
+          <Revelar>
+            <p className="eyebrow">{t("projetos.eyebrow")}</p>
+            <div className="mt-4 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+              <h2 className="text-3xl font-medium tracking-tight text-zinc-100 sm:text-4xl">
+                {t("projetos.titulo")}
+              </h2>
+              <p className="max-w-md text-sm text-zinc-500 md:text-right">
+                {t("projetos.descricao")}
+              </p>
+            </div>
+          </Revelar>
 
           <div className="mt-14 grid gap-6 md:grid-cols-2">
-            {projetos.map((projeto) => (
-              <article
+            {projetos.map((projeto, indice) => (
+              <Revelar
                 key={projeto.nome}
-                className={`group flex flex-col overflow-hidden rounded-2xl border border-line bg-surface transition-colors duration-300 hover:border-sand/40 ${
-                  projeto.destaque ? "md:col-span-2" : ""
-                }`}
+                atraso={(indice % 2) * 90}
+                className={projeto.destaque ? "md:col-span-2" : ""}
               >
-                <div
-                  className={`relative overflow-hidden border-b border-line bg-ink ${
-                    projeto.destaque ? "aspect-[16/7]" : "aspect-[16/9]"
-                  }`}
-                >
-                  <Image
-                    src={projeto.imagem}
-                    alt={projeto.nome}
-                    fill
-                    quality={95}
-                    sizes={
-                      projeto.destaque
-                        ? "(max-width: 1200px) 100vw, 1120px"
-                        : "(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 580px"
-                    }
-                    className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]"
-                  />
-                </div>
-
-                <div className="flex flex-1 flex-col p-6">
-                  <h3 className="text-xl font-medium text-zinc-100">{projeto.nome}</h3>
-                  <p className="mt-2 max-w-lg text-sm leading-relaxed text-zinc-400">
-                    {obterTexto(projeto.resumo, i18n.language)}
-                  </p>
-
-                  <div className="mt-5 flex flex-wrap gap-2">
-                    {projeto.tecnologias.map((tecnologia) => (
-                      <span key={tecnologia} className="tag">
-                        {tecnologia}
-                      </span>
-                    ))}
-                  </div>
-
-                  <div className="mt-auto flex flex-wrap items-center gap-x-5 gap-y-2 pt-7 text-sm">
-                    <button
-                      type="button"
-                      onClick={() => setProjetoAberto(projeto)}
-                      className="font-medium text-sand transition-opacity hover:opacity-70"
+                <CartaoSpotlight className="h-full rounded-2xl">
+                  <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-surface transition-colors duration-300 hover:border-sand/40">
+                    <div
+                      className={`relative overflow-hidden border-b border-line bg-ink ${
+                        projeto.destaque ? "aspect-[16/7]" : "aspect-[16/9]"
+                      }`}
                     >
-                      {t("projetos.detalhes")}
-                    </button>
-                    {projeto.githubLink && (
-                      <Link
-                        href={projeto.githubLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-zinc-400 transition-colors hover:text-zinc-100"
-                      >
-                        {t("projetos.codigo")}
-                      </Link>
-                    )}
-                    {projeto.liveDemoLink && (
-                      <Link
-                        href={projeto.liveDemoLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-zinc-400 transition-colors hover:text-zinc-100"
-                      >
-                        {t("projetos.demo")}
-                      </Link>
-                    )}
-                    {projeto.figmaLink && (
-                      <Link
-                        href={projeto.figmaLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-zinc-400 transition-colors hover:text-zinc-100"
-                      >
-                        {t("projetos.prototipo")}
-                      </Link>
-                    )}
-                  </div>
-                </div>
-              </article>
+                      <Image
+                        src={projeto.imagem}
+                        alt={projeto.nome}
+                        fill
+                        quality={95}
+                        sizes={
+                          projeto.destaque
+                            ? "(max-width: 1200px) 100vw, 1120px"
+                            : "(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 580px"
+                        }
+                        className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]"
+                      />
+                      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                    </div>
+
+                    <div className="flex flex-1 flex-col p-6">
+                      <h3 className="text-xl font-medium text-zinc-100">{projeto.nome}</h3>
+                      <p className="mt-2 max-w-lg text-sm leading-relaxed text-zinc-400">
+                        {obterTexto(projeto.resumo, i18n.language)}
+                      </p>
+
+                      <div className="mt-5 flex flex-wrap gap-2">
+                        {projeto.tecnologias.map((tecnologia) => (
+                          <span key={tecnologia} className="tag">
+                            {tecnologia}
+                          </span>
+                        ))}
+                      </div>
+
+                      <div className="mt-auto flex flex-wrap items-center gap-x-5 gap-y-2 pt-7 text-sm">
+                        <button
+                          type="button"
+                          onClick={() => setProjetoAberto(projeto)}
+                          className="font-medium text-sand transition-opacity hover:opacity-70"
+                        >
+                          {t("projetos.detalhes")}
+                        </button>
+                        {projeto.githubLink && (
+                          <Link
+                            href={projeto.githubLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-zinc-400 transition-colors hover:text-zinc-100"
+                          >
+                            {t("projetos.codigo")}
+                          </Link>
+                        )}
+                        {projeto.liveDemoLink && (
+                          <Link
+                            href={projeto.liveDemoLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-zinc-400 transition-colors hover:text-zinc-100"
+                          >
+                            {t("projetos.demo")}
+                          </Link>
+                        )}
+                        {projeto.figmaLink && (
+                          <Link
+                            href={projeto.figmaLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-zinc-400 transition-colors hover:text-zinc-100"
+                          >
+                            {t("projetos.prototipo")}
+                          </Link>
+                        )}
+                      </div>
+                    </div>
+                  </article>
+                </CartaoSpotlight>
+              </Revelar>
             ))}
           </div>
         </section>
 
-        <section id="contato" className="mx-auto max-w-content px-5 pb-8 md:px-8">
-          <div className="relative overflow-hidden rounded-3xl border border-line bg-surface px-6 py-16 text-center md:px-16 md:py-20">
-            <div className="absolute -top-24 left-1/2 h-48 w-96 -translate-x-1/2 rounded-full bg-sand/10 blur-3xl" />
-            <div className="relative">
-              <p className="eyebrow">{t("contato.eyebrow")}</p>
-              <h2 className="mx-auto mt-4 max-w-2xl text-3xl font-medium tracking-tight text-zinc-100 sm:text-4xl">
-                {t("contato.titulo")}
-              </h2>
-              <p className="mx-auto mt-4 max-w-lg text-zinc-400">{t("contato.descricao")}</p>
-              <div className="mt-10 flex flex-wrap justify-center gap-3">
-                <Link href="/contatos" className="btn-primary">
-                  {t("contato.enviar_email")}
-                </Link>
-                <Link
-                  href="https://www.linkedin.com/in/upedrolima/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-ghost"
-                >
-                  LinkedIn
-                </Link>
-              </div>
-            </div>
-          </div>
-        </section>
+        <AtividadeGithub />
+
+        <SecaoContato />
+
       </main>
 
       {projetoAberto && (
